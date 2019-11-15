@@ -1,0 +1,230 @@
+import javafx.scene.image.ImageView;
+
+/**
+ * Super class for the other characters
+ * ### QUESTIONS ###
+ * TODO: Add bag ArrayList
+ *       Change all the names
+ *       Add age PIV
+ */
+
+public class Character{
+
+    ImageView image;
+    int move;
+
+    protected String name;
+    protected String bio;
+    protected String picUrl;
+
+    protected int x;
+    protected int y;
+
+    protected int moveCount; // when turn starts, moveCount = 4; when moveCount = 0, player has no more moves
+
+    protected int speed;
+    protected int[] speedIncr;
+    protected int might;
+    protected int[] mightIncr;
+    protected int sanity;
+    protected int[] sanityIncr;
+    protected int knowledge;
+    protected int[] knowledgeIncr;
+    protected boolean traitor;
+
+    public Character(){
+        this.name = null;
+        this.bio = null;
+        this.picUrl = null;
+
+        this.x = 0;
+        this.y = 0;
+
+        this.speed = 0;
+        this.speedIncr = null;
+        this.might = 0;
+        this.mightIncr = null;
+        this.sanity = 0;
+        this.sanityIncr = null;
+        this.knowledge = 0;
+        this.knowledgeIncr = null;
+        this.traitor = false;
+    }
+
+
+
+    public Character(String name, String bio, String picUrl, int x, int y, int moveCount, int speed,
+                     int[] speedIncr, int might, int[] mightIncr, int sanity,
+                     int[] sanityIncr, int knowledge, int[] knowledgeIncr){
+        this.name = name;
+        this.bio = bio;
+        this.picUrl = picUrl;
+        this.moveCount = moveCount;
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+        this.speedIncr = speedIncr;
+        this.might = might;
+        this.mightIncr = mightIncr;
+        this.sanity = sanity;
+        this.sanityIncr = sanityIncr;
+        this.knowledge = knowledge;
+        this.knowledgeIncr = knowledgeIncr;
+    }
+
+    /**
+     *
+     * @param amt Amount by which the speed decreases
+     * @return new stat
+     */
+    public int changeSpeed(int amt){
+        speed = speed + amt;
+        return speedIncr[speed];
+    }
+
+    public int changeMight(int amt){
+        might = might + amt;
+        return mightIncr[might];
+    }
+
+    public int changeSanity(int amt){
+        sanity = sanity + amt;
+        return sanityIncr[sanity];
+    }
+
+    public int changeKnowledge(int amt){
+        knowledge = knowledge + amt;
+        return knowledgeIncr[knowledge];
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
+    public void setMoveCount(int moveCount) {
+        this.moveCount = moveCount;
+    }
+
+
+    public int getSpeed() {
+        return speedIncr[speed];
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int[] getSpeedIncr() {
+        return speedIncr;
+    }
+
+    public void setSpeedIncr(int[] speedIncr) {
+        this.speedIncr = speedIncr;
+    }
+
+
+    public int getMight() {
+        return mightIncr[might];
+    }
+
+    public void setMight(int might) {
+        this.might = might;
+    }
+
+    public int[] getMightIncr() {
+        return mightIncr;
+    }
+
+    public void setMightIncr(int[] mightIncr) {
+        this.mightIncr = mightIncr;
+    }
+
+
+    public int getSanity() {
+        return sanityIncr[sanity];
+    }
+
+    public void setSanity(int sanity) {
+        this.sanity = sanity;
+    }
+
+    public int[] getSanityIncr() {
+        return sanityIncr;
+    }
+
+    public void setSanityIncr(int[] sanityIncr) {
+        this.sanityIncr = sanityIncr;
+    }
+
+
+    public int getKnowledge() {
+        return knowledgeIncr[knowledge];
+    }
+
+    public void setKnowledge(int knowledge) {
+        this.knowledge = knowledge;
+    }
+
+    public int[] getKnowledgeIncr() {
+        return knowledgeIncr;
+    }
+
+    public void setKnowledgeIncr(int[] knowledgeIncr) {
+        this.knowledgeIncr = knowledgeIncr;
+    }
+
+
+    public boolean isTraitor() {
+        return traitor;
+    }
+
+    public void setTraitor(boolean traitor) {
+        this.traitor = traitor;
+    }
+
+
+}

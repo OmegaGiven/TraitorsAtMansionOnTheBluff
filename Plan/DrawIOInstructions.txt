@@ -1,0 +1,4 @@
+to Edit the UML for the project;
+1. Goto the following website "https://www.draw.io/" 
+2. you can link it to Github or just open the exsisting Io file from your local repository (check if its been updated from another user)
+3. just click save when done it should then be pushed back up to the main branch but make sure to not mess up the overall code.
