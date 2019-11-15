@@ -1,8 +1,14 @@
 import javafx.application.Application;
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
@@ -13,8 +19,7 @@ import java.awt.event.MouseEvent;
 
 public class Main extends Application {
 
-    public FlowPane CharacterSelect(){
-
+    public BorderPane CharacterSelect(){
         Character[] characters =  {
             new BugBoy(),
             new BougieBrain(),
@@ -29,13 +34,15 @@ public class Main extends Application {
             new TheDollKid(),
             new TheFrogSlayer(),
         };
-        BorderPane forbackdrop = new BorderPane();
+
+        BorderPane backdropsbackdrop = new BorderPane();
+
         FlowPane backdrop = new  FlowPane();
-        forbackdrop.setCenter(backdrop);
+
+        backdropsbackdrop.setCenter(backdrop);
+
         for (Character i: characters){
             Button button = new Button("Select " + i.getName() );
-            Button character = new Button(i.getName() + "Description");
-            BorderPane x = new BorderPane();
             Text text = new Text(
                 i.getName() + "\n" +
                 i.getBio() + "\n" +
@@ -47,26 +54,21 @@ public class Main extends Application {
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-
+                    backdropsbackdrop.setRight(text);
                 }
             });
 
-            x.setCenter(button);
-            x.setBottom(character);
-            backdrop.getChildren().add(x);
+            backdrop.getChildren().add(button);
         }
-
-
-
-
-        return backdrop;
-
+        return backdropsbackdrop;
     }
 
     public void start(Stage stage){
-
-        Scene scene = new Scene(CharacterSelect());
+        BorderPane game = new BorderPane();
+        game.setCenter(CharacterSelect());
+        Scene scene = new Scene(game);
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
