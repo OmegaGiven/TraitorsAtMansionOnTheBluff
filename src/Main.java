@@ -1,20 +1,13 @@
 import javafx.application.Application;
-import javafx.beans.Observable;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
 
 
 public class Main extends Application {
@@ -37,7 +30,7 @@ public class Main extends Application {
 
         BorderPane backdropsbackdrop = new BorderPane();
 
-        FlowPane backdrop = new  FlowPane();
+        VBox backdrop = new VBox();
 
         backdropsbackdrop.setCenter(backdrop);
 
