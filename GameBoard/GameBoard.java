@@ -15,23 +15,21 @@ public class GameBoard extends Application {
     private BorderPane[] borders = {
             /*upper floor*/ new BorderPane(),
             /*main floor*/new BorderPane(),
-            /*Outside*/ new BorderPane(),
             /*Basement*/ new BorderPane()
     };
-    private String[] titles = {"Upper Floor", "Ground Floor", "Outside", "Basement"};
+    private String[] titles = {"Upper Floor", "Ground Floor", "Basement"};
 
     private GridPane[] gridPanes = {
             /*upper floor*/ new GridPane(),
             /*main floor*/ new GridPane(),
-            /*Outside*/ new GridPane(),
             /*Basement*/ new GridPane()
     };
 
-    private Button[] buttons = new Button[4];
-    private String[] images = {"UpperLanding.png", "GroundStairs.png", "Outside.png", "Basement.png"};
-    private Scene[] scenes = new Scene[4];
+    private Button[] buttons = new Button[3];
+    private String[] images = {"UpperLanding.png", "GroundStairs.png", "Basement.png"};
+    private Scene[] scenes = new Scene[3];
 
-    private Stairs[] stairs = new Stairs[4];
+    private Stairs[] stairs = new Stairs[3];
 
     private Stage stage;
 
@@ -48,20 +46,15 @@ public class GameBoard extends Application {
         // creates the different borderPanes for each Floor
 
 
-//        Scene scene1 = scenes[1];
-
         for (int j = 0; j < borders.length; j++) {
 
             stairs[j] = new Stairs(images[j]);
-//            Stairs stair = new Stairs(images[j]);
-
 
             // creates the scene for each floor
             scenes[j] = new Scene(borders[j], 1000, 600);
             // puts each gridPane in the center of the borderPane for each floor
             borders[j].setCenter(gridPanes[j]);
             // adds images to each gridPane
-//            gridPanes[j].add(new ImageView(images[j]), 0, 5);
             gridPanes[j].add(stairs[j].image(), 0, 5);
 
 
