@@ -18,8 +18,8 @@ public class BugBoy extends Character {
                 "under his house and look at bugs. He wants to be an entomologist.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 
