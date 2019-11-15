@@ -9,9 +9,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+
 //import Characters.Character;
 
 public class GameBoard extends Application {
+
     private BorderPane[] borders = {
             /*upper floor*/ new BorderPane(),
             /*main floor*/new BorderPane(),
@@ -115,7 +117,8 @@ public class GameBoard extends Application {
         for (int z = 0; z < scenes.length; z++) {
             int index = z;
             scenes[index].setOnKeyPressed(event -> {
-//                if (character.move >= 0) {
+                if (index == character.lvl /*&& character.moveCount > 0*/) {
+                    --character.moveCount;
                     switch (event.getCode()) {
                         case W:
                             --character.y;
@@ -130,22 +133,31 @@ public class GameBoard extends Application {
                             ++character.x;
                             break;
                     }
-                    gridPanes[index].getChildren().remove(character.image);
-                    gridPanes[index].add(character.image, character.x, character.y);
-                    character.move--;
 
 
-                    up.setOnMouseClicked(e -> setStairs(true, character, index, up, down));
-                    down.setOnMouseClicked(el -> setStairs(false, character, index, up, down));
+                    gridPanes[character.lvl].getChildren().remove(character.image);
+                    gridPanes[character.lvl].add(character.image, character.x, character.y);
 
 
-                    if (character.y == stairs[index].y) {
-                        if (character.x == stairs[index].x) {
-                            stairs[index].upDown(rightPane, index, up, down);
+                    up.setOnMouseClicked(e -> {
+                        setStairs(true, character, up, down);
+                    });
+                    down.setOnMouseClicked(el -> {
+                        setStairs(false, character, up, down);
+                    });
+
+
+                    if (character.y == stairs[character.lvl].y) {
+                        if (character.x == stairs[character.lvl].x) {
+                            stairs[character.lvl].upDown(rightPane, index, up, down);
+                        }
+                        else {
+                            gridPanes[character.lvl].getChildren().remove(up);
+                            gridPanes[character.lvl].getChildren().remove(down);
                         }
                     }
 
-//                }
+                }
             });
         }
 
@@ -163,35 +175,44 @@ public class GameBoard extends Application {
 
     }
 
-    private void setStairs(boolean minus, Character character, int index, Button up, Button down) {
-        if(stairs[index].pane >= 0 && stairs[index].pane < 4) {
-            if (character.y == stairs[index].y) {
-                if (character.x == stairs[index].x) {
-                    if (stairs[index].pane < 4) {
+    private void setStairs(boolean minus, Character character, Button up, Button down) {
+
+//        if(stairs[character.lvl].pane >= 0 && stairs[character.lvl].pane < 4) {
+            if (character.y == stairs[character.lvl].y) {
+
+                if (character.x == stairs[character.lvl].x) {
+
+                    if (character.lvl >= 0 && character.lvl < 4) {
+                        gridPanes[character.lvl].getChildren().remove(character.image);
                         if (minus) {
-                            stairs[index].pane--;
+                            character.lvl--;
+//                            stairs[character.lvl].pane--;
                         }
                         else {
-                            stairs[index].pane++;
+                            character.lvl++;
+//                            stairs[character.lvl].pane++;
                         }
 
-                        if(stairs[index].pane >= 0 && stairs[index].pane < 4) {
-                            gridPanes[index].getChildren().remove(character.image);
-                            gridPanes[stairs[index].pane].add(character.image, 0, 5);
-                            setScene(stairs[index].pane);
+//                        if(character.lvl >= 0 && character.lvl < 4) {
+//                        stairs[character.lvl].pane
+                        gridPanes[character.lvl].add(character.image, 0, 5);
+                        setScene(character.lvl);
 
-                        }
+//                        }
 
                     }
-                } else {
+                }
+                else {
                     rightPane.getChildren().remove(up);
                     rightPane.getChildren().remove(down);
                 }
-            } else {
+//            }
+
+        }
+            else {
                 rightPane.getChildren().remove(up);
                 rightPane.getChildren().remove(down);
             }
-        }
     }
 
 

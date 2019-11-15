@@ -11,7 +11,7 @@ public class BugBoy extends Character {
         super.image = new ImageView("https://p7.hiclipart.com/preview/604/28/893/lola-bunny-bugs-bunny-tasmanian-devil-tweety-daffy-duck-disney-characters.jpg");
         image.setFitWidth(50);
         image.setFitHeight(50);
-        move = moveCount;
+
 
         this.name = "Bug Boy";
         this.bio = "Seriously bullied by his family, Bug Boy likes to hide  " +
@@ -20,6 +20,7 @@ public class BugBoy extends Character {
 
         this.x = 2;
         this.y = 5;
+        lvl = 1;
 
         this.moveCount = 4;
 

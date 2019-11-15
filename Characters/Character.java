@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 public class Character{
 
     ImageView image;
-    int move;
+    int lvl;
 
     protected String name;
     protected String bio;

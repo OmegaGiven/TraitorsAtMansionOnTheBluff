@@ -5,7 +5,7 @@ import javafx.scene.layout.GridPane;
 public class Stairs extends Tile {
 //    Button up = new Button("Go Up");
 //    Button down = new Button("Go Down");
-    int pane;
+//    int pane;
     int x = 0;
     int y = 5;
 
@@ -28,12 +28,12 @@ public class Stairs extends Tile {
 //        });
     }
 
-    void upDown(GridPane pane, int pane1, Button up, Button down) {
-        this.pane = pane1;
-        if(this.pane < 4) {
+    void upDown(GridPane pane, int paneInt, Button up, Button down) {
+//        this.pane = paneInt;
+        if(paneInt < 4) {
             pane.add(up,0, 0);
         }
-        if(this.pane >= 0) {
+        if(paneInt >= 0) {
             pane.add(down, 0, 1);
         }
 //        return panes[this.pane];
