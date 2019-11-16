@@ -2,3 +2,11 @@
 **/.idea/**/workspace.xml
 .idea/
 **/.idea/**/BetrayalAtHouseOnHill.iml
+.idea
+*/.idea
+.idea\*
+*\.idea\
+*.xml
+*.xml
+*\out\
+*/out
