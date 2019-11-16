@@ -86,7 +86,7 @@ public class GameBoard extends Application {
         Circle circle = new Circle(20);
 //        character.setFill(Color.PINK);
         circle.setFill(Color.PINK);
-        BugBoy character = new BugBoy();
+        TheFrogSlayer character = new TheFrogSlayer();
 //        int x = 0;
 //        int y = 5;
         gridPanes[1].add(character.image, character.x, character.y);

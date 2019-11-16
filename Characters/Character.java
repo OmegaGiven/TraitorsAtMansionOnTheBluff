@@ -3,9 +3,6 @@ import javafx.scene.image.ImageView;
 /**
  * Super class for the other characters
  * ### QUESTIONS ###
- * TODO: Add bag ArrayList
- *       Change all the names
- *       Add age PIV
  */
 
 public class Character{
