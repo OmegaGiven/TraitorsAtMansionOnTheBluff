@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    Character user;
+    Character user = new Character();
 
     public Pane CharacterSelect(){
         Character[] characters = {
@@ -50,6 +50,7 @@ public class Main extends Application {
                 front.setRight(description);
 
                 playCharacter.setOnAction(v ->{
+                    System.out.println(i.getName());
                     user = i;
                     backdrop.getChildren().clear();
                 });
@@ -60,9 +61,25 @@ public class Main extends Application {
         return backdrop;
     }
 
+    public VBox updateDescription(){
+        VBox userDescription = new VBox();
+        Text name = new Text(user.getName());
+        Text description = new Text(user.getBio());
+        Text knowledge = new Text(""+user.getKnowledge()+"");
+        Text sanity = new Text(""+user.getSanity()+"");
+        Text might = new Text(""+user.getMight()+"");
+        Text speed = new Text(""+user.getSpeed()+"");
+        userDescription.getChildren().addAll(name,description,knowledge,sanity,might,speed);
+        return userDescription;
+    }
+
     public void start(Stage stage){
         BorderPane game = new BorderPane();
         game.setCenter(CharacterSelect());
+
+
+//        game.setRight(updateDescription());
+
         Scene scene = new Scene(game);
         stage.setScene(scene);
         stage.setMaximized(true);
