@@ -1,19 +1,18 @@
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
-
 public class Main extends Application {
 
-    public BorderPane CharacterSelect(){
-        Character[] characters =  {
+    Character user;
+
+    public Pane CharacterSelect(){
+        Character[] characters = {
             new BugBoy(),
             new BougieBrain(),
             new PapaKooky(),
@@ -27,12 +26,11 @@ public class Main extends Application {
             new TheDollKid(),
             new TheFrogSlayer(),
         };
-
-        BorderPane backdropsbackdrop = new BorderPane();
-
-        VBox backdrop = new VBox();
-
-        backdropsbackdrop.setCenter(backdrop);
+        Pane backdrop = new Pane();
+        BorderPane front = new BorderPane();
+        backdrop.getChildren().add(front);
+        VBox characterGroup = new VBox();
+        front.setCenter(characterGroup);
 
         for (Character i: characters){
             Button button = new Button("Select " + i.getName() );
@@ -44,16 +42,22 @@ public class Main extends Application {
                 "Speed: " + i.getSpeed() + "\n" +
                 "Might: " + i.getMight() + "\n"
             );
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    backdropsbackdrop.setRight(text);
-                }
-            });
+            button.setOnAction(e -> {
+                front.setRight(text);
+                Button playCharacter = new Button("Play Character");
+                VBox description = new VBox();
+                description.getChildren().addAll(text, playCharacter);
+                front.setRight(description);
 
-            backdrop.getChildren().add(button);
+                playCharacter.setOnAction(v ->{
+                    user = i;
+                    backdrop.getChildren().clear();
+                });
+
+            });
+            characterGroup.getChildren().add(button);
         }
-        return backdropsbackdrop;
+        return backdrop;
     }
 
     public void start(Stage stage){
