@@ -8,7 +8,7 @@ public class BugBoy extends Character {
 
     public BugBoy(){
 
-        super.image = new ImageView("https://p7.hiclipart.com/preview/604/28/893/lola-bunny-bugs-bunny-tasmanian-devil-tweety-daffy-duck-disney-characters.jpg");
+        super.image = new ImageView("https://i.imgur.com/PPxxrhH.png");
         image.setFitWidth(50);
         image.setFitHeight(50);
         move = moveCount;
@@ -21,7 +21,7 @@ public class BugBoy extends Character {
         this.x = 2;
         this.y = 5;
 
-        this.moveCount = 4;
+        this.moveCount = speedIncr[speed];
 
         this.speed = 0; // index speed is at
         this.speedIncr = new int[]{7, 7, 6, 6, 4, 3, 3, 3, 0};

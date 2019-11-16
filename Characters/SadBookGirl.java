@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Jenny LeClerc
  */
@@ -5,13 +7,19 @@
 public class SadBookGirl extends Character{
 
     public SadBookGirl(){
+
+        super.image = new ImageView("https://i.imgur.com/cH1IjHy.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "Sad Book Girl";
         this.bio = "A quiet bookworm whose mother disappeared when she was younger. " +
                 "Sad Book Girl always feels alone.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 

@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Brandon Jaspers
  */
@@ -5,13 +7,19 @@
 public class PuppetBoy extends Character {
 
     public PuppetBoy(){
+
+        super.image = new ImageView("https://i.imgur.com/gKVlLGv.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "Puppet Boy";
         this.bio = "A kid who never liked playing with traditional toys, " +
                 "Puppet Boy swore his old clown puppet was moving closer to him when he slept.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 

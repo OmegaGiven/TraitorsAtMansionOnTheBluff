@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Father Rhinehardt
  */
@@ -5,13 +7,19 @@
 public class PapaKooky extends Character {
 
     public PapaKooky(){
+
+        super.image = new ImageView("https://i.imgur.com/Vu005Wm.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "Papa Kooky";
         this.bio = "A man who turned to religion to escape persecution, " +
                 "Daddy Rhinestone is haunted by the mad whispers of the confessional booth.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 

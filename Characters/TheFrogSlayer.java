@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Missy Dubourde
  */
@@ -5,13 +7,19 @@
 public class TheFrogSlayer extends Character{
 
     public TheFrogSlayer(){
+
+        super.image = new ImageView("https://i.imgur.com/4VBBryv.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "The Frog Slayer";
         this.bio = "A creepy little girl, who wants to be a doctor. " +
                 "She cuts up dead frogs, for fun. The Frog Slayer then has nightmares about them swarming her.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 

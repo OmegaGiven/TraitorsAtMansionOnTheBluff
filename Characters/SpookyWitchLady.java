@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Signora Zopstrumm
  */
@@ -5,13 +7,19 @@
 public class SpookyWitchLady extends Character{
 
     public SpookyWitchLady(){
+
+        super.image = new ImageView("https://i.imgur.com/lbzgVih.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "Spooky Witch Lady";
         this.bio = "Also known as The Bubster, Spooky Witch Lady is a tarot card and " +
                 "tea-leaf reader with her own stay-at-home astrology business.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 

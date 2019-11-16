@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Vivian Lopez
  */
@@ -5,13 +7,19 @@
 public class TheArsonGal extends Character {
 
     public TheArsonGal(){
+
+        super.image = new ImageView("https://i.imgur.com/xB0U8hs.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "The Arson Gal";
         this.bio = "A small bookshop owner who, when finances become " +
                 "difficult, has thoughts of arson.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 

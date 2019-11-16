@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Ox Bellows
  */
@@ -5,13 +7,19 @@
 public class TheBigBoy extends Character {
 
     public TheBigBoy(){
+
+        super.image = new ImageView("https://i.imgur.com/DnigrM7.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "The Big Boy";
         this.bio = "A big kid who once had to lash out. The Big Boy is now haunted " +
                 "by his past and what he did that one time.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 

@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Zoe Ingstrom
  */
@@ -5,13 +7,19 @@
 public class TheDollKid extends Character{
 
     public TheDollKid(){
+
+        super.image = new ImageView("https://i.imgur.com/rtwqy76.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "The Doll Kid";
         this.bio = "The Doll Kid has an implied tragic story. Raised in an unhappy home, " +
                 "she uses dolls to express her emotions.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 

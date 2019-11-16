@@ -1,3 +1,5 @@
+import javafx.scene.image.ImageView;
+
 /**
  * Real version: Darrin Flash Williams
  */
@@ -5,13 +7,19 @@
 public class SpeedySir extends Character {
 
     public SpeedySir(){
+
+        super.image = new ImageView("https://i.imgur.com/TKLWSmm.png");
+        image.setFitWidth(50);
+        image.setFitHeight(50);
+        move = moveCount;
+
         this.name = "Speedy Sir";
         this.bio = "Speedy Sir is a paranoid runner who can't help but " +
                 "shake the feeling that something is chasing him.";
         this.picUrl = "...";
 
-        this.x = 0;
-        this.y = 0;
+        this.x = 2;
+        this.y = 5;
 
         this.moveCount = 4;
 
