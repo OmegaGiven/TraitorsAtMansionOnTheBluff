@@ -87,9 +87,9 @@ public class GameBoard extends Application {
 //        character.setFill(Color.PINK);
         circle.setFill(Color.PINK);
         BugBoy character = new BugBoy();
-        int x = 0;
-        int y = 5;
-        gridPanes[1].add(character.image, x, y);
+//        int x = 0;
+//        int y = 5;
+        gridPanes[1].add(character.image, character.x, character.y);
 
 
         Button[] dirBut = {new Button("N"), new Button("W"), new Button("E"), new Button("S")};
