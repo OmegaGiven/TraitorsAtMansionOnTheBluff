@@ -31,7 +31,7 @@ public class BougieBrain extends Character {
         this.mightIncr = new int[]{8, 7, 6, 5, 4, 3, 3, 3, 0};
         this.sanity = 5;
         this.sanityIncr = new int[]{6, 6, 6, 5, 4, 3, 3, 3, 0};
-        this.knowledge = 3;
+        this.knowledge = 3 ;
         this.knowledgeIncr = new int[]{8, 7, 6, 5, 4, 3, 3, 2, 0};
 
         this.traitor = false;

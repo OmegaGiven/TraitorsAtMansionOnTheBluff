@@ -21,7 +21,7 @@ public class BugBoy extends Character {
         this.x = 2;
         this.y = 5;
 
-        this.moveCount = speedIncr[speed];
+
 
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{7, 7, 6, 6, 4, 3, 3, 3, 0};
@@ -31,6 +31,8 @@ public class BugBoy extends Character {
         this.sanityIncr = new int[]{7, 6, 6, 5, 4, 4, 4, 3, 0};
         this.knowledge = 5;
         this.knowledgeIncr = new int[]{8, 7, 7, 6, 5, 4, 4, 3, 0};
+
+        this.moveCount = speedIncr[speed];
 
         this.traitor = false;
     }
