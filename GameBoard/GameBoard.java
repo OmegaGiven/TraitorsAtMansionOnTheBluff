@@ -15,23 +15,21 @@ public class GameBoard extends Application {
     private BorderPane[] borders = {
             /*upper floor*/ new BorderPane(),
             /*main floor*/new BorderPane(),
-            /*Outside*/ new BorderPane(),
             /*Basement*/ new BorderPane()
     };
-    private String[] titles = {"Upper Floor", "Ground Floor", "Outside", "Basement"};
+    private String[] titles = {"Upper Floor", "Ground Floor", "Basement"};
 
     private GridPane[] gridPanes = {
             /*upper floor*/ new GridPane(),
             /*main floor*/ new GridPane(),
-            /*Outside*/ new GridPane(),
             /*Basement*/ new GridPane()
     };
 
-    private Button[] buttons = new Button[4];
-    private String[] images = {"UpperLanding.png", "GroundStairs.png", "Outside.png", "Basement.png"};
-    private Scene[] scenes = new Scene[4];
+    private Button[] buttons = new Button[3];
+    private String[] images = {"UpperLanding.png", "GroundStairs.png", "Basement.png"};
+    private Scene[] scenes = new Scene[3];
 
-    private Stairs[] stairs = new Stairs[4];
+    private Stairs[] stairs = new Stairs[3];
 
     private Stage stage;
 
@@ -83,40 +81,12 @@ public class GameBoard extends Application {
         borders[1].setTop(buttonPane);
 
 
-        Circle circle = new Circle(20);
-//        character.setFill(Color.PINK);
-        circle.setFill(Color.PINK);
         TheFrogSlayer character = new TheFrogSlayer();
-//        int x = 0;
-//        int y = 5;
+
         gridPanes[1].add(character.image, character.x, character.y);
 
 
-        Button[] dirBut = {new Button("N"), new Button("W"), new Button("E"), new Button("S")};
-
-
-        rightPane.add(dirBut[1], 1, 3);
-        rightPane.add(dirBut[0], 2, 2);
-        rightPane.add(dirBut[3], 2, 4);
-        rightPane.add(dirBut[2], 3, 3);
-
         borders[1].setRight(rightPane);
-        dirBut[0].setOnMouseClicked(event -> {
-            gridPanes[1].getChildren().remove(character.image);
-            gridPanes[1].add(character.image, character.x, --character.y );
-        });
-        dirBut[1].setOnMouseClicked(event -> {
-            gridPanes[1].getChildren().remove(character.image);
-            gridPanes[1].add(character.image, --character.x, character.y );
-        });
-        dirBut[2].setOnMouseClicked(event -> {
-            gridPanes[1].getChildren().remove(character.image);
-            gridPanes[1].add(character.image, ++character.x, character.y );
-        });
-        dirBut[3].setOnMouseClicked(event -> {
-            gridPanes[1].getChildren().remove(character.image);
-            gridPanes[1].add(character.image, character.x, ++character.y );
-        });
 
 
         for (int z = 0; z < scenes.length; z++) {
