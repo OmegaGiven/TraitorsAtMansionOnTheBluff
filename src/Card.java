@@ -1,5 +1,8 @@
 import javafx.scene.image.Image;
 
+import java.io.*;
+import java.util.ArrayList;
+
 public class Card {
     private String cardName;
     private Image cardImage;
@@ -14,6 +17,11 @@ public class Card {
         this.cardName = "blank";
         this.cardImage = null;
         this.cardDescription = "blank";
+    }
+
+    @Override
+    public String toString(){
+        return this.getCardName() + "\n" + getCardImage() + "\n" + getCardDescription() + "\n";
     }
 
     public String getCardName() {
@@ -41,4 +49,34 @@ public class Card {
     }
 
 
+
+    public static void main(String[] args) {
+        Card card = new Card();
+        ArrayList<Card> test = card.readCards("cards.txt");
+        for(Card derek : test){
+            System.out.println(derek);
+        }
+    }
+
+    public ArrayList<Card> readCards(String filename){
+        try {
+            BufferedReader file = new BufferedReader(new FileReader(filename));
+            String line = file.readLine();
+            String[] tempLine;
+            ArrayList<Card> returnCard = new ArrayList<Card>();
+            while(!line.equals("")){
+                tempLine = line.split(",");
+                returnCard.add(new Card(tempLine[0], tempLine[1], tempLine[2]));
+                line = file.readLine();
+            }
+            return returnCard;
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch(IOException t){
+            t.printStackTrace();
+        }
+        return null;
+    }
 }
