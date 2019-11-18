@@ -1,38 +1,34 @@
+public class Spook {
 
-public Spook{
-    boolean Spook = False;
-    Tile lastTile;
-    Omen lastOmen;
-    Character Traitor;
+    protected boolean Spook = false;
+    protected Tile lastTile;
+    // protected Omen lastOmen;
+    protected Character traitor;
 
-    String TraitorDescription;
-    String SurvivorDescription;
+    protected String traitorDescription;
+    protected String survivorDescription;
 
-    public getTraitor(){
-        return Traitor;
+    public Spook() {
+
     }
 
-    public getTraitorDescription(){
-        return TraitorDescription;
+    public Character getTraitor(){
+        return this.traitor;
     }
 
-    public getSurvivorDescription(){
-        return SurvivorDescription;
+    public String getTraitorDescription() {
+        return this.traitorDescription;
     }
 
-    public calculateHorror(){
-        int count = 0;
-        for (i = 0; i <= 6; i++){
-            count += Math.nextInt(2)
-        }
-        if (count == 6)
+    public String getSurvivorDescription() {
+        return this.survivorDescription;
     }
 
-
-
-
-
-
-
-
+//    public int calculateHorror() {
+//        int count = 0;
+//        for (int i = 0; i <= 6; i++) {
+//            count += Math.nextInt(2)
+//        }
+//        if (count == 6)
+//    }
 }
