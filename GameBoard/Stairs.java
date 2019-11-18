@@ -10,22 +10,10 @@ public class Stairs extends Tile {
     int y = 5;
 
     Stairs() {
-        super(new ImageView(), true);
-//        up.setOnMouseClicked(event -> {
-//            this.pane++;
-//        });
-//        down.setOnMouseClicked(event -> {
-//            this.pane--;
-//        });
+        super();
     }
-    Stairs(String image) {
-        super(new ImageView(image), true);
-//        up.setOnMouseClicked(event -> {
-//            this.pane++;
-//        });
-//        down.setOnMouseClicked(event -> {
-//            this.pane--;
-//        });
+    Stairs(String image, boolean n, boolean s, boolean w, boolean e) {
+        super(new ImageView(image), true, n, s, w, e);
     }
 
     void upDown(GridPane pane, int pane1, Button up, Button down) {

@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
  * ### QUESTIONS ###
  */
 
-public class Character{
+public class Character {
 
     ImageView image;
     int move;
