@@ -17,7 +17,7 @@ public class Character{
     protected int x;
     protected int y;
 
-    protected int moveCount; // when turn starts, moveCount = speed; when moveCount = 0, player has no more moves
+    protected int moveCount; // when turn starts, moveCount = speedIncr[speed]; when moveCount = 0, player has no more moves
 
     protected int speed;
     protected int[] speedIncr;
@@ -30,22 +30,22 @@ public class Character{
     protected boolean traitor;
 
     public Character(){
-        this.image = null;
-        this.name = null;
-        this.bio = null;
+        this.image = new ImageView();
+        this.name = "";
+        this.bio = "";
         this.age = 0;
 
         this.x = 0;
         this.y = 0;
 
         this.speed = 0;
-        this.speedIncr = null;
+        this.speedIncr = new int[8];
         this.might = 0;
-        this.mightIncr = null;
+        this.mightIncr = new int[8];
         this.sanity = 0;
-        this.sanityIncr = null;
+        this.sanityIncr = new int[8];
         this.knowledge = 0;
-        this.knowledgeIncr = null;
+        this.knowledgeIncr = new int[8];
         this.traitor = false;
     }
 
