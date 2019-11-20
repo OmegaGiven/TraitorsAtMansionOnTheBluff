@@ -14,14 +14,11 @@ public class TheArsonGal extends Character {
         move = moveCount;
 
         this.name = "The Arson Gal";
-        this.bio = "A small bookshop owner who, when finances become " +
-                "difficult, has thoughts of arson.";
-        this.picUrl = "...";
+        this.bio = "The Arson Gal runs a failing bookstore. You do the math.";
+        this.age = 42;
 
         this.x = 2;
         this.y = 5;
-
-        this.moveCount = 4;
 
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{8, 7, 6, 4, 4, 4, 4, 3, 0};
@@ -31,6 +28,8 @@ public class TheArsonGal extends Character {
         this.sanityIncr = new int[]{8, 8, 7, 6, 5, 4, 4, 4, 0};
         this.knowledge = 4;
         this.knowledgeIncr = new int[]{7, 6, 6, 5, 5, 5, 5, 4, 0};
+
+        this.moveCount = speedIncr[speed];
 
         this.traitor = false;
     }

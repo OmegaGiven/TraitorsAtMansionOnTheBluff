@@ -14,14 +14,11 @@ public class TheDollKid extends Character{
         move = moveCount;
 
         this.name = "The Doll Kid";
-        this.bio = "The Doll Kid has an implied tragic story. Raised in an unhappy home, " +
-                "she uses dolls to express her emotions.";
-        this.picUrl = "...";
+        this.bio = "The Doll Kid has a lot of dolls. The dolls are usually nice.";
+        this.age = 8;
 
         this.x = 2;
         this.y = 5;
-
-        this.moveCount = 4;
 
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{8, 8, 6, 5, 4, 4, 4, 4, 0};
@@ -31,6 +28,8 @@ public class TheDollKid extends Character{
         this.sanityIncr = new int[]{8, 7, 6, 6, 5, 5, 4, 3, 0};
         this.knowledge = 5;
         this.knowledgeIncr = new int[]{5, 5, 5, 4, 4, 3, 2, 1,0};
+
+        this.moveCount = speedIncr[speed];
 
         this.traitor = false;
     }

@@ -14,14 +14,12 @@ public class SpeedySir extends Character {
         move = moveCount;
 
         this.name = "Speedy Sir";
-        this.bio = "Speedy Sir is a paranoid runner who can't help but " +
-                "shake the feeling that something is chasing him.";
-        this.picUrl = "...";
+        this.bio = "Speedy Sir can outrun his competitors, but he can't outrun " +
+        "himself. Or the Unpleasant Something that's chasing him.";
+        this.age = 20;
 
         this.x = 2;
         this.y = 5;
-
-        this.moveCount = 4;
 
         this.speed = 3; // index speed is at
         this.speedIncr = new int[]{8, 7, 7, 6, 5, 4, 4, 4, 0};
@@ -31,6 +29,8 @@ public class SpeedySir extends Character {
         this.sanityIncr = new int[]{7, 5, 5, 5, 4, 3, 2, 1, 0};
         this.knowledge = 5;
         this.knowledgeIncr = new int[]{7, 5, 5, 5, 4, 3, 3, 2, 0};
+
+        this.moveCount = speedIncr[speed];
 
         this.traitor = false;
     }
