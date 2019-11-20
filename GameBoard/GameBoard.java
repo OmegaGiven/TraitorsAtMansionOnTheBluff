@@ -9,6 +9,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.Collections;
 //import Characters.Character;
 
 public class GameBoard extends Application {
@@ -47,11 +50,15 @@ public class GameBoard extends Application {
 
 
 //        Scene scene1 = scenes[1];
+//        stairs[0] = new Stairs(images[0], true, true, true, true);
+//        stairs[1] = new Stairs(images[1], false, false, false, true);
+//        stairs[2] = new Stairs(images[2], true, true, true, true);
+
 
         for (int j = 0; j < borders.length; j++) {
 
-            stairs[j] = new Stairs(images[j]);
 //            Stairs stair = new Stairs(images[j]);
+            stairs[j] = new Stairs(images[j], true, true, true, true);
 
 
             // creates the scene for each floor
@@ -64,14 +71,15 @@ public class GameBoard extends Application {
 
 
             if(j == 1) {
-                gridPanes[j].add(new ImageView("GroundHall.png"), 1, 5);
-                gridPanes[j].add(new ImageView("GroundEntrance.png"), 2, 5);
+                stairs[j] = new Stairs(images[j], false, false, false, true);
+                gridPanes[j].add(new Tile(new ImageView("GroundHall.png"),
+                        false, true, true, true, true).image(), 1, 5);
+                gridPanes[j].add(new Tile(new ImageView("GroundEntrance.png"),
+                        false, true, true, true, true).image(), 2, 5);
             }
             // adds all the buttons to change between floors
             buttons[j] = new Button(titles[j]);
         }
-
-
 
 
         // This is the HBox that keeps track of the buttons
@@ -80,8 +88,8 @@ public class GameBoard extends Application {
         }
         borders[1].setTop(buttonPane);
 
-
-        TheFrogSlayer character = new TheFrogSlayer();
+        PapaKooky character = new PapaKooky();
+//        TheFrogSlayer character = new TheFrogSlayer();
 
         gridPanes[1].add(character.image, character.x, character.y);
 

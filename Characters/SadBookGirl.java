@@ -14,14 +14,12 @@ public class SadBookGirl extends Character{
         move = moveCount;
 
         this.name = "Sad Book Girl";
-        this.bio = "A quiet bookworm whose mother disappeared when she was younger. " +
-                "Sad Book Girl always feels alone.";
-        this.picUrl = "...";
+        this.bio = "Sad Book Girl's mother disappeared when she was seven, leaving " +
+        "her completely alone. Now her only solace is found in books.";
+        this.age = 21;
 
         this.x = 2;
         this.y = 5;
-
-        this.moveCount = 4;
 
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{8, 6, 5, 4, 4, 4, 3, 2, 0};
@@ -31,6 +29,8 @@ public class SadBookGirl extends Character{
         this.sanityIncr = new int[]{6, 5, 4, 4, 4, 2, 1, 1, 0};
         this.knowledge = 5;
         this.knowledgeIncr = new int[]{8, 6, 5, 4, 4, 3, 3, 2, 0};
+
+        this.moveCount = speedIncr[speed];
 
         this.traitor = false;
     }

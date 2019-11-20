@@ -14,14 +14,11 @@ public class TheFrogSlayer extends Character{
         move = moveCount;
 
         this.name = "The Frog Slayer";
-        this.bio = "A creepy little girl, who wants to be a doctor. " +
-                "She cuts up dead frogs, for fun. The Frog Slayer then has nightmares about them swarming her.";
-        this.picUrl = "...";
+        this.bio = "The Frog Slayer slays frogs. In her nightmares, they slay her.";
+        this.age = 9;
 
         this.x = 2;
         this.y = 5;
-
-        this.moveCount = 4;
 
         this.speed = 5; // index speed is at
         this.speedIncr = new int[]{7, 7, 6, 6, 6, 5, 4, 3, 0};
@@ -31,6 +28,8 @@ public class TheFrogSlayer extends Character{
         this.sanityIncr = new int[]{7, 6, 5, 5, 4, 3, 2, 1, 0};
         this.knowledge = 4;
         this.knowledgeIncr = new int[]{6, 6, 6, 5, 4, 4, 3, 2, 0};
+
+        this.moveCount = speedIncr[speed];
 
         this.traitor = false;
     }

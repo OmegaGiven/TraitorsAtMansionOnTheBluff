@@ -14,14 +14,12 @@ public class BugBoy extends Character {
         move = moveCount;
 
         this.name = "Bug Boy";
-        this.bio = "Seriously bullied by his family, Bug Boy likes to hide  " +
-                "under his house and look at bugs. He wants to be an entomologist.";
-        this.picUrl = "...";
+        this.bio = "Bug Boy was bullied by his family when he was younger." +
+        " Now he takes out his anger on the ants.";
+        this.age = 13;
 
         this.x = 2;
         this.y = 5;
-
-
 
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{7, 7, 6, 6, 4, 3, 3, 3, 0};

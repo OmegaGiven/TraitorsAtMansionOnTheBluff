@@ -5,19 +5,19 @@ import javafx.scene.image.ImageView;
  * ### QUESTIONS ###
  */
 
-public class Character{
+public class Character {
 
     ImageView image;
     int move;
 
     protected String name;
     protected String bio;
-    protected String picUrl;
+    protected int age;
 
     protected int x;
     protected int y;
 
-    protected int moveCount; // when turn starts, moveCount = 4; when moveCount = 0, player has no more moves
+    protected int moveCount; // when turn starts, moveCount = speedIncr[speed]; when moveCount = 0, player has no more moves
 
     protected int speed;
     protected int[] speedIncr;
@@ -30,32 +30,32 @@ public class Character{
     protected boolean traitor;
 
     public Character(){
-        this.name = null;
-        this.bio = null;
-        this.picUrl = null;
+        this.image = new ImageView();
+        this.name = "";
+        this.bio = "";
+        this.age = 0;
 
         this.x = 0;
         this.y = 0;
 
         this.speed = 0;
-        this.speedIncr = null;
+        this.speedIncr = new int[8];
         this.might = 0;
-        this.mightIncr = null;
+        this.mightIncr = new int[8];
         this.sanity = 0;
-        this.sanityIncr = null;
+        this.sanityIncr = new int[8];
         this.knowledge = 0;
-        this.knowledgeIncr = null;
+        this.knowledgeIncr = new int[8];
         this.traitor = false;
     }
 
-
-
-    public Character(String name, String bio, String picUrl, int x, int y, int moveCount, int speed,
+    public Character(String name, String bio, ImageView image, int age, int x, int y, int moveCount, int speed,
                      int[] speedIncr, int might, int[] mightIncr, int sanity,
                      int[] sanityIncr, int knowledge, int[] knowledgeIncr){
         this.name = name;
         this.bio = bio;
-        this.picUrl = picUrl;
+        this.image = image;
+        this.age = age;
         this.moveCount = moveCount;
         this.x = x;
         this.y = y;
@@ -102,7 +102,13 @@ public class Character{
         this.name = name;
     }
 
+    public int getAge() {
+        return age;
+    }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
     public String getBio() {
         return bio;
     }
@@ -111,15 +117,9 @@ public class Character{
         this.bio = bio;
     }
 
+    public ImageView getImage(){ return image;}
 
-    public String getPicUrl() {
-        return picUrl;
-    }
-
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
-    }
-
+    public void setImage(ImageView image){ this.image = image;}
 
     public int getX() {
         return x;

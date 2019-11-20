@@ -14,14 +14,15 @@ public class PapaKooky extends Character {
         move = moveCount;
 
         this.name = "Papa Kooky";
-        this.bio = "A man who turned to religion to escape persecution, " +
-                "Daddy Rhinestone is haunted by the mad whispers of the confessional booth.";
-        this.picUrl = "...";
+        this.bio = "Papa Kooky is a German immigrant who became a priest in order" +
+        "to understand evil in the world. He is haunted by thoughts of blood and" +
+        " pain and death.";
+        this.age = 62;
 
         this.x = 2;
         this.y = 5;
 
-        this.moveCount = 4;
+
 
         this.speed = 5; // index speed is at
         this.speedIncr = new int[]{7, 7, 6, 5, 4, 3, 3, 2, 0};
@@ -31,6 +32,8 @@ public class PapaKooky extends Character {
         this.sanityIncr = new int[]{8, 7, 7, 6, 5, 5, 4, 3, 0};
         this.knowledge = 4;
         this.knowledgeIncr = new int[]{8, 6, 6, 5, 4, 3, 3, 1, 0};
+
+        this.moveCount = speedIncr[speed];
 
         this.traitor = false;
     }
