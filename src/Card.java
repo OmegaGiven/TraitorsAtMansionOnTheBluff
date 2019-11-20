@@ -58,7 +58,15 @@ public class Card {
     public static void main(String[] args) {
         Card card = new Card();
         ArrayList<Card> test = card.readCards("cards.txt");
+        ArrayList<Card> items = new ArrayList<>();
+        ArrayList<Card> omens = new ArrayList<>();
         for(Card derek : test){
+            if(derek.getType().equals("Item")){
+                items.add(derek);
+            }
+            else if(derek.getType().equals("Omen")){
+                omens.add(derek);
+            }
             System.out.println(derek);
         }
     }
@@ -83,5 +91,13 @@ public class Card {
             t.printStackTrace();
         }
         return null;
+    }
+    public Card drawCard(String cardType){
+        switch(cardType){
+            case "Item":
+
+            case "Omen":
+
+        }
     }
 }
