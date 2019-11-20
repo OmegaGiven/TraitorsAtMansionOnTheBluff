@@ -10,21 +10,22 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     Character user = new Character();
+//    boolean selection = false;
 
-    public Pane CharacterSelect(){
+    public Pane CharacterSelect(BorderPane game){
         Character[] characters = {
-            new BugBoy(),
-            new BougieBrain(),
-            new PapaKooky(),
-            new ProfessorMatricide(),
-            new PuppetBoy(),
-            new SadBookGirl(),
-            new SpeedySir(),
-            new SpookyWitchLady(),
-            new TheArsonGal(),
-            new TheBigBoy(),
-            new TheDollKid(),
-            new TheFrogSlayer(),
+                new BugBoy(),
+                new BougieBrain(),
+                new PapaKooky(),
+                new ProfessorMatricide(),
+                new PuppetBoy(),
+                new SadBookGirl(),
+                new SpeedySir(),
+                new SpookyWitchLady(),
+                new TheArsonGal(),
+                new TheBigBoy(),
+                new TheDollKid(),
+                new TheFrogSlayer(),
         };
         Pane backdrop = new Pane();
         BorderPane front = new BorderPane();
@@ -35,13 +36,15 @@ public class Main extends Application {
         for (Character i: characters){
             Button button = new Button("Select " + i.getName() );
             Text text = new Text(
-                i.getName() + "\n" +
-                i.getBio() + "\n" +
-                "Knowledge: " + i.getKnowledge() + "\n" +
-                "Sanity: " + i.getSanity() + "\n" +
-                "Speed: " + i.getSpeed() + "\n" +
-                "Might: " + i.getMight() + "\n"
+                    i.getName() + "\n" +
+                            i.getBio() + "\n" +
+                            "Knowledge: " + i.getKnowledge() + "\n" +
+                            "Sanity: " + i.getSanity() + "\n" +
+                            "Speed: " + i.getSpeed() + "\n" +
+                            "Might: " + i.getMight() + "\n"
             );
+
+            Character current = i;
             button.setOnAction(e -> {
                 front.setRight(text);
                 Button playCharacter = new Button("Play Character");
@@ -51,8 +54,10 @@ public class Main extends Application {
 
                 playCharacter.setOnAction(v ->{
                     System.out.println(i.getName());
-                    user = i;
+                    user = current;
                     backdrop.getChildren().clear();
+                    game.setRight(updateDescription());
+
                 });
 
             });
@@ -65,21 +70,18 @@ public class Main extends Application {
         VBox userDescription = new VBox();
         Text name = new Text(user.getName());
         Text description = new Text(user.getBio());
-        Text knowledge = new Text(""+user.getKnowledge()+"");
-        Text sanity = new Text(""+user.getSanity()+"");
-        Text might = new Text(""+user.getMight()+"");
-        Text speed = new Text(""+user.getSpeed()+"");
+        Text knowledge = new Text("Knowledge: "+user.getKnowledge()+"");
+        Text sanity = new Text("Sanity: "+user.getSanity()+"");
+        Text might = new Text("Might: "+user.getMight()+"");
+        Text speed = new Text("Speed: " +
+                ""+user.getSpeed()+"");
         userDescription.getChildren().addAll(name,description,knowledge,sanity,might,speed);
         return userDescription;
     }
 
     public void start(Stage stage){
         BorderPane game = new BorderPane();
-        game.setCenter(CharacterSelect());
-
-
-//        game.setRight(updateDescription());
-
+        game.setCenter(CharacterSelect(game));
         Scene scene = new Scene(game);
         stage.setScene(scene);
         stage.setMaximized(true);
