@@ -8,7 +8,6 @@ public class Runner extends Application {
 
     public void start(Stage stage) {
 
-
         BorderPane pane = new BorderPane();
         CallBoard board = new CallBoard();
         Scene scene = new Scene(pane, 1000, 600);
