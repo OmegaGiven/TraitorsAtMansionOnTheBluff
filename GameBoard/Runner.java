@@ -8,7 +8,6 @@ public class Runner extends Application {
 
     public void start(Stage stage) {
 
-        Tile tile1 = new Tile(new ImageView("tiles_images/E.png"), false, false, false, false, true);
 
         BorderPane pane = new BorderPane();
         CallBoard board = new CallBoard();

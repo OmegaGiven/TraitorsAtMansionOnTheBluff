@@ -34,6 +34,27 @@ public class CallBoard {
     private int onPane;
 
     public void run(Stage stage, BorderPane pane, Character character) {
+
+
+        Tile[] upTiles = {
+                new Tile(new ImageView("tiles_images/E.png"), false, false, false, false, true),
+                new Tile(new ImageView("tiles_images/EW.png"), false, false, false, true, true),
+                new Tile(new ImageView("tiles_images/EWS.png"), false, false, true, true, true),
+                new Tile(new ImageView("tiles_images/N.png"), false, true, false, false, false),
+                new Tile(new ImageView("tiles_images/NE.png"), false, true, false, false, true),
+                new Tile(new ImageView("tiles_images/NES.png"), false, true, true, false, true),
+                new Tile(new ImageView("tiles_images/NEWS.png"), false),
+                new Tile(new ImageView("tiles_images/NS.png"), false, true, true, false, false),
+                new Tile(new ImageView("tiles_images/NW.png"), false, true, false, true, false),
+                new Tile(new ImageView("tiles_images/NWS.png"), false, true, true, true, false),
+                new Tile(new ImageView("tiles_images/S.png"), false, false, true, false, false),
+                new Tile(new ImageView("tiles_images/SE.png"), false, false, true, false, true),
+                new Tile(new ImageView("tiles_images/SW.png"), false, false, true, true, false),
+                new Tile(new ImageView("tiles_images/SWE.png"), false, false, true, true, true),
+                new Tile(new ImageView("tiles_images/W.png"), false, false, false, true, false)
+        };
+
+
         this.pane = pane;
 
         // this adds the stair tiles to each floor
@@ -75,6 +96,7 @@ public class CallBoard {
 
         stage.getScene().setOnKeyPressed(event -> {
             if (gridPanes[onPane] == pane.getCenter()/* && character.move >= 0*/) {
+                int choice = (int)(Math.random() * upTiles.length);
                 switch (event.getCode()) {
                     case W:
                         --character.y;
@@ -91,6 +113,7 @@ public class CallBoard {
                 }
                 GridPane center = (GridPane) pane.getCenter();
                 center.getChildren().remove(character.image);
+                center.add(upTiles[choice].image(), character.x, character.y);
                 center.add(character.image, character.x, character.y);
                 character.move--;
             }
