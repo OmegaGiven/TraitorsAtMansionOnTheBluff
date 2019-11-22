@@ -99,5 +99,6 @@ public class Card {
             case "Omen":
 
         }
+        return null;
     }
 }
