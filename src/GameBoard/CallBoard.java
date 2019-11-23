@@ -19,7 +19,7 @@ public class CallBoard {
     };
 
     private Button[] buttons = new Button[3];
-    private String[] images = {"UpperLanding.png", "GroundStairs.png", "Basement.png"};
+    private String[] images = {"GameBoard/UpperLanding.png", "GameBoard/GroundStairs.png", "GameBoard/Basement.png"};
 
     private Stairs[] stairs = new Stairs[3];
 
@@ -37,23 +37,23 @@ public class CallBoard {
     public void run(Stage stage, BorderPane pane, Character character) {
 
 
-        Tile[] upTiles = {
-                new Tile(new ImageView("tiles_images/E.png"), false, false, false, false, true),
-                new Tile(new ImageView("tiles_images/EW.png"), false, false, false, true, true),
-                new Tile(new ImageView("tiles_images/EWS.png"), false, false, true, true, true),
-                new Tile(new ImageView("tiles_images/N.png"), false, true, false, false, false),
-                new Tile(new ImageView("tiles_images/NE.png"), false, true, false, false, true),
-                new Tile(new ImageView("tiles_images/NES.png"), false, true, true, false, true),
-                new Tile(new ImageView("tiles_images/NEWS.png"), false),
-                new Tile(new ImageView("tiles_images/NS.png"), false, true, true, false, false),
-                new Tile(new ImageView("tiles_images/NW.png"), false, true, false, true, false),
-                new Tile(new ImageView("tiles_images/NWS.png"), false, true, true, true, false),
-                new Tile(new ImageView("tiles_images/S.png"), false, false, true, false, false),
-                new Tile(new ImageView("tiles_images/SE.png"), false, false, true, false, true),
-                new Tile(new ImageView("tiles_images/SW.png"), false, false, true, true, false),
-                new Tile(new ImageView("tiles_images/SWE.png"), false, false, true, true, true),
-                new Tile(new ImageView("tiles_images/W.png"), false, false, false, true, false)
-        };
+//        Tile[] upTiles = {
+//                new Tile(new ImageView("tiles_images/E.png"), false, false, false, false, true),
+//                new Tile(new ImageView("tiles_images/EW.png"), false, false, false, true, true),
+//                new Tile(new ImageView("tiles_images/EWS.png"), false, false, true, true, true),
+//                new Tile(new ImageView("tiles_images/N.png"), false, true, false, false, false),
+//                new Tile(new ImageView("tiles_images/NE.png"), false, true, false, false, true),
+//                new Tile(new ImageView("tiles_images/NES.png"), false, true, true, false, true),
+//                new Tile(new ImageView("tiles_images/NEWS.png"), false),
+//                new Tile(new ImageView("tiles_images/NS.png"), false, true, true, false, false),
+//                new Tile(new ImageView("tiles_images/NW.png"), false, true, false, true, false),
+//                new Tile(new ImageView("tiles_images/NWS.png"), false, true, true, true, false),
+//                new Tile(new ImageView("tiles_images/S.png"), false, false, true, false, false),
+//                new Tile(new ImageView("tiles_images/SE.png"), false, false, true, false, true),
+//                new Tile(new ImageView("tiles_images/SW.png"), false, false, true, true, false),
+//                new Tile(new ImageView("tiles_images/SWE.png"), false, false, true, true, true),
+//                new Tile(new ImageView("tiles_images/W.png"), false, false, false, true, false)
+//        };
 
 
         this.pane = pane;
@@ -68,9 +68,9 @@ public class CallBoard {
             // This sets the gridPanes to have the groundHall and the Entrance tiles
             if(j == 1) {
                 stairs[j] = new Stairs(images[j], false, false, false, true);
-                gridPanes[j].add(new Tile(new ImageView("GroundHall.png"),
+                gridPanes[j].add(new Tile(new ImageView("GameBoard/GroundHall.png"),
                         false, true, true, true, true).image(), 1, 5);
-                gridPanes[j].add(new Tile(new ImageView("GroundEntrance.png"),
+                gridPanes[j].add(new Tile(new ImageView("GameBoard/GroundEntrance.png"),
                         false, true, true, true, true).image(), 2, 5);
             }
 
@@ -97,7 +97,7 @@ public class CallBoard {
 
         stage.getScene().setOnKeyPressed(event -> {
             if (gridPanes[onPane] == pane.getCenter()/* && character.move >= 0*/) {
-                int choice = (int)(Math.random() * upTiles.length);
+//                int choice = (int)(Math.random() * upTiles.length);
                 switch (event.getCode()) {
                     case W:
                         character.setY(character.getY() - 1);
@@ -114,7 +114,7 @@ public class CallBoard {
                 }
                 GridPane center = (GridPane) pane.getCenter();
                 center.getChildren().remove(character.getImage());
-                center.add(upTiles[choice].image(), character.getX(), character.getY());
+//                center.add(upTiles[choice].image(), character.getX(), character.getY());
                 center.add(character.getImage(), character.getX(), character.getY());
                 character.setMoveCount(character.getMoveCount() - 1);
             }
