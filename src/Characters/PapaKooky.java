@@ -16,7 +16,7 @@ public class PapaKooky extends Character {
         move = moveCount;
 
         this.name = "Papa Kooky";
-        this.bio = "Papa Kooky is a German immigrant who became a priest in order" +
+        this.bio = "Papa Kooky is a German immigrant who became a priest in order " +
         "to understand evil in the world. He is haunted by thoughts of blood and" +
         " pain and death.";
         this.age = 62;
