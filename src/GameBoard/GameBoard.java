@@ -1,195 +1,220 @@
-//package GameBoard;
-//
-//import javafx.application.Application;
-//import javafx.scene.Scene;
-//import javafx.scene.control.Button;
-//import javafx.scene.image.ImageView;
-//import javafx.scene.layout.BorderPane;
-//import javafx.scene.layout.GridPane;
-//import javafx.scene.layout.HBox;
-//import javafx.stage.Stage;
-//import Characters.*;
-//import Characters.Character;
-//
-////import Characters.Character;
-//public class GameBoard extends Application {
-//    private BorderPane[] borders = {
-//            /*upper floor*/ new BorderPane(),
-//            /*main floor*/new BorderPane(),
-//            /*Basement*/ new BorderPane()
-//    };
-//    private String[] titles = {"Upper Floor", "Ground Floor", "Basement"};
-//
-//    private GridPane[] gridPanes = {
-//            /*upper floor*/ new GridPane(),
-//            /*main floor*/ new GridPane(),
-//            /*Basement*/ new GridPane()
-//    };
-//
-//    private Button[] buttons = new Button[3];
-//    private String[] images = {"UpperLanding.png", "GroundStairs.png", "Basement.png"};
-//    private Scene[] scenes = new Scene[3];
-//
-//    private Stairs[] stairs = new Stairs[3];
-//
-//    private Stage stage;
-//
-//    private GridPane rightPane = new GridPane();
-//    private HBox buttonPane = new HBox();
-//
-//    private Button up = new Button("Go Up");
-//    private Button down = new Button("Go Down");
-//
-//    public void start(Stage stage) {
-//        this.stage = stage;
-//
-//
-//        // creates the different borderPanes for each Floor
-//
-//
-////        Scene scene1 = scenes[1];
-////        stairs[0] = new Stairs(images[0], true, true, true, true);
-////        stairs[1] = new Stairs(images[1], false, false, false, true);
-////        stairs[2] = new Stairs(images[2], true, true, true, true);
-//
-//
-//        for (int j = 0; j < borders.length; j++) {
-//
-////            Stairs stair = new Stairs(images[j]);
-//            stairs[j] = new Stairs(images[j], true, true, true, true);
-//
-//
-//            // creates the scene for each floor
-//            scenes[j] = new Scene(borders[j], 1000, 600);
-//            // puts each gridPane in the center of the borderPane for each floor
-//            borders[j].setCenter(gridPanes[j]);
-//            // adds images to each gridPane
-////            gridPanes[j].add(new ImageView(images[j]), 0, 5);
-//            gridPanes[j].add(stairs[j].image(), 0, 5);
-//
-//
-//            if(j == 1) {
-//                stairs[j] = new Stairs(images[j], false, false, false, true);
-//                gridPanes[j].add(new Tile(new ImageView("GroundHall.png"),
-//                        false, true, true, true, true).image(), 1, 5);
-//                gridPanes[j].add(new Tile(new ImageView("GroundEntrance.png"),
-//                        false, true, true, true, true).image(), 2, 5);
-//            }
-//            // adds all the buttons to change between floors
-//            buttons[j] = new Button(titles[j]);
-//        }
-//
-//
-//        // This is the HBox that keeps track of the buttons
-//        for (Button i : buttons) {
-//            buttonPane.getChildren().add(i);
-//        }
-//        borders[1].setTop(buttonPane);
-//
-//        PapaKooky character = new PapaKooky();
-////        TheFrogSlayer character = new TheFrogSlayer();
-//
-//        gridPanes[1].add(character.image, character.x, character.y);
-//
-//
-//        borders[1].setRight(rightPane);
-//
-//
-//        for (int z = 0; z < scenes.length; z++) {
-//            int index = z;
-//            scenes[index].setOnKeyPressed(event -> {
-////                if (character.move >= 0) {
-//                    switch (event.getCode()) {
-//                        case W:
-//                            --character.y;
-//                            break;
-//                        case S:
-//                            ++character.y;
-//                            break;
-//                        case A:
-//                            --character.x;
-//                            break;
-//                        case D:
-//                            ++character.x;
-//                            break;
-//                    }
-//                    gridPanes[index].getChildren().remove(character.image);
-//                    gridPanes[index].add(character.image, character.x, character.y);
-//                    character.move--;
-//
-//
-//                    up.setOnMouseClicked(e -> setStairs(true, character, index, up, down));
-//                    down.setOnMouseClicked(el -> setStairs(false, character, index, up, down));
-//
-//
-//                    if (character.y == stairs[index].y) {
-//                        if (character.x == stairs[index].x) {
-//                            stairs[index].upDown(rightPane, index, up, down);
-//                        }
-//                    }
-//
-////                }
-//            });
-//        }
-//
-//
-//
-//        // This adds the mouse click for each button to change between scenes.
-//        for(int i = 0; i < borders.length; i++) {
-//            int index = i;
-//            buttons[i].setOnMouseClicked(event -> setScene(index));
-//        }
-//
-//        stage.setScene(scenes[1]);
-//        stage.setTitle("Ground Floor");
-//        stage.show();
-//
-//    }
-//
-//    private void setStairs(boolean minus, Character character, int index, Button up, Button down) {
-//        if(stairs[index].pane >= 0 && stairs[index].pane < 4) {
-//            if (character.y == stairs[index].y) {
-//                if (character.x == stairs[index].x) {
-//                    if (stairs[index].pane < 4) {
-//                        if (minus) {
-//                            stairs[index].pane--;
-//                        }
-//                        else {
-//                            stairs[index].pane++;
-//                        }
-//
-//                        if(stairs[index].pane >= 0 && stairs[index].pane < 4) {
-//                            gridPanes[index].getChildren().remove(character.image);
-//                            gridPanes[stairs[index].pane].add(character.image, 0, 5);
-//                            setScene(stairs[index].pane);
-//
-//                        }
-//
-//                    }
-//                } else {
-//                    rightPane.getChildren().remove(up);
-//                    rightPane.getChildren().remove(down);
-//                }
-//            } else {
-//                rightPane.getChildren().remove(up);
-//                rightPane.getChildren().remove(down);
-//            }
-//        }
-//    }
-//
-//
-//    private void setScene(int index) {
-//        borders[index].setRight(rightPane);
-//        borders[index].setTop(buttonPane);
-//        stage.setScene(scenes[index]);
-//        stage.setTitle(titles[index]);
-//        stage.show();
-//
-//
-//    }
-//
-//
-//    public static void main(String[] args) { launch(args); }
-//
-//
-//}
+package GameBoard;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import Characters.Character;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class GameBoard {
+
+    private String[] titles = {"Upper Floor", "Ground Floor", "Basement"};
+
+    private GridPane[] gridPanes = {
+            /*upper floor*/ new GridPane(),
+            /*main floor*/ new GridPane(),
+            /*Basement*/ new GridPane()
+    };
+
+    private Button[] buttons = new Button[3];
+    private String[] images = {"GameBoard/UpperLanding.png", "GameBoard/GroundStairs.png", "GameBoard/Basement.png"};
+
+    private Stairs[] stairs = new Stairs[3];
+
+    private VBox rightPane = new VBox();
+    private HBox buttonPane = new HBox();
+
+    private Button up = new Button("Go Up");
+    private Button down = new Button("Go Down");
+
+    private BorderPane pane;
+
+    // this variable just keeps track of what pane the player is on right now.S
+    private int onPane;
+    private Tile[][][] boardTiles = new Tile[3][100][100];
+
+    public void run(Stage stage, BorderPane pane, Character character) {
+        Tile[] upTiles = {
+                new Tile(new ImageView("GameBoard/tiles_images/E.png"), false, false, false, false, true),
+                new Tile(new ImageView("GameBoard/tiles_images/EW.png"), false, false, false, true, true),
+                new Tile(new ImageView("GameBoard/tiles_images/EWS.png"), false, false, true, true, true),
+                new Tile(new ImageView("GameBoard/tiles_images/N.png"), false, true, false, false, false),
+                new Tile(new ImageView("GameBoard/tiles_images/NE.png"), false, true, false, false, true),
+                new Tile(new ImageView("GameBoard/tiles_images/NES.png"), false, true, true, false, true),
+                new Tile(new ImageView("GameBoard/tiles_images/NEWS.png"), false),
+                new Tile(new ImageView("GameBoard/tiles_images/NS.png"), false, true, true, false, false),
+                new Tile(new ImageView("GameBoard/tiles_images/NW.png"), false, true, false, true, false),
+                new Tile(new ImageView("GameBoard/tiles_images/NWS.png"), false, true, true, true, false),
+                new Tile(new ImageView("GameBoard/tiles_images/S.png"), false, false, true, false, false),
+                new Tile(new ImageView("GameBoard/tiles_images/SE.png"), false, false, true, false, true),
+                new Tile(new ImageView("GameBoard/tiles_images/SW.png"), false, false, true, true, false),
+                new Tile(new ImageView("GameBoard/tiles_images/SWE.png"), false, false, true, true, true),
+                new Tile(new ImageView("GameBoard/tiles_images/W.png"), false, false, false, true, false)
+        };
+
+
+        this.pane = pane;
+
+        // this adds the stair tiles to each floor
+        for (int j = 0; j < gridPanes.length; j++) {
+
+            Stairs stair =  new Stairs(images[j], true, true, true, true);
+            stair.image().setFitWidth(200);
+            stair.image().setFitHeight(200);
+            boardTiles[j][0][5] = stair;
+            stairs[j] = stair;
+            gridPanes[j].add(stairs[j].image(), 0, 5);
+
+            // This sets the gridPanes to have the groundHall and the Entrance tiles
+            if(j == 1) {
+                stair = new Stairs(images[j], false, false, false, true);
+                stair.image().setFitWidth(200);
+                stair.image().setFitHeight(200);
+                stairs[j] = stair;
+                boardTiles[j][0][5] = stair;
+
+                Tile tile = new Tile(new ImageView("GameBoard/GroundHall.png"),
+                        false, true, true, true, true);
+                tile.image().setFitWidth(200);
+                tile.image().setFitHeight(200);
+                boardTiles[j][1][5] = tile;
+                gridPanes[j].add(tile.image(), 1, 5);
+                tile = new Tile(new ImageView("GameBoard/GroundEntrance.png"),
+                        false, true, true, true, true);
+                tile.image().setFitWidth(200);
+                tile.image().setFitHeight(200);
+                boardTiles[j][2][5] = tile;
+                gridPanes[j].add(tile.image(), 2, 5);
+            }
+
+            // adds all the buttons to change between floors
+            buttons[j] = new Button(titles[j]);
+            int index = j;
+            buttons[j].setOnMouseClicked(event -> pane.setCenter(gridPanes[index]));
+        }
+
+
+
+        // This is the HBox that keeps track of the buttons
+        for (Button i : buttons) {
+            buttonPane.getChildren().add(i);
+        }
+        pane.setTop(buttonPane);
+
+        gridPanes[1].add(character.getImage(), character.getX(), character.getY());
+
+        rightPane.getChildren().add(up);
+        rightPane.getChildren().add(down);
+        pane.setRight(rightPane);
+
+
+        ArrayList<Integer> added = new ArrayList<>();
+        stage.getScene().setOnKeyPressed(event -> {
+            int choice = (int)(Math.random() * upTiles.length);
+            while (added.contains(choice)) {
+                choice = (int)(Math.random() * upTiles.length);
+            }
+            if (gridPanes[onPane] == pane.getCenter()/* && character.move >= 0*/) {
+//                Collections.shuffle(upTiles);
+
+                boolean door = false;
+                switch (event.getCode()) {
+                    case W:
+                        if(boardTiles[onPane][character.getX()][character.getY()].nDr) {
+                            door = true;
+                            character.setY(character.getY() - 1);
+                        }
+                        break;
+                    case S:
+                        if(boardTiles[onPane][character.getX()][character.getY()].sDr) {
+                            door = true;
+                            character.setY(character.getY() + 1);
+                        }
+                        break;
+                    case A:
+                        if(boardTiles[onPane][character.getX()][character.getY()].wDr) {
+                            door = true;
+                            character.setX(character.getX() - 1);
+                        }
+                        break;
+                    case D:
+                        if(boardTiles[onPane][character.getX()][character.getY()].eDr) {
+                            door = true;
+                            character.setX(character.getX() + 1);
+                        }
+                        break;
+                }
+                GridPane center = (GridPane) pane.getCenter();
+                if(door) {
+                    if(boardTiles[onPane][character.getX()][character.getY()] == null) {
+                        added.add(choice);
+                        upTiles[choice].image().setFitHeight(200);
+                        upTiles[choice].image().setFitWidth(200);
+                        center.add(upTiles[choice].image(), character.getX(), character.getY());
+                        boardTiles[onPane][character.getX()][character.getY()] = upTiles[choice];
+                    }
+
+                    center.getChildren().remove(character.getImage());
+                    center.add(character.getImage(), character.getX(), character.getY());
+                    character.setMoveCount(character.getMoveCount() - 1);
+                }
+            }
+
+        });
+
+        // this sets the up button so when pressed the character goes "up" the stairs.
+        up.setOnMouseClicked(e -> {
+            if (character.getY() == 5 && character.getX() == 0) {
+                for (int i = 0; i < gridPanes.length; i++) {
+                    if (pane.getCenter() == gridPanes[i]) {
+                        if(setStairs(true, character, i)){
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        // this set the down button so when pressed the character goes "down" the stairs.
+        down.setOnMouseClicked(el -> {
+            if (character.getY() == 5 && character.getX() == 0) {
+                for (int i = 0; i < gridPanes.length; i++) {
+                    if (pane.getCenter() == gridPanes[i]) {
+                        if(setStairs(false, character, i)) {
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        onPane = 1;
+        pane.setCenter(gridPanes[1]);
+
+    }
+
+    private boolean setStairs(boolean minus, Character character, int index) {
+        if (minus && index >= 0 && index < 3 && index - 1 >= 0 || !minus && index >= 0 && index < 3 && index + 1 < 3) {
+            gridPanes[index].getChildren().remove(character.getImage());
+            if (minus) {
+                onPane--;
+                index--;
+            } else {
+                onPane++;
+                index++;
+            }
+
+            gridPanes[index].add(character.getImage(), 0, 5);
+            pane.setCenter(gridPanes[index]);
+            return true;
+        }
+        return false;
+    }
+
+}

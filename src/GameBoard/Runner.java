@@ -11,7 +11,7 @@ public class Runner extends Application {
     public void start(Stage stage) {
 
         BorderPane pane = new BorderPane();
-        CallBoard board = new CallBoard();
+        GameBoard board = new GameBoard();
         Scene scene = new Scene(pane, 1000, 600);
 
         TheFrogSlayer character = new TheFrogSlayer();

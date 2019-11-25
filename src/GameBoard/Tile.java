@@ -5,10 +5,10 @@ public class Tile {
 
     private ImageView image;
     private boolean special;
-    private boolean nDr;
-    private boolean sDr;
-    private boolean wDr;
-    private boolean eDr;
+     boolean nDr;
+     boolean sDr;
+     boolean wDr;
+     boolean eDr;
 
 
     Tile() {
