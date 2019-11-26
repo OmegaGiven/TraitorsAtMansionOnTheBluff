@@ -1,5 +1,7 @@
 import java.io.*;
 import java.net.Socket;
+import Characters.Character;
+import Characters.*
 
 public class Client {
     Socket socketClient = null;
@@ -19,11 +21,31 @@ public class Client {
         writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
     }
 
-    private void sendMove() throws IOException {
-        // Sender
+    private void sendMove(Character character) throws IOException {
+        int x = character.getX();
+        int y = character.getY();
+        int speed = character.getSpeed();
+        int might = character.getMight();
+        int sanity = character.getSanity();
+        int knowledge = character.getKnowledge();
+        boolean traitor = character.getTraitor();
+
+        writer.write(x+"\r\n'");
+        writer.write(y+"\r\n'");
+        writer.write(speed+"\r\n'");
+        writer.write(might+"\r\n'");
+        writer.write(sanity+"\r\n'");
+        writer.write(knowledge+"\r\n'");
+        writer.write(traitor+"\r\n'");
     }
 
-    private void receiveMove() throws IOException {
-        // Receiver
+    private void receiveMove(Character character) throws IOException {
+        character.setX(Integer.parseInt(reader.readLine().trim()));
+        character.setY(Integer.parseInt(reader.readLine().trim()));
+        character.setSpeed(Integer.parseInt(reader.readLine().trim()));
+        character.setMight(Integer.parseInt(reader.readLine().trim()));
+        character.setSanity(Integer.parseInt(reader.readLine().trim()));
+        character.setKnowledge(Integer.parseInt(reader.readLine().trim()));
+        character.setTraitor(reader.readLine().trim());
     }
 }

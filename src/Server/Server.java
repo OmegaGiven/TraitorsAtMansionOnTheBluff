@@ -1,6 +1,8 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import Characters.Character;
+import Characters.*;
 
 
 public class Server {
@@ -22,8 +24,15 @@ public class Server {
         writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
     }
 
-    private void receiveFirstMove() throws Exception {
+    private void receiveFirstMove(Character character) throws Exception {
         /* This Function is only run once to get the server logic running at the beginning of the game */
+        character.setX(Integer.parseInt(reader.readLine().trim()));
+        character.setY(Integer.parseInt(reader.readLine().trim()));
+        character.setSpeed(Integer.parseInt(reader.readLine().trim()));
+        character.setMight(Integer.parseInt(reader.readLine().trim()));
+        character.setSanity(Integer.parseInt(reader.readLine().trim()));
+        character.setKnowledge(Integer.parseInt(reader.readLine().trim()));
+        character.setTraitor(reader.readLine().trim());
     }
 
     private void sendMove(Character character) throws IOException {
@@ -53,5 +62,6 @@ public class Server {
         character.setSanity(Integer.parseInt(reader.readLine().trim()));
         character.setKnowledge(Integer.parseInt(reader.readLine().trim()));
         character.setTraitor(reader.readLine().trim());
+
     }
 }
