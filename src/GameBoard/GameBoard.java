@@ -1,7 +1,5 @@
 package GameBoard;
 import javafx.geometry.HPos;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -10,7 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import Characters.Character;
 import java.util.ArrayList;
 
@@ -28,7 +25,7 @@ public class GameBoard {
     private Button[] buttons = new Button[3];
     private String[] images = {"GameBoard/UpperLanding.png", "GameBoard/GroundStairs.png", "GameBoard/Basement.png"};
 
-    private Stairs[] stairs = new Stairs[3];
+    private Tile[] stairs = new Tile[3];
 
     private VBox rightPane = new VBox();
     private HBox buttonPane = new HBox();
@@ -36,18 +33,16 @@ public class GameBoard {
     private Button up = new Button("Go Up");
     private Button down = new Button("Go Down");
 
-    private BorderPane pane;
+    private Tile[][][] boardTiles = new Tile[3][100][100];
+    private ScrollPane scrollPane = new ScrollPane();
 
     // this variable just keeps track of what pane the player is on right now.S
     private int onPane;
-    private Tile[][][] boardTiles = new Tile[3][100][100];
-    private ScrollPane scrollPane = new ScrollPane();
-    boolean move = true;
+    private boolean move = true;
 
 
-    public void run(Scene scene, BorderPane pane1, Character character) {
+    public void run(Scene scene, BorderPane pane, Character character) {
 
-        this.pane = pane1;
         scrollPane.setContent(pane.getCenter());
         pane.setCenter(scrollPane);
 
@@ -75,7 +70,7 @@ public class GameBoard {
         // this adds the stair tiles to each floor
         for (int j = 0; j < gridPanes.length; j++) {
             // this sets up the basement and upper floor stair tiles.
-            Stairs stair =  new Stairs(images[j], true, true, true, true);
+            Tile stair =  new Tile(new ImageView(images[j]), false, true, true, true, true);
             stair.image().setFitWidth(200);
             stair.image().setFitHeight(200);
             boardTiles[j][0][5] = stair;
@@ -85,7 +80,7 @@ public class GameBoard {
             // This sets the gridPanes to have the groundHall and the Entrance tiles
             if(j == 1) {
                 // this sets up the stairs for the ground floor
-                stair = new Stairs(images[j], false, false, false, true);
+                stair = new Tile(new ImageView(images[j]), false, false, false, false, true);
                 stair.image().setFitWidth(200);
                 stair.image().setFitHeight(200);
                 stairs[j] = stair;
@@ -152,7 +147,8 @@ public class GameBoard {
                             door = true;
                             if(move) {
                                 character.setY(character.getY() - 1);
-                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != allTiles.length) {
+                                if(boardTiles[onPane][character.getX()][character.getY()] == null
+                                        && added.size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
                                     if (allTiles[choice].sDr) {
@@ -168,7 +164,9 @@ public class GameBoard {
                                         rotate(allTiles[choice], 3);
                                     }
                                 }
-                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == allTiles.length) {
+                                else if(boardTiles[onPane][character.getX()][character.getY()] == null
+                                        && added.size() == allTiles.length) {
+
                                     character.setY(character.getY() + 1);
                                     move = false;
                                 }
@@ -180,7 +178,8 @@ public class GameBoard {
                             door = true;
                             if(move) {
                                 character.setY(character.getY() + 1);
-                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != allTiles.length) {
+                                if(boardTiles[onPane][character.getX()][character.getY()] == null
+                                        && added.size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
                                     if (allTiles[choice].nDr) {
@@ -196,7 +195,9 @@ public class GameBoard {
                                         rotate(allTiles[choice], 3);
                                     }
                                 }
-                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == allTiles.length) {
+                                else if(boardTiles[onPane][character.getX()][character.getY()] == null
+                                        && added.size() == allTiles.length) {
+
                                     character.setY(character.getY() - 1);
                                     move = false;
                                 }
@@ -208,7 +209,8 @@ public class GameBoard {
                             door = true;
                             if(move) {
                                 character.setX(character.getX() - 1);
-                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != allTiles.length) {
+                                if(boardTiles[onPane][character.getX()][character.getY()] == null
+                                        && added.size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
                                     if (allTiles[choice].eDr) {
@@ -224,7 +226,9 @@ public class GameBoard {
                                         rotate(allTiles[choice], 3);
                                     }
                                 }
-                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == allTiles.length) {
+                                else if(boardTiles[onPane][character.getX()][character.getY()] == null
+                                        && added.size() == allTiles.length) {
+
                                     character.setX(character.getX() + 1);
                                     move = false;
                                 }
@@ -236,7 +240,8 @@ public class GameBoard {
                             door = true;
                             if(move) {
                                 character.setX(character.getX() + 1);
-                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != allTiles.length) {
+                                if(boardTiles[onPane][character.getX()][character.getY()] == null
+                                        && added.size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
                                     if (allTiles[choice].wDr) {
@@ -252,7 +257,8 @@ public class GameBoard {
                                         rotate(allTiles[choice], 3);
                                     }
                                 }
-                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == allTiles.length) {
+                                else if(boardTiles[onPane][character.getX()][character.getY()] == null
+                                        && added.size() == allTiles.length) {
                                     character.setX(character.getX() - 1);
                                     move = false;
                                 }
