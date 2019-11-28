@@ -1,4 +1,7 @@
 package GameBoard;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -118,7 +121,10 @@ public class GameBoard {
         }
         pane.setTop(buttonPane);
 
+        // this adds the character image to the pane
         gridPanes[1].add(character.getImage(), character.getX(), character.getY());
+        // this makes the character image in the center of the tile
+        gridPanes[1].setHalignment(character.getImage(), HPos.CENTER);
 
         // add the up and down buttons for the right side of the pane.
         rightPane.getChildren().add(up);
@@ -268,7 +274,10 @@ public class GameBoard {
                     if (move) {
                         // this is the part that moves the character.
                         center.getChildren().remove(character.getImage());
+                        // this adds the character image to the pane
                         center.add(character.getImage(), character.getX(), character.getY());
+                        // this makes the character image in the center of the tile
+                        gridPanes[1].setHalignment(character.getImage(), HPos.CENTER);
                         character.setMoveCount(character.getMoveCount() - 1);
                     }
                 }
@@ -329,7 +338,10 @@ public class GameBoard {
                 index++;
             }
 
+            // this adds the character image to the pane
             gridPanes[index].add(character.getImage(), 0, 5);
+            // this makes the character image in the center of the tile
+            gridPanes[1].setHalignment(character.getImage(), HPos.CENTER);
             scrollPane.setContent(gridPanes[index]);
             return true;
         }
