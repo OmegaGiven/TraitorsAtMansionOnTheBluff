@@ -52,7 +52,7 @@ public class GameBoard {
         pane.setCenter(scrollPane);
 
 
-        Tile[] upTiles = {
+        Tile[] allTiles = {
                 new Tile(new ImageView("GameBoard/tiles_images/E.png"), false, false, false, false, true),
                 new Tile(new ImageView("GameBoard/tiles_images/EW.png"), false, false, false, true, true),
                 new Tile(new ImageView("GameBoard/tiles_images/EWS.png"), false, false, true, true, true),
@@ -134,10 +134,13 @@ public class GameBoard {
 
         ArrayList<Integer> added = new ArrayList<>();
         scene.setOnKeyPressed(event -> {
-            int choice = (int)(Math.random() * upTiles.length);
-            while (added.contains(choice) && added.size() != upTiles.length) {
-                choice = (int)(Math.random() * upTiles.length);
+            // this is for choosing a random tile.
+            int choice = (int)(Math.random() * allTiles.length);
+            // this just makes sure that there are no duplicates.
+            while (added.contains(choice) && added.size() != allTiles.length) {
+                choice = (int)(Math.random() * allTiles.length);
             }
+
             move = true;
             if (gridPanes[onPane] == scrollPane.getContent()) {
 
@@ -149,23 +152,23 @@ public class GameBoard {
                             door = true;
                             if(move) {
                                 character.setY(character.getY() - 1);
-                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != upTiles.length) {
+                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
-                                    if (upTiles[choice].sDr) {
-                                        upTiles[choice].image().setRotate(0);
-                                    } else if (upTiles[choice].eDr) {
-                                        upTiles[choice].image().setRotate(90);
-                                        rotate(upTiles[choice], 1);
-                                    } else if (upTiles[choice].nDr) {
-                                        upTiles[choice].image().setRotate(180);
-                                        rotate(upTiles[choice], 2);
+                                    if (allTiles[choice].sDr) {
+                                        allTiles[choice].image().setRotate(0);
+                                    } else if (allTiles[choice].eDr) {
+                                        allTiles[choice].image().setRotate(90);
+                                        rotate(allTiles[choice], 1);
+                                    } else if (allTiles[choice].nDr) {
+                                        allTiles[choice].image().setRotate(180);
+                                        rotate(allTiles[choice], 2);
                                     } else {
-                                        upTiles[choice].image().setRotate(-90);
-                                        rotate(upTiles[choice], 3);
+                                        allTiles[choice].image().setRotate(-90);
+                                        rotate(allTiles[choice], 3);
                                     }
                                 }
-                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == upTiles.length) {
+                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == allTiles.length) {
                                     character.setY(character.getY() + 1);
                                     move = false;
                                 }
@@ -177,23 +180,23 @@ public class GameBoard {
                             door = true;
                             if(move) {
                                 character.setY(character.getY() + 1);
-                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != upTiles.length) {
+                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
-                                    if (upTiles[choice].nDr) {
-                                        upTiles[choice].image().setRotate(0);
-                                    } else if (upTiles[choice].wDr) {
-                                        upTiles[choice].image().setRotate(90);
-                                        rotate(upTiles[choice], 1);
-                                    } else if (upTiles[choice].sDr) {
-                                        upTiles[choice].image().setRotate(180);
-                                        rotate(upTiles[choice], 2);
+                                    if (allTiles[choice].nDr) {
+                                        allTiles[choice].image().setRotate(0);
+                                    } else if (allTiles[choice].wDr) {
+                                        allTiles[choice].image().setRotate(90);
+                                        rotate(allTiles[choice], 1);
+                                    } else if (allTiles[choice].sDr) {
+                                        allTiles[choice].image().setRotate(180);
+                                        rotate(allTiles[choice], 2);
                                     } else {
-                                        upTiles[choice].image().setRotate(-90);
-                                        rotate(upTiles[choice], 3);
+                                        allTiles[choice].image().setRotate(-90);
+                                        rotate(allTiles[choice], 3);
                                     }
                                 }
-                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == upTiles.length) {
+                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == allTiles.length) {
                                     character.setY(character.getY() - 1);
                                     move = false;
                                 }
@@ -205,23 +208,23 @@ public class GameBoard {
                             door = true;
                             if(move) {
                                 character.setX(character.getX() - 1);
-                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != upTiles.length) {
+                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
-                                    if (upTiles[choice].eDr) {
-                                        upTiles[choice].image().setRotate(0);
-                                    } else if (upTiles[choice].nDr) {
-                                        upTiles[choice].image().setRotate(90);
-                                        rotate(upTiles[choice], 1);
-                                    } else if (upTiles[choice].wDr) {
-                                        upTiles[choice].image().setRotate(180);
-                                        rotate(upTiles[choice], 2);
+                                    if (allTiles[choice].eDr) {
+                                        allTiles[choice].image().setRotate(0);
+                                    } else if (allTiles[choice].nDr) {
+                                        allTiles[choice].image().setRotate(90);
+                                        rotate(allTiles[choice], 1);
+                                    } else if (allTiles[choice].wDr) {
+                                        allTiles[choice].image().setRotate(180);
+                                        rotate(allTiles[choice], 2);
                                     } else {
-                                        upTiles[choice].image().setRotate(-90);
-                                        rotate(upTiles[choice], 3);
+                                        allTiles[choice].image().setRotate(-90);
+                                        rotate(allTiles[choice], 3);
                                     }
                                 }
-                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == upTiles.length) {
+                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == allTiles.length) {
                                     character.setX(character.getX() + 1);
                                     move = false;
                                 }
@@ -233,23 +236,23 @@ public class GameBoard {
                             door = true;
                             if(move) {
                                 character.setX(character.getX() + 1);
-                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != upTiles.length) {
+                                if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
-                                    if (upTiles[choice].wDr) {
-                                        upTiles[choice].image().setRotate(0);
-                                    } else if (upTiles[choice].sDr) {
-                                        upTiles[choice].image().setRotate(90);
-                                        rotate(upTiles[choice], 1);
-                                    } else if (upTiles[choice].eDr) {
-                                        upTiles[choice].image().setRotate(180);
-                                        rotate(upTiles[choice], 2);
+                                    if (allTiles[choice].wDr) {
+                                        allTiles[choice].image().setRotate(0);
+                                    } else if (allTiles[choice].sDr) {
+                                        allTiles[choice].image().setRotate(90);
+                                        rotate(allTiles[choice], 1);
+                                    } else if (allTiles[choice].eDr) {
+                                        allTiles[choice].image().setRotate(180);
+                                        rotate(allTiles[choice], 2);
                                     } else {
-                                        upTiles[choice].image().setRotate(-90);
-                                        rotate(upTiles[choice], 3);
+                                        allTiles[choice].image().setRotate(-90);
+                                        rotate(allTiles[choice], 3);
                                     }
                                 }
-                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == upTiles.length) {
+                                else if(boardTiles[onPane][character.getX()][character.getY()] == null && added.size() == allTiles.length) {
                                     character.setX(character.getX() - 1);
                                     move = false;
                                 }
@@ -265,10 +268,10 @@ public class GameBoard {
 
                             // this is the part where it adds new tiles when moving.
                             added.add(choice);
-                            upTiles[choice].image().setFitHeight(200);
-                            upTiles[choice].image().setFitWidth(200);
-                            center.add(upTiles[choice].image(), character.getX(), character.getY());
-                            boardTiles[onPane][character.getX()][character.getY()] = upTiles[choice];
+                            allTiles[choice].image().setFitHeight(200);
+                            allTiles[choice].image().setFitWidth(200);
+                            center.add(allTiles[choice].image(), character.getX(), character.getY());
+                            boardTiles[onPane][character.getX()][character.getY()] = allTiles[choice];
                     }
 
                     if (move) {
@@ -316,6 +319,7 @@ public class GameBoard {
 
     }
 
+    // this rotates the "doors" so that they correspond with the actual doors on the pictures.
     private void rotate(Tile tile, int times) {
         if(times == 0) return;
         boolean temp = tile.nDr;
