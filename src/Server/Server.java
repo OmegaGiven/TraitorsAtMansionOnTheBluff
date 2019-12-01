@@ -1,3 +1,4 @@
+package Server;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -32,7 +33,7 @@ public class Server {
         character.setMight(Integer.parseInt(reader.readLine().trim()));
         character.setSanity(Integer.parseInt(reader.readLine().trim()));
         character.setKnowledge(Integer.parseInt(reader.readLine().trim()));
-        character.setTraitor(reader.readLine().trim());
+        character.setTraitor(Boolean.parseBoolean(reader.readLine().trim()));
     }
 
     private void sendMove(Character character) throws IOException {
@@ -42,7 +43,7 @@ public class Server {
         int might = character.getMight();
         int sanity = character.getSanity();
         int knowledge = character.getKnowledge();
-        boolean traitor = character.getTraitor();
+        boolean traitor = character.isTraitor();
 
         writer.write(x+"\r\n'");
         writer.write(y+"\r\n'");
@@ -61,7 +62,7 @@ public class Server {
         character.setMight(Integer.parseInt(reader.readLine().trim()));
         character.setSanity(Integer.parseInt(reader.readLine().trim()));
         character.setKnowledge(Integer.parseInt(reader.readLine().trim()));
-        character.setTraitor(reader.readLine().trim());
+        character.setTraitor(Boolean.parseBoolean(reader.readLine().trim()));
 
     }
 }

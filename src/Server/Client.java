@@ -1,7 +1,8 @@
+package Server;
 import java.io.*;
 import java.net.Socket;
 import Characters.Character;
-import Characters.*
+import Characters.*;
 
 public class Client {
     Socket socketClient = null;
@@ -28,7 +29,7 @@ public class Client {
         int might = character.getMight();
         int sanity = character.getSanity();
         int knowledge = character.getKnowledge();
-        boolean traitor = character.getTraitor();
+        boolean traitor = character.isTraitor();
 
         writer.write(x+"\r\n'");
         writer.write(y+"\r\n'");
@@ -46,6 +47,6 @@ public class Client {
         character.setMight(Integer.parseInt(reader.readLine().trim()));
         character.setSanity(Integer.parseInt(reader.readLine().trim()));
         character.setKnowledge(Integer.parseInt(reader.readLine().trim()));
-        character.setTraitor(reader.readLine().trim());
+        character.setTraitor(Boolean.parseBoolean(reader.readLine().trim()));
     }
 }
