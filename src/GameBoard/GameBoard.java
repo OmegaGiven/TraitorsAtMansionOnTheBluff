@@ -23,7 +23,7 @@ public class GameBoard {
     };
 
     private Button[] buttons = new Button[3];
-    private String[] images = {"GameBoard/UpperLanding.png", "GameBoard/GroundStairs.png", "GameBoard/Basement.png"};
+    private String[] images = {"GameBoard//tiles_images/UPPER_LANDING.png", "GameBoard/tiles_images/GROUND_FLOOR_STAIRCASE.png", "GameBoard/tiles_images/BASEMENT.png"};
 
     private Tile[] stairs = new Tile[3];
 
@@ -87,14 +87,14 @@ public class GameBoard {
                 boardTiles[j][0][5] = stair;
 
                 // this sets up the middle tile of the ground floor
-                Tile tile = new Tile(new ImageView("GameBoard/GroundHall.png"), false);
+                Tile tile = new Tile(new ImageView("GameBoard/tiles_images/HALLWAY.png"), false);
                 tile.image().setFitWidth(200);
                 tile.image().setFitHeight(200);
                 boardTiles[j][1][5] = tile;
                 gridPanes[j].add(tile.image(), 1, 5);
 
                 // this sets up the far right tile of the ground floor
-                tile = new Tile(new ImageView("GameBoard/GroundEntrance.png"), false);
+                tile = new Tile(new ImageView("GameBoard/tiles_images/ENTRANCE_HALL.png"), false);
                 tile.image().setFitWidth(200);
                 tile.image().setFitHeight(200);
                 boardTiles[j][2][5] = tile;
