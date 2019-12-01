@@ -17,9 +17,9 @@ public class BougieBrain extends Character {
         move = moveCount;
 
         this.name = "Bougie Brain";
-        this.bio = "Bougie Brain is a young girl who is obsessed with perfection." +
-        " If things aren't perfect, she feels like something angry is trying to dig" +
-        " its way out of her skull.";
+        this.bio = "Bougie Brain is a young girl who is obsessed \nwith perfection." +
+        " If things aren't perfect, she \nfeels like something angry is trying to dig" +
+        " \nits way out of her skull.";
         this.age = 18;
 
         this.x = 2;

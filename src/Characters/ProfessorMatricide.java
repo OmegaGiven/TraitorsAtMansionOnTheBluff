@@ -15,10 +15,10 @@ public class ProfessorMatricide extends Character{
         image.setFitHeight(50);
         move = moveCount;
 
-        this.name = "Professor Matricide";
-        this.bio = "Professor Matricide family's money was squandered by his " +
-        "gambling father. Now he lives with his elderly mother (and her " +
-        "substantial life insurance).";
+        this.name = "Prof. Matricide";
+        this.bio = "Professor Matricide family's money was \nsquandered by his " +
+        "gambling father. Now \nhe lives with his elderly mother (and her " +
+        "\nsubstantial life insurance).";
 
         this.age = 57;
 

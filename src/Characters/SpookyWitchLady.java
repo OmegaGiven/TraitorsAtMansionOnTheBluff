@@ -15,9 +15,9 @@ public class SpookyWitchLady extends Character{
         move = moveCount;
 
         this.name = "Spooky Witch Lady";
-        this.bio = "Spooky Witch Lady, also known by her nickname \"The Bubster\", "+
-        "runs an astrology business from home, but she's too much of a coward to " +
-        "look into her own future.";
+        this.bio = "Spooky Witch Lady, also known by her nickname \n\"The Bubster\", "+
+        "runs an astrology business from \nhome, but she's too much of a coward to " +
+        "\nlook into her own future.";
         this.age = 37;
 
         this.x = 2;

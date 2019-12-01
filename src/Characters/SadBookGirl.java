@@ -15,8 +15,8 @@ public class SadBookGirl extends Character{
         move = moveCount;
 
         this.name = "Sad Book Girl";
-        this.bio = "Sad Book Girl's mother disappeared when she was seven, leaving " +
-        "her completely alone. Now her only solace is found in books.";
+        this.bio = "Sad Book Girl's mother disappeared when \nshe was seven, leaving " +
+        "her completely alone. \nNow her only solace is found in books.";
         this.age = 21;
 
         this.x = 2;

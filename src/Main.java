@@ -1,3 +1,4 @@
+import GameBoard.GameBoard;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,6 +16,8 @@ import Characters.Character;
 import Characters.*;
 
 public class Main extends Application {
+
+    Stage st = new Stage();
 
     Character user = new Character();
 //    boolean selection = false;
@@ -72,8 +75,15 @@ public class Main extends Application {
                     System.out.println(i.getName());
                     user = current;
                     backdrop.getChildren().clear();
-                    game.setRight(updateDescription());
-
+                    //game.setRight(updateDescription());
+                    GameBoard board = new GameBoard();
+                    Stage stage = new Stage();
+                    BorderPane pane = new BorderPane();
+                    Scene scene = new Scene(pane, 1000, 600);
+                    stage.setScene(scene);
+                    board.run(scene, pane, user);
+                    stage.show();
+                    st.close();
                 });
 
             });
@@ -98,10 +108,10 @@ public class Main extends Application {
     public void start(Stage stage){
         BorderPane game = new BorderPane();
         game.setCenter(CharacterSelect(game));
-        Scene scene = new Scene(game);
-        stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.show();
+        Scene scene = new Scene(game, 1000, 600);
+        st.setScene(scene);
+        //st.setMaximized(true);
+        st.show();
     }
 
     public static void main(String[]args){

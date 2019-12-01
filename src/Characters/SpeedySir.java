@@ -15,8 +15,8 @@ public class SpeedySir extends Character {
         move = moveCount;
 
         this.name = "Speedy Sir";
-        this.bio = "Speedy Sir can outrun his competitors, but he can't outrun " +
-        "himself. Or the Unpleasant Something that's chasing him.";
+        this.bio = "Speedy Sir can outrun his competitors, but \nhe can't outrun " +
+        "himself. Or the Unpleasant \nSomething that's chasing him.";
         this.age = 20;
 
         this.x = 2;

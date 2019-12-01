@@ -15,8 +15,8 @@ public class PuppetBoy extends Character {
         move = moveCount;
 
         this.name = "Puppet Boy";
-        this.bio = "Puppet Boy is a kid that loves camping and coding, and HATES " +
-        "clowns. When he was little, his clown puppet moved closer to him when he " +
+        this.bio = "Puppet Boy is a kid that loves camping \nand coding, and HATES " +
+        "clowns. When \nhe was little, his clown puppet moved \ncloser to him when he " +
         "slept.";
         this.age = 12;
 

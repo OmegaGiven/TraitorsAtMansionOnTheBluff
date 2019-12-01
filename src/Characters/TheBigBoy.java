@@ -15,8 +15,8 @@ public class TheBigBoy extends Character {
         move = moveCount;
 
         this.name = "The Big Boy";
-        this.bio = "The Big Boy weighs 288 lbs. 288! That's crazy. Also he might be " +
-        "a murderer. But seriously, 288? Dude must drink a lot of milk.";
+        this.bio = "The Big Boy weighs 288 lbs. 288! That's crazy. \nAlso he might be " +
+        "a murderer. But seriously, \n288? Dude must drink a lot of milk.";
         this.age = 23;
 
         this.x = 2;

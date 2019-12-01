@@ -15,7 +15,7 @@ public class TheDollKid extends Character{
         move = moveCount;
 
         this.name = "The Doll Kid";
-        this.bio = "The Doll Kid has a lot of dolls. The dolls are usually nice.";
+        this.bio = "The Doll Kid has a lot of dolls. The dolls are \nusually nice.";
         this.age = 8;
 
         this.x = 2;

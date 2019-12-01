@@ -17,8 +17,8 @@ public class BugBoy extends Character {
         move = moveCount;
 
         this.name = "Bug Boy";
-        this.bio = "Bug Boy was bullied by his family when he was younger." +
-        " Now he takes out his anger on the ants.";
+        this.bio = "Bug Boy was bullied by his family when \nhe was younger." +
+        " Now he takes out \nhis anger on the ants.";
         this.age = 13;
 
         this.x = 2;

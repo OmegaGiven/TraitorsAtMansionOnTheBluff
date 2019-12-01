@@ -15,7 +15,7 @@ public class TheFrogSlayer extends Character{
         move = moveCount;
 
         this.name = "The Frog Slayer";
-        this.bio = "The Frog Slayer slays frogs. In her nightmares, they slay her.";
+        this.bio = "The Frog Slayer slays frogs. In her nightmares, \nthey slay her.";
         this.age = 9;
 
         this.x = 2;

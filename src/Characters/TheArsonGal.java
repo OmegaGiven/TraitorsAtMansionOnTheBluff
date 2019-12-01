@@ -15,7 +15,7 @@ public class TheArsonGal extends Character {
         move = moveCount;
 
         this.name = "The Arson Gal";
-        this.bio = "The Arson Gal runs a failing bookstore. You do the math.";
+        this.bio = "The Arson Gal runs a failing bookstore. \nYou do the math.";
         this.age = 42;
 
         this.x = 2;
