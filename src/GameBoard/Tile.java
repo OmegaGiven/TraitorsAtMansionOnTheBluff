@@ -11,7 +11,7 @@ public class Tile {
      boolean sDr;
      boolean wDr;
      boolean eDr;
-     private Card card;
+     Card card;
 
 
     Tile() {

@@ -21,7 +21,7 @@ public class Card {
 
     @Override
     public String toString(){
-        return this.getCardName() + "\n" + getType() + "\n" + getCardDescription() + "\n";
+        return this.getCardName() + "\n" + getCardDescription() + "\n";
     }
 
     public String getCardName() {

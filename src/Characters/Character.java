@@ -82,6 +82,14 @@ public class Character {
         this.isAlive = true;
     }
 
+    public String getStats(){
+        String stats = "SPEED                  :    " + speed;
+        stats +=       "\nMIGHT                 :    " + might;
+        stats +=       "\nSANITY                :    " + sanity;
+        stats +=       "\nKNOWLEDGE       :    " + knowledge;
+        return stats;
+    }
+
     public boolean isAlive(){
         return isAlive;
     }

@@ -9,6 +9,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import Characters.Character;
+import javafx.scene.text.Text;
+
 import java.util.ArrayList;
 
 
@@ -27,19 +29,21 @@ public class GameBoard {
 
     private Tile[] stairs = new Tile[3];
 
-    private VBox rightPane = new VBox();
-    private HBox buttonPane = new HBox();
+    private VBox rightPane = new VBox(); // contains up/down buttons and chatbox/narration
+    private VBox leftPane = new VBox(); // contains stats and player's items
+    private HBox buttonPane = new HBox(); // contains level buttons
 
     private Button up = new Button("Go Up");
     private Button down = new Button("Go Down");
 
-    private Button attack = new Button("Attack");
-    private Button turn = new Button("End Turn");
+    private VBox stats = new VBox();
+    private VBox items = new VBox();
+    private VBox omens = new VBox();
 
     private Tile[][][] boardTiles = new Tile[3][100][100];
     private ScrollPane scrollPane = new ScrollPane();
 
-    // this variable just keeps track of what pane the player is on right now.S
+    // this variable just keeps track of what pane the player is on right now.
     private int onPane;
     private boolean move = true;
 
@@ -127,11 +131,26 @@ public class GameBoard {
         // add the up and down buttons for the right side of the pane.
         rightPane.getChildren().add(up);
         rightPane.getChildren().add(down);
+        Text logTitle = new Text("===== EVENT LOG =====");
+        rightPane.getChildren().add(logTitle);
         pane.setRight(rightPane);
+
+        // add stats and item boxes to left side of pane
+        stats.getChildren().add(new Text("======= STATS ======="));
+        Text statistics = new Text(character.getStats());
+        stats.getChildren().add(statistics);
+        leftPane.getChildren().add(stats);
+        items.getChildren().add(new Text("======= ITEMS ======="));
+        leftPane.getChildren().add(items);
+        Text spookCount = new Text("==== SPOOK COUNT ====");
+        leftPane.getChildren().add(spookCount);
+        leftPane.getChildren().add(omens);
+        pane.setLeft(leftPane);
 
 
         ArrayList<Integer> added = new ArrayList<>();
         scene.setOnKeyPressed(event -> {
+            Text card = new Text();
             // this is for choosing a random tile.
             int choice = (int)(Math.random() * allTiles.length);
             // this just makes sure that there are no duplicates.
@@ -281,6 +300,16 @@ public class GameBoard {
                             allTiles[choice].image().setFitWidth(200);
                             center.add(allTiles[choice].image(), character.getX(), character.getY());
                             boardTiles[onPane][character.getX()][character.getY()] = allTiles[choice];
+                            card.setText(allTiles[choice].card.toString());
+                            if(rightPane.getChildren().contains(card))
+                                rightPane.getChildren().remove(card);
+                            rightPane.getChildren().add(card);
+                            if(allTiles[choice].card.getType().equals("Item Card")){
+                                items.getChildren().add(card);
+                            }
+                            else if(allTiles[choice].card.getType().equals("Omen")){
+                                omens.getChildren().add(card);
+                            }
                     }
 
                     if (move) {

@@ -7,33 +7,33 @@ public class Omen extends Card {
                 "\nSpook count +1";
         String batWing = "A leathery black wing. " +
                 "\nSpook count +1";
-        String deerAntler = "A cracked, greying antler with dark brown " +
-                "splotches at its base. " +
+        String deerAntler = "A cracked, greying antler \nwith dark brown " +
+                "splotches \nat its base. " +
                 "\nSpook count +1";
-        String ratSkull = "A tiny, delicate rat skull with bits of rotting " +
-                "flesh behind its eye sockets. " +
+        String ratSkull = "A tiny, delicate rat skull \nwith bits of rotting " +
+                "\nflesh behind its eye sockets. " +
                 "\nSpook count +1";
 
         int which = (int)(Math.random() * (4 - 1) + 1) + 1;
         if(which == 1){
             this.setCardName("RAVEN CLAW");
             this.setCardDescription(ravenClaw);
-            this.setType("Item Card");
+            this.setType("Omen");
         }
         else if(which == 2){
             this.setCardName("BAT WING");
             this.setCardDescription(batWing);
-            this.setType("Item Card");
+            this.setType("Omen");
         }
         else if(which == 3){
             this.setCardName("DEER ANTLER");
             this.setCardDescription(deerAntler);
-            this.setType("Item Card");
+            this.setType("Omen");
         }
         else{
             this.setCardName("RAT SKULL");
             this.setCardDescription(ratSkull);
-            this.setType("Item Card");
+            this.setType("Omen");
         }
     }
 //

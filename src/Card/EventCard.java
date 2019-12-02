@@ -3,19 +3,18 @@ package Card;
 public class EventCard extends Card {
 
     public EventCard() {
-        String frogAttack = "Dozens of tiny frogs descend from the " +
-                "ceiling and start nibbling at your toes. " +
-                "\nSpeed -1";
-        String flameDemon = "Suddenly, a burst of flame erupts from " +
-                "the floor panels. Your eyebrows are singed. " +
-                "\nMight -1";
-        String ghostSwoop = "A silvery specter swoops from above. " +
-                "\"Your mother never loved you\", it hisses. " +
-                "\nSanity -1";
-        String stinkBomb = "A gremlin-like creature hops from behind " +
-                "a flower pot and tosses something in your direction. " +
-                "\nHe cackles and runs away as a putrid yellow smoke fills " +
-                "the room. \nKnowledge - 1";
+        String frogAttack = "Dozens of tiny frogs descend \nfrom the " +
+                "ceiling and start \nnibbling at your toes. " +
+                "\nSPEED -1";
+        String flameDemon = "Suddenly, a burst of flame \nerupts from " +
+                "the floor panels. \nYour eyebrows are singed. " +
+                "\nMIGHT -1";
+        String ghostSwoop = "A silvery specter swoops \nfrom above. " +
+                "\"Your mother\nnever loved you\", it hisses. " +
+                "\nSANITY -1";
+        String stinkBomb = "A gremlin-like appears and \n" +
+                "tosses something at you. \n" +
+                "Putrid smoke fills the room.\nKNOWLEDGE - 1";
 
         int which = (int)(Math.random() * (4 - 1) + 1) + 1;
         if(which == 1){
