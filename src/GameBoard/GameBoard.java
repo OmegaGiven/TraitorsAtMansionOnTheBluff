@@ -45,7 +45,6 @@ public class GameBoard {
     private Text selectedWeapon = new Text();
     // private String selectedID;
     private Button endTurn = new Button("End Turn");
-
     private Stage weapons = new Stage();
 
     private VBox stats = new VBox();
