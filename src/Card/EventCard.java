@@ -1,10 +1,6 @@
 package Card;
-import java.util.Map;
-import java.util.HashMap;
 
 public class EventCard extends Card {
-
-    private Map<String, String> cards;
 
     public EventCard() {
         String frogAttack = "Dozens of tiny frogs descend from the " +
@@ -21,15 +17,27 @@ public class EventCard extends Card {
                 "He cackles and runs away as a putrid yellow smoke fills " +
                 "the room. Knowledge - 1";
 
-        cards = new HashMap<>();
-        cards.put("Frog Attack", frogAttack);
-        cards.put("Flame Demon", flameDemon);
-        cards.put("Ghost Swoop", ghostSwoop);
-        cards.put("Stink Bomb", stinkBomb);
-    }
-
-    public String getValue(String key) {
-        return cards.getOrDefault(key, "ERROR: KEY INVALID");
+        int which = (int)(Math.random() * (4 - 1) + 1) + 1;
+        if(which == 1){
+            this.setCardName("FROG ATTACK");
+            this.setCardDescription(frogAttack);
+            this.setType("Event Card");
+        }
+        else if(which == 2){
+            this.setCardName("FLAME DEMON");
+            this.setCardDescription(flameDemon);
+            this.setType("Event Card");
+        }
+        else if(which == 3){
+            this.setCardName("GHOST SWOOP");
+            this.setCardDescription(ghostSwoop);
+            this.setType("Event Card");
+        }
+        else{
+            this.setCardName("STINK BOMB");
+            this.setCardDescription(stinkBomb);
+            this.setType("Event Card");
+        }
     }
 
     public String toString(){

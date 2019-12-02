@@ -1,11 +1,6 @@
 package Card;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class ItemCard extends Card {
 
-    private Map<String, String> cards;
 
     public ItemCard(){
         String slimeBall = "An oozing, grey, pocket-sized ball of slime. " +
@@ -19,16 +14,27 @@ public class ItemCard extends Card {
                 "size for banging someones head. " +
                 "Does -1 Knowledge damage"; // knowledge
 
-        cards = new HashMap<>();
-        cards.put("SLIME BALL", slimeBall);
-        cards.put("SHARP HAMMER", sharpHammer);
-        cards.put("SINGING DOLL", singingDoll);
-        cards.put("LARGE STICK", largeStick);
-        
-    }
-
-    public String getValue(String key) {
-        return cards.getOrDefault(key, "ERROR: KEY INVALID");
+        int which = (int)(Math.random() * (4 - 1) + 1) + 1;
+        if(which == 1){
+            this.setCardName("SLIME BALL");
+            this.setCardDescription(slimeBall);
+            this.setType("Item Card");
+        }
+        else if(which == 2){
+            this.setCardName("SHARP HAMMER");
+            this.setCardDescription(sharpHammer);
+            this.setType("Item Card");
+        }
+        else if(which == 3){
+            this.setCardName("SINGING DOLL");
+            this.setCardDescription(singingDoll);
+            this.setType("Item Card");
+        }
+        else{
+            this.setCardName("LARGE STICK");
+            this.setCardDescription(largeStick);
+            this.setType("Item Card");
+        }
     }
 
     public String toString(){
