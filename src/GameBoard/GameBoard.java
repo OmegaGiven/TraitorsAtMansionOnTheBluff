@@ -411,6 +411,7 @@ public class GameBoard {
         attack.setOnMouseClicked(e ->{
             weapons.setTitle("Weapon Select");
             BorderPane wPane = new BorderPane();
+            ScrollPane cardScroll = new ScrollPane();
             FlowPane cards = new FlowPane();
             cards.setMaxWidth(400);
             VBox select = new VBox();
@@ -420,8 +421,8 @@ public class GameBoard {
                 VBox it = new VBox();
                 it.getChildren().add(i);
                 it.getChildren().add(t);
-                i.setFitHeight(80);
-                i.setFitWidth(80);
+                i.setFitHeight(90);
+                i.setFitWidth(90);
                 cards.getChildren().add(it);
                 Button b = new Button(c.getCardName());
                 b.setOnMouseClicked(o ->{
@@ -432,11 +433,12 @@ public class GameBoard {
                 });
                 select.getChildren().add(b);
             }
+            cardScroll.setContent(cards);
             select.getChildren().add(new Text("\n\n\n\n"));
             select.getChildren().add(weaponSelect);
             wPane.setLeft(select);
             wPane.setCenter(new Text("             "));
-            wPane.setRight(cards);
+            wPane.setRight(cardScroll);
             weaponSelect.setOnMouseClicked(v ->{
                 weapons.close();
                 // TODO: this is for getting rid of an item you've used
