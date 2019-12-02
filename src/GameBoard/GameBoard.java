@@ -1,6 +1,7 @@
 package GameBoard;
 import javafx.beans.property.BooleanProperty;
 import javafx.geometry.HPos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -44,6 +45,7 @@ public class GameBoard {
     private Button attack = new Button("Attack");
     private Button weaponSelect = new Button("Select Weapon");
     private Text selectedWeapon = new Text();
+    private String selectedID;
     private Button endTurn = new Button("End Turn");
 
     private Stage weapons = new Stage();
@@ -160,7 +162,7 @@ public class GameBoard {
         Text statsTitle = new Text("======= STATS =======");
         statsTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         stats.getChildren().add(statsTitle);
-        Text movesLeft = new Text("MOVES LEFT: " + moves);
+        Text movesLeft = new Text("MOVES LEFT        :    " + moves);
         movesLeft.setFill(Color.DARKBLUE);
         stats.getChildren().add(movesLeft);
         Text statistics = new Text(character.getStats());
@@ -343,6 +345,16 @@ public class GameBoard {
                                 omens.getChildren().add(card);
                                 sCount++;
                                 spookCount.setText("SPOOK COUNT: " + sCount);
+                                if(sCount == 4){
+                                    character.setTraitor(true);
+                                    Text spookLog = new Text("SPOOK TRIGGERED");
+                                    spookLog.setFill(Color.RED);
+                                    spookLog.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
+                                    rightPane.getChildren().add(spookLog);
+                                    Text spookText = new Text("Your new objective:\nKILL THE OTHER PLAYER");
+                                    spookText.setFill(Color.RED);
+                                    rightPane.getChildren().add(spookText);
+                                }
                             }
                             else{
                                 rightPane.getChildren().add(card);
@@ -377,6 +389,8 @@ public class GameBoard {
                         // this makes the character image in the center of the tile
                         gridPanes[1].setHalignment(character.getImage(), HPos.CENTER);
                         character.setMoveCount(character.getMoveCount() - 1);
+                        moves--;
+                        movesLeft.setText("MOVES LEFT        :    " + moves);
                     }
                 }
             }
@@ -388,6 +402,8 @@ public class GameBoard {
             Text end = new Text(character.getName() + " has ended \ntheir turn...\n");
             end.setFill(Color.DARKGREEN);
             rightPane.getChildren().add(end);
+            moves = character.getSpeed();
+            movesLeft.setText("MOVES LEFT        :    " + moves);
             // where information will be sent over for server
         });
 
@@ -405,18 +421,36 @@ public class GameBoard {
                 b.setOnMouseClicked(o ->{
                     weapons.setTitle("Weapon Select - " + b.getText().toUpperCase() + " SELECTED");
                     selectedWeapon.setText(character.getName() + " used\n" + b.getText() + "\n");
+                    //select.getChildren().remove(b);
+                    //selectedID = b.getId();
                 });
                 select.getChildren().add(b);
             }
-            select.getChildren().add(new Text("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"));
+            select.getChildren().add(new Text("\n\n\n\n"));
             select.getChildren().add(weaponSelect);
             wPane.setLeft(select);
             wPane.setCenter(new Text("             "));
             wPane.setRight(cards);
             weaponSelect.setOnMouseClicked(v ->{
                 weapons.close();
+                // TODO: this is for getting rid of an item you've used
+                //       but the bitch won't WORK
+//                for(Node b : select.getChildren()){
+//                    if(b.getId().equals(selectedID)){
+//                        String f = ((Text) b).getText();
+//                        for(Card c : character.getCards()){
+//                            if(c.getCardName().equals(f)){
+//                                character.removeItem(c);
+//                            }
+//                        }
+//
+//                    }
+//                }
                 selectedWeapon.setFill(Color.MAROON);
-                rightPane.getChildren().add(selectedWeapon);
+                Text nW = new Text(selectedWeapon.getText()); // janky workaround so multiple weapon uses show up as separate events
+                nW.setFill(Color.MAROON);
+                rightPane.getChildren().add(nW);
+
             });
             Scene scene1 = new Scene(wPane, 500, 350);
             weapons.setScene(scene1);
@@ -434,6 +468,8 @@ public class GameBoard {
                     }
                 }
             }
+            moves--;
+            movesLeft.setText("MOVES LEFT        :    " + moves);
         });
 
         // this set the down button so when pressed the character goes "down" the stairs.
@@ -447,6 +483,8 @@ public class GameBoard {
                     }
                 }
             }
+            moves--;
+            movesLeft.setText("MOVES LEFT        :    " + moves);
         });
 
         onPane = 1;

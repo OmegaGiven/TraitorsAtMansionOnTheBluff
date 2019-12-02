@@ -99,6 +99,10 @@ public class Character {
         return items;
     }
 
+    public void removeItem(Card item){
+        items.remove(item);
+    }
+
     public boolean isAlive(){
         return isAlive;
     }
