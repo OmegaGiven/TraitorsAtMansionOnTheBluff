@@ -1,5 +1,7 @@
 package Card;
 
+import javafx.scene.image.ImageView;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -11,13 +13,18 @@ public class Card {
     private int damage;
     private String category;
 
-    public Card(String name, String type, String desc, int damage, String category) {
+    private ImageView image;
+
+    public Card(String name, String type, String desc, int damage, String category, ImageView image) {
         this.name = name;
         this.type = type;
         this.description = desc;
         this.damage = damage;
         this.category = category;
+        this.image = image;
     }
+
+
 
     public Card(){
         this.name = "";
@@ -25,6 +32,15 @@ public class Card {
         this.type = "";
         this.damage = 0;
         this.category = "";
+        this.image = null;
+    }
+
+    public ImageView getImage() {
+        return image;
+    }
+
+    public void setImage(ImageView image) {
+        this.image = image;
     }
 
     public int getDamage() {

@@ -45,7 +45,6 @@ public class GameBoard {
     private Text selectedWeapon = new Text();
     // private String selectedID;
     private Button endTurn = new Button("End Turn");
-
     private Stage weapons = new Stage();
 
     private VBox stats = new VBox();
@@ -414,12 +413,19 @@ public class GameBoard {
         attack.setOnMouseClicked(e ->{
             weapons.setTitle("Weapon Select");
             BorderPane wPane = new BorderPane();
+            ScrollPane cardScroll = new ScrollPane();
             FlowPane cards = new FlowPane();
             cards.setMaxWidth(400);
             VBox select = new VBox();
             for(Card c : character.getCards()){
                 Text t = new Text(c.toString());
-                cards.getChildren().add(t);
+                ImageView i = c.getImage();
+                VBox it = new VBox();
+                it.getChildren().add(i);
+                it.getChildren().add(t);
+                i.setFitHeight(90);
+                i.setFitWidth(90);
+                cards.getChildren().add(it);
                 Button b = new Button(c.getCardName());
                 b.setOnMouseClicked(o ->{
                     weapons.setTitle("Weapon Select - " + b.getText().toUpperCase() + " SELECTED");
@@ -429,11 +435,12 @@ public class GameBoard {
                 });
                 select.getChildren().add(b);
             }
+            cardScroll.setContent(cards);
             select.getChildren().add(new Text("\n\n\n\n"));
             select.getChildren().add(weaponSelect);
             wPane.setLeft(select);
             wPane.setCenter(new Text("             "));
-            wPane.setRight(cards);
+            wPane.setRight(cardScroll);
             weaponSelect.setOnMouseClicked(v ->{
                 weapons.close();
                 // TODO: this is for getting rid of an item you've used
