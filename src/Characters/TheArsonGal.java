@@ -19,9 +19,6 @@ public class TheArsonGal extends Character {
         this.bio = "The Arson Gal runs a failing bookstore. \nYou do the math.";
         this.age = 42;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{8, 7, 6, 4, 4, 4, 4, 3, 0};
         this.might = 5;

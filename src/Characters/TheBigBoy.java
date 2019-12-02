@@ -20,9 +20,6 @@ public class TheBigBoy extends Character {
         "a murderer. But seriously, \n288? Dude must drink a lot of milk.";
         this.age = 23;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 3; // index speed is at
         this.speedIncr = new int[]{6, 5, 5, 4, 3, 2, 2, 2, 0};
         this.might = 5;

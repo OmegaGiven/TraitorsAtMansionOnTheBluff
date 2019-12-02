@@ -20,9 +20,6 @@ public class SadBookGirl extends Character{
         "her completely alone. \nNow her only solace is found in books.";
         this.age = 21;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{8, 6, 5, 4, 4, 4, 3, 2, 0};
         this.might = 5;

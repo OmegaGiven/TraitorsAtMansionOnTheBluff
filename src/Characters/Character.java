@@ -19,8 +19,8 @@ public class Character {
     protected String bio;
     protected int age;
 
-    protected int x;
-    protected int y;
+    protected int x = 502;
+    protected int y = 500;
 
     protected int moveCount; // when turn starts, moveCount = speedIncr[speed]; when moveCount = 0, player has no more moves
     ArrayList<Card> items;
@@ -41,9 +41,6 @@ public class Character {
         this.name = "";
         this.bio = "";
         this.age = 0;
-
-        this.x = 0;
-        this.y = 0;
 
         this.moveCount = 0;
         this.items = new ArrayList<Card>();

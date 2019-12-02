@@ -23,9 +23,6 @@ public class ProfessorMatricide extends Character{
 
         this.age = 57;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{6, 6, 5, 5, 4, 4, 2, 2, 0};
         this.might = 5;
