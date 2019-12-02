@@ -67,7 +67,11 @@ public class Card {
             else if(derek.getType().equals("Omen")){
                 omens.add(derek);
             }
-            System.out.println(derek);
+            Card mike = card.drawCard("Omen", items, omens);
+            Card frank = card.drawCard("Item", items, omens);
+
+            System.out.println(mike);
+            System.out.println(frank);
         }
     }
 
@@ -92,12 +96,13 @@ public class Card {
         }
         return null;
     }
-    public Card drawCard(String cardType){
+    public Card drawCard(String cardType, ArrayList<Card> items, ArrayList<Card> omens){
         switch(cardType){
             case "Item":
-
+                return items.;
             case "Omen":
-
+                return ;
         }
+        return null;
     }
 }
