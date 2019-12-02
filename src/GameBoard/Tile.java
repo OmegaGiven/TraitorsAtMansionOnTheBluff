@@ -1,6 +1,6 @@
 package GameBoard;
 import javafx.scene.image.ImageView;
-import Spook.Card;
+import Card.Card;
 
 
 public class Tile {

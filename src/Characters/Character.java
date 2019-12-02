@@ -21,7 +21,7 @@ public class Character {
     protected int y;
 
     protected int moveCount; // when turn starts, moveCount = speedIncr[speed]; when moveCount = 0, player has no more moves
-//    ArrayList<Card> items;
+//    ArrayList<Card.Card> items;
 
     protected int speed;
     protected int[] speedIncr;
@@ -44,7 +44,7 @@ public class Character {
         this.y = 0;
 
         this.moveCount = 0;
-//        this.items = new ArrayList<Card>();
+//        this.items = new ArrayList<Card.Card>();
 
         this.speed = 0;
         this.speedIncr = new int[8];
@@ -59,7 +59,7 @@ public class Character {
     }
 
     public Character(String name, String bio, ImageView image, int age, int x, int y, int moveCount, int speed,
-//                     ArrayList<Card> items, int[] speedIncr, int might, int[] mightIncr, int sanity,
+//                     ArrayList<Card.Card> items, int[] speedIncr, int might, int[] mightIncr, int sanity,
                      int[] sanityIncr, int knowledge, int[] knowledgeIncr){
         this.name = name;
         this.bio = bio;
