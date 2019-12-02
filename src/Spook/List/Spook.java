@@ -5,7 +5,7 @@
 //public class Spook{
 //    boolean Spook = false;
 //    Tile lastTile;
-//    Omen lastOmen;
+//    Card.Omen lastOmen;
 //    Character Traitor;
 //
 //    String TraitorDescription;

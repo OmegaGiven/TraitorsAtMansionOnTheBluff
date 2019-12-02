@@ -1,6 +1,6 @@
 package GameBoard;
 import javafx.scene.image.ImageView;
-import Card.Card;
+import Card.*;
 
 
 public class Tile {
@@ -11,7 +11,7 @@ public class Tile {
      boolean sDr;
      boolean wDr;
      boolean eDr;
-     private Card[] cards;
+     private Card card;
 
 
     Tile() {
@@ -21,7 +21,7 @@ public class Tile {
         sDr = false;
         wDr = false;
         eDr = false;
-        cards = new Card[3];
+        card = generateCard();
     }
 
     Tile(ImageView image, boolean special) {
@@ -31,6 +31,7 @@ public class Tile {
         this.sDr = true;
         this.wDr = true;
         this.eDr = true;
+        card = generateCard();
     }
 
     Tile(ImageView image, boolean special, boolean n, boolean s, boolean w, boolean e) {
@@ -40,6 +41,7 @@ public class Tile {
         this.sDr = s;
         this.wDr = w;
         this.eDr = e;
+        card = generateCard();
     }
 
     public ImageView image() {
@@ -50,5 +52,19 @@ public class Tile {
         return this.special;
     }
 
-
+    private static Card generateCard(){
+        int which = (int)(Math.random() * ((3 - 1) + 1)) + 1;
+        if(which == 1){
+            return new EventCard();
+        }
+        else if (which == 2){
+            return new ItemCard();
+        }
+        else return new Omen();
+    }
+//    public static void main(String[] args){
+//        for(int i = 0; i < 10; i++){
+//            System.out.println(generateCard());
+//        }
+//    }
 }

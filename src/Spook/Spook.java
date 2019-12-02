@@ -4,7 +4,7 @@ public class Spook {
 
     protected boolean Spook = false;
     protected Tile lastTile;
-    // protected Omen lastOmen;
+    // protected Card.Omen lastOmen;
     protected Character traitor;
 
     protected String traitorDescription;
