@@ -5,17 +5,17 @@ public class EventCard extends Card {
     public EventCard() {
         String frogAttack = "Dozens of tiny frogs descend from the " +
                 "ceiling and start nibbling at your toes. " +
-                "Speed -1";
+                "\nSpeed -1";
         String flameDemon = "Suddenly, a burst of flame erupts from " +
                 "the floor panels. Your eyebrows are singed. " +
-                "Might -1";
+                "\nMight -1";
         String ghostSwoop = "A silvery specter swoops from above. " +
                 "\"Your mother never loved you\", it hisses. " +
-                "Sanity -1";
+                "\nSanity -1";
         String stinkBomb = "A gremlin-like creature hops from behind " +
                 "a flower pot and tosses something in your direction. " +
-                "He cackles and runs away as a putrid yellow smoke fills " +
-                "the room. Knowledge - 1";
+                "\nHe cackles and runs away as a putrid yellow smoke fills " +
+                "the room. \nKnowledge - 1";
 
         int which = (int)(Math.random() * (4 - 1) + 1) + 1;
         if(which == 1){
@@ -39,8 +39,8 @@ public class EventCard extends Card {
             this.setType("Event Card");
         }
     }
-
-    public String toString(){
-        return "Event Card";
-    }
+//
+//    public String toString(){
+//        return "Event Card";
+//    }
 }

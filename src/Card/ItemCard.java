@@ -4,15 +4,15 @@ public class ItemCard extends Card {
 
     public ItemCard(){
         String slimeBall = "An oozing, grey, pocket-sized ball of slime. " +
-                "Does -1 Speed damage"; // speed
+                "\nDeals -1 Speed"; // speed
         String sharpHammer = "A very point hammer. " +
-                "Does -1 Might damage"; // might
+                "\nDeals -1 Might"; // might
         String singingDoll = "A dirty little porcelain doll that " +
                 "sings when you squeeze its throat. " +
-                "Does -1 Sanity damage"; // sanity
+                "\nDeals -1 Sanity"; // sanity
         String largeStick = "A large, flat stick that's the perfect " +
                 "size for banging someones head. " +
-                "Does -1 Knowledge damage"; // knowledge
+                "\nDeals -1 Knowledge"; // knowledge
 
         int which = (int)(Math.random() * (4 - 1) + 1) + 1;
         if(which == 1){
@@ -37,7 +37,7 @@ public class ItemCard extends Card {
         }
     }
 
-    public String toString(){
-        return "Item Card";
-    }
+//    public String toString(){
+//        return "Item Card";
+//    }
 }
