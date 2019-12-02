@@ -29,6 +29,9 @@ public class GameBoard {
 
     private Tile[] stairs = new Tile[3];
 
+    private ScrollPane right = new ScrollPane();
+    private ScrollPane left = new ScrollPane();
+
     private VBox rightPane = new VBox(); // contains up/down buttons and chatbox/narration
     private VBox leftPane = new VBox(); // contains stats and player's items
     private HBox buttonPane = new HBox(); // contains level buttons
@@ -133,7 +136,8 @@ public class GameBoard {
         rightPane.getChildren().add(down);
         Text logTitle = new Text("===== EVENT LOG =====");
         rightPane.getChildren().add(logTitle);
-        pane.setRight(rightPane);
+        right.setContent(rightPane);
+        pane.setRight(right);
 
         // add stats and item boxes to left side of pane
         stats.getChildren().add(new Text("======= STATS ======="));
@@ -145,7 +149,8 @@ public class GameBoard {
         Text omen = new Text("======= OMEN =======");
         leftPane.getChildren().add(omen);
         leftPane.getChildren().add(omens);
-        pane.setLeft(leftPane);
+        left.setContent(leftPane);
+        pane.setLeft(left);
 
 
         ArrayList<Integer> added = new ArrayList<>();

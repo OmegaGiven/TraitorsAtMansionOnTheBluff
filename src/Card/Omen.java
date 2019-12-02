@@ -35,9 +35,8 @@ public class Omen extends Card {
             this.setCardDescription(ratSkull);
             this.setType("Omen");
         }
+        this.setDamage(1);
+        this.setCategory("spook");
     }
-//
-//    public String toString(){
-//        return "Omen";
-//    }
+
 }

@@ -8,15 +8,39 @@ public class Card {
     private String description;
     private String type;
 
-    public Card(String name, String type, String desc) {
+    private int damage;
+    private String category;
+
+    public Card(String name, String type, String desc, int damage, String category) {
         this.name = name;
         this.type = type;
         this.description = desc;
+        this.damage = damage;
+        this.category = category;
     }
+
     public Card(){
         this.name = "";
         this.description = "";
         this.type = "";
+        this.damage = 0;
+        this.category = "";
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
