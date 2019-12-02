@@ -1,7 +1,5 @@
 package GameBoard;
-import javafx.beans.property.BooleanProperty;
 import javafx.geometry.HPos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -45,7 +43,7 @@ public class GameBoard {
     private Button attack = new Button("Attack");
     private Button weaponSelect = new Button("Select Weapon");
     private Text selectedWeapon = new Text();
-    private String selectedID;
+    // private String selectedID;
     private Button endTurn = new Button("End Turn");
 
     private Stage weapons = new Stage();

@@ -82,6 +82,7 @@ public class Main extends Application {
                     Scene scene = new Scene(pane);
                     stage.setMaximized(true);
                     stage.setScene(scene);
+                    stage.setTitle("Traitors At Mansion On The Bluff");
                     board.run(scene, pane, user);
                     stage.show();
                     st.close();
@@ -110,6 +111,7 @@ public class Main extends Application {
         BorderPane game = new BorderPane();
         game.setCenter(CharacterSelect(game));
         Scene scene = new Scene(game, 500, 350);
+        st.setTitle("Character Select");
         st.setScene(scene);
         //st.setMaximized(true);
         st.show();
