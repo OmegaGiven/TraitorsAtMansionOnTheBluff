@@ -1,0 +1,1 @@
+Oddly Sharp Hammer,Item,This is definitely not an axe. +1 to might,1,might,Card/item_images/SharpHammer.png

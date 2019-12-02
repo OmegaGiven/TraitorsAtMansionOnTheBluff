@@ -100,27 +100,29 @@ public class Card {
 //        }
 //    }
 
-//    public ArrayList<Card> readCards(String filename){
-//        try {
-//            BufferedReader file = new BufferedReader(new FileReader(filename));
-//            String line = file.readLine();
-//            String[] tempLine;
-//            ArrayList<Card> returnCard = new ArrayList<Card>();
-//            while(line != null){
-//                tempLine = line.split(",");
-//                returnCard.add(new Card(tempLine[0], tempLine[1], tempLine[2], tempLine[3]));
-//                line = file.readLine();
-//            }
-//            return returnCard;
-//        }
-//        catch(FileNotFoundException e){
-//            e.printStackTrace();
-//        }
-//        catch(IOException t){
-//            t.printStackTrace();
-//        }
-//        return null;
-//    }
+    public ArrayList<Card> readCards(String filename){
+        try {
+            BufferedReader file = new BufferedReader(new FileReader(filename));
+            String line = file.readLine();
+            String[] tempLine;
+            ArrayList<Card> returnCard = new ArrayList<Card>();
+            while(line != null){
+                tempLine = line.split(",");
+                int damage =  Integer.parseInt(tempLine[3]);
+                ImageView picture = new ImageView(tempLine[5]);
+                returnCard.add(new Card(tempLine[0], tempLine[1], tempLine[2], damage, tempLine[4], picture));
+                line = file.readLine();
+            }
+            return returnCard;
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch(IOException t){
+            t.printStackTrace();
+        }
+        return null;
+    }
 //    public Card drawCard(String cardType){
 //        switch(cardType){
 //            case "Item":
