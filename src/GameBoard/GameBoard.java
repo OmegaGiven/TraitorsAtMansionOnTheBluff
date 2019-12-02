@@ -43,12 +43,11 @@ public class GameBoard {
     private Button attack = new Button("Attack");
     private Button weaponSelect = new Button("Select Weapon");
     private Text selectedWeapon = new Text();
-    // private String selectedID;
     private Button endTurn = new Button("End Turn");
     private Stage weapons = new Stage();
 
-    private VBox stats = new VBox();
     private VBox items = new VBox();
+    private VBox stats = new VBox();
     private VBox omens = new VBox();
 
     private int sCount = 0;
@@ -428,8 +427,6 @@ public class GameBoard {
                 b.setOnMouseClicked(o ->{
                     weapons.setTitle("Weapon Select - " + b.getText().toUpperCase() + " SELECTED");
                     selectedWeapon.setText(character.getName() + " used\n" + b.getText() + "\n");
-                    //select.getChildren().remove(b);
-                    //selectedID = b.getId();
                 });
                 select.getChildren().add(b);
             }
@@ -441,19 +438,6 @@ public class GameBoard {
             wPane.setRight(cardScroll);
             weaponSelect.setOnMouseClicked(v ->{
                 weapons.close();
-                // TODO: this is for getting rid of an item you've used
-                //       but the bitch won't WORK
-//                for(Node b : select.getChildren()){
-//                    if(b.getId().equals(selectedID)){
-//                        String f = ((Text) b).getText();
-//                        for(Card c : character.getCards()){
-//                            if(c.getCardName().equals(f)){
-//                                character.removeItem(c);
-//                            }
-//                        }
-//
-//                    }
-//                }
                 selectedWeapon.setFill(Color.MAROON);
                 Text nW = new Text(selectedWeapon.getText()); // janky workaround so multiple weapon uses show up as separate events
                 nW.setFill(Color.MAROON);
