@@ -10,8 +10,8 @@ public class TheDollKid extends Character{
     public TheDollKid(){
 
         super.image = new ImageView("https://i.imgur.com/rtwqy76.png");
-        image.setFitWidth(50);
-        image.setFitHeight(50);
+        image.setFitWidth(75);
+        image.setFitHeight(75);
         move = moveCount;
 
         this.name = "The Doll Kid";

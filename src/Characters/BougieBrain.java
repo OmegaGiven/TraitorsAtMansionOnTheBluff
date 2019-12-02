@@ -12,8 +12,8 @@ public class BougieBrain extends Character {
     public BougieBrain(){
 
         super.image = new ImageView("https://i.imgur.com/CRKiRqz.png");
-        image.setFitWidth(50);
-        image.setFitHeight(50);
+        image.setFitWidth(75);
+        image.setFitHeight(75);
         move = moveCount;
 
         this.name = "Bougie Brain";

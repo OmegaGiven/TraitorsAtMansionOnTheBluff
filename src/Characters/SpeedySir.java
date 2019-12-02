@@ -10,8 +10,8 @@ public class SpeedySir extends Character {
     public SpeedySir(){
 
         super.image = new ImageView("https://i.imgur.com/TKLWSmm.png");
-        image.setFitWidth(50);
-        image.setFitHeight(50);
+        image.setFitWidth(75);
+        image.setFitHeight(75);
         move = moveCount;
 
         this.name = "Speedy Sir";

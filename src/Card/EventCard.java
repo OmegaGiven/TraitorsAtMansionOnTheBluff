@@ -12,7 +12,7 @@ public class EventCard extends Card {
         String ghostSwoop = "A silvery specter swoops \nfrom above. " +
                 "\"Your mother\nnever loved you\", it hisses. " +
                 "\nSANITY -1";
-        String stinkBomb = "A gremlin-like appears and \n" +
+        String stinkBomb = "A gremlin thing appears and \n" +
                 "tosses something at you. \n" +
                 "Putrid smoke fills the room.\nKNOWLEDGE - 1";
 

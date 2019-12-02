@@ -142,8 +142,8 @@ public class GameBoard {
         leftPane.getChildren().add(stats);
         items.getChildren().add(new Text("======= ITEMS ======="));
         leftPane.getChildren().add(items);
-        Text spookCount = new Text("==== SPOOK COUNT ====");
-        leftPane.getChildren().add(spookCount);
+        Text omen = new Text("======= OMEN =======");
+        leftPane.getChildren().add(omen);
         leftPane.getChildren().add(omens);
         pane.setLeft(leftPane);
 

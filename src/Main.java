@@ -79,7 +79,8 @@ public class Main extends Application {
                     GameBoard board = new GameBoard();
                     Stage stage = new Stage();
                     BorderPane pane = new BorderPane();
-                    Scene scene = new Scene(pane, 1000, 600);
+                    Scene scene = new Scene(pane);
+                    stage.setMaximized(true);
                     stage.setScene(scene);
                     board.run(scene, pane, user);
                     stage.show();
@@ -108,7 +109,7 @@ public class Main extends Application {
     public void start(Stage stage){
         BorderPane game = new BorderPane();
         game.setCenter(CharacterSelect(game));
-        Scene scene = new Scene(game, 1000, 600);
+        Scene scene = new Scene(game, 500, 350);
         st.setScene(scene);
         //st.setMaximized(true);
         st.show();

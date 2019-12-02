@@ -11,8 +11,8 @@ public class ProfessorMatricide extends Character{
     public ProfessorMatricide(){
 
         super.image = new ImageView("https://i.imgur.com/rJZwA1T.png");
-        image.setFitWidth(50);
-        image.setFitHeight(50);
+        image.setFitWidth(75);
+        image.setFitHeight(75);
         move = moveCount;
 
         this.name = "Prof. Matricide";

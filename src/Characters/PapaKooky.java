@@ -11,8 +11,8 @@ public class PapaKooky extends Character {
     public PapaKooky(){
 
         super.image = new ImageView("https://i.imgur.com/Vu005Wm.png");
-        image.setFitWidth(50);
-        image.setFitHeight(50);
+        image.setFitWidth(75);
+        image.setFitHeight(75);
         move = moveCount;
 
         this.name = "Papa Kooky";

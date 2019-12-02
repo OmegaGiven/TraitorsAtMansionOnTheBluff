@@ -10,8 +10,8 @@ public class SadBookGirl extends Character{
     public SadBookGirl(){
 
         super.image = new ImageView("https://i.imgur.com/cH1IjHy.png");
-        image.setFitWidth(50);
-        image.setFitHeight(50);
+        image.setFitWidth(75);
+        image.setFitHeight(75);
         move = moveCount;
 
         this.name = "Sad Book Girl";
