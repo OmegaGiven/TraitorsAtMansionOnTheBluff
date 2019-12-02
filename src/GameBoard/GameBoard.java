@@ -416,7 +416,13 @@ public class GameBoard {
             VBox select = new VBox();
             for(Card c : character.getCards()){
                 Text t = new Text(c.toString());
-                cards.getChildren().add(t);
+                ImageView i = c.getImage();
+                VBox it = new VBox();
+                it.getChildren().add(i);
+                it.getChildren().add(t);
+                i.setFitHeight(80);
+                i.setFitWidth(80);
+                cards.getChildren().add(it);
                 Button b = new Button(c.getCardName());
                 b.setOnMouseClicked(o ->{
                     weapons.setTitle("Weapon Select - " + b.getText().toUpperCase() + " SELECTED");
