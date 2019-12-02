@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Character {
 
     ImageView image;
+    ImageView traitorImage;
     int move;
 
     protected String name;
@@ -261,6 +262,9 @@ public class Character {
     }
 
     public void setTraitor(boolean traitor) {
+        traitorImage.setFitWidth(75);
+        traitorImage.setFitHeight(75);
+        this.image = traitorImage;
         this.traitor = traitor;
     }
 

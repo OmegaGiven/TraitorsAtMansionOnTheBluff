@@ -11,7 +11,8 @@ public class BugBoy extends Character {
 
     public BugBoy(){
 
-        super.image = new ImageView("https://i.imgur.com/PPxxrhH.png");
+        super.image = new ImageView("Characters/character_images/BugBoy.png");
+        traitorImage = new ImageView("Characters/character_images/BugBoy_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

@@ -9,7 +9,8 @@ public class PuppetBoy extends Character {
 
     public PuppetBoy(){
 
-        super.image = new ImageView("https://i.imgur.com/gKVlLGv.png");
+        super.image = new ImageView("Characters/character_images/PuppetBoy.png");
+        traitorImage = new ImageView("Characters/character_images/PuppetBoy_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

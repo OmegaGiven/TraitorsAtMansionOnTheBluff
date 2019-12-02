@@ -64,6 +64,8 @@ public class GameBoard {
     private int onPane;
     private boolean move = true;
 
+    private boolean spook = false;
+
 
     public void run(Scene scene, BorderPane pane, Character character) {
 
@@ -341,17 +343,18 @@ public class GameBoard {
                                 items.getChildren().add(card);
                                 character.addItem(allTiles[choice].card);
                             }
-                            else if(allTiles[choice].card.getType().equals("Omen")){
+                            else if(!spook && allTiles[choice].card.getType().equals("Omen")){
                                 omens.getChildren().add(card);
                                 sCount++;
                                 spookCount.setText("SPOOK COUNT: " + sCount);
                                 if(sCount == 4){
+                                    spook = true;
                                     character.setTraitor(true);
                                     Text spookLog = new Text("SPOOK TRIGGERED");
                                     spookLog.setFill(Color.RED);
                                     spookLog.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
                                     rightPane.getChildren().add(spookLog);
-                                    Text spookText = new Text("Your new objective:\nKILL THE OTHER PLAYER");
+                                    Text spookText = new Text("Your new objective:\nKILL THE OTHER PLAYER\n");
                                     spookText.setFill(Color.RED);
                                     rightPane.getChildren().add(spookText);
                                 }

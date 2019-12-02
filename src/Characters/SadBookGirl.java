@@ -9,7 +9,8 @@ public class SadBookGirl extends Character{
 
     public SadBookGirl(){
 
-        super.image = new ImageView("https://i.imgur.com/cH1IjHy.png");
+        super.image = new ImageView("Characters/character_images/SadBookGirl.png");
+        traitorImage = new ImageView("Characters/character_images/SadBookGirl_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

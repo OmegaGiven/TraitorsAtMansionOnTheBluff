@@ -9,7 +9,8 @@ public class SpookyWitchLady extends Character{
 
     public SpookyWitchLady(){
 
-        super.image = new ImageView("https://i.imgur.com/lbzgVih.png");
+        super.image = new ImageView("Characters/character_images/SpookyWitchLady.png");
+        traitorImage = new ImageView("Characters/character_images/SpookyWitchLady_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

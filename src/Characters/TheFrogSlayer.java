@@ -9,7 +9,8 @@ public class TheFrogSlayer extends Character{
 
     public TheFrogSlayer(){
 
-        super.image = new ImageView("https://i.imgur.com/LI8jfhd.png");
+        super.image = new ImageView("Characters/character_images/TheFrogSlayer.png");
+        traitorImage = new ImageView("Characters/character_images/TheFrogSlayer_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

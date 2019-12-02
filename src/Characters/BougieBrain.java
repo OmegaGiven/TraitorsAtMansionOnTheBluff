@@ -11,7 +11,9 @@ public class BougieBrain extends Character {
 
     public BougieBrain(){
 
-        super.image = new ImageView("https://i.imgur.com/CRKiRqz.png");
+        //super.image = new ImageView("https://i.imgur.com/CRKiRqz.png");
+        super.image = new ImageView("Characters/character_images/BougieBrain.png");
+        traitorImage = new ImageView("Characters/character_images/BougieBrain_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

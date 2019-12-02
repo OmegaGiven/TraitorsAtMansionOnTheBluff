@@ -2,7 +2,7 @@ package Characters;
 public class CharacterTester {
 
     public static void main(String[] args){
-        BugBoy jasp = new BugBoy();
+        BougieBrain jasp = new BougieBrain();
         System.out.println(jasp.getBio());
         System.out.println("==== SPEED ====");
         System.out.println("EXPECTED:       8");

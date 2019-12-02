@@ -9,7 +9,8 @@ public class TheBigBoy extends Character {
 
     public TheBigBoy(){
 
-        super.image = new ImageView("https://i.imgur.com/DnigrM7.png");
+        super.image = new ImageView("Characters/character_images/TheBigBoy.png");
+        traitorImage = new ImageView("Characters/character_images/TheBigBoy_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

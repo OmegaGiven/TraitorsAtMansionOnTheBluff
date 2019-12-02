@@ -10,7 +10,8 @@ public class ProfessorMatricide extends Character{
 
     public ProfessorMatricide(){
 
-        super.image = new ImageView("https://i.imgur.com/rJZwA1T.png");
+        super.image = new ImageView("Characters/character_images/ProfessorMatricide.png");
+        traitorImage = new ImageView("Characters/character_images/ProfessorMatricide_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

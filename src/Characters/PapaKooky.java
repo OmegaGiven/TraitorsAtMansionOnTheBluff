@@ -10,7 +10,8 @@ public class PapaKooky extends Character {
 
     public PapaKooky(){
 
-        super.image = new ImageView("https://i.imgur.com/Vu005Wm.png");
+        super.image = new ImageView("Characters/character_images/PapaKooky.png");
+        traitorImage = new ImageView("Characters/character_images/PapaKooky_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

@@ -9,7 +9,8 @@ public class SpeedySir extends Character {
 
     public SpeedySir(){
 
-        super.image = new ImageView("https://i.imgur.com/TKLWSmm.png");
+        super.image = new ImageView("Characters/character_images/SpeedySir.png");
+        traitorImage = new ImageView("Characters/character_images/SpeedySir_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

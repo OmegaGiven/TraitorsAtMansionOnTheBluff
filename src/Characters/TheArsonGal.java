@@ -9,7 +9,8 @@ public class TheArsonGal extends Character {
 
     public TheArsonGal(){
 
-        super.image = new ImageView("https://i.imgur.com/xB0U8hs.png");
+        super.image = new ImageView("Characters/character_images/TheArsonGal.png");
+        traitorImage = new ImageView("Characters/character_images/TheArsonGal_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;

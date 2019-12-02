@@ -9,7 +9,8 @@ public class TheDollKid extends Character{
 
     public TheDollKid(){
 
-        super.image = new ImageView("https://i.imgur.com/rtwqy76.png");
+        super.image = new ImageView("Characters/character_images/TheDollKid.png");
+        traitorImage = new ImageView("Characters/character_images/TheDollKid_TRAITOR.png");
         image.setFitWidth(75);
         image.setFitHeight(75);
         move = moveCount;
