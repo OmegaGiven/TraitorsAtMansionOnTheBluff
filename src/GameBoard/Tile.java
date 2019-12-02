@@ -1,5 +1,7 @@
 package GameBoard;
 import javafx.scene.image.ImageView;
+import Spook.Card;
+
 
 public class Tile {
 
@@ -9,6 +11,7 @@ public class Tile {
      boolean sDr;
      boolean wDr;
      boolean eDr;
+     private Card[] cards;
 
 
     Tile() {
@@ -18,6 +21,7 @@ public class Tile {
         sDr = false;
         wDr = false;
         eDr = false;
+        cards = new Card[3];
     }
 
     Tile(ImageView image, boolean special) {

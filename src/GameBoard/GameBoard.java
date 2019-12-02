@@ -33,6 +33,9 @@ public class GameBoard {
     private Button up = new Button("Go Up");
     private Button down = new Button("Go Down");
 
+    private Button attack = new Button("Attack");
+    private Button turn = new Button("End Turn");
+
     private Tile[][][] boardTiles = new Tile[3][100][100];
     private ScrollPane scrollPane = new ScrollPane();
 
