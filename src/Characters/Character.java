@@ -1,4 +1,5 @@
 package Characters;
+import Card.Card;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Character {
     protected int y;
 
     protected int moveCount; // when turn starts, moveCount = speedIncr[speed]; when moveCount = 0, player has no more moves
-//    ArrayList<Card.Card> items;
+    ArrayList<Card> items;
 
     protected int speed;
     protected int[] speedIncr;
@@ -44,7 +45,7 @@ public class Character {
         this.y = 0;
 
         this.moveCount = 0;
-//        this.items = new ArrayList<Card.Card>();
+        this.items = new ArrayList<Card>();
 
         this.speed = 0;
         this.speedIncr = new int[8];
@@ -59,14 +60,14 @@ public class Character {
     }
 
     public Character(String name, String bio, ImageView image, int age, int x, int y, int moveCount, int speed,
-//                     ArrayList<Card.Card> items, int[] speedIncr, int might, int[] mightIncr, int sanity,
+                     ArrayList<Card> items, int[] speedIncr, int might, int[] mightIncr, int sanity,
                      int[] sanityIncr, int knowledge, int[] knowledgeIncr){
         this.name = name;
         this.bio = bio;
         this.image = image;
         this.age = age;
         this.moveCount = moveCount;
-//        this.items = items;
+        this.items = items;
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -88,6 +89,14 @@ public class Character {
         stats +=       "\nSANITY                :    " + sanity;
         stats +=       "\nKNOWLEDGE       :    " + knowledge;
         return stats;
+    }
+
+    public void addItem(Card item){
+        items.add(item);
+    }
+
+    public ArrayList<Card> getCards(){
+        return items;
     }
 
     public boolean isAlive(){

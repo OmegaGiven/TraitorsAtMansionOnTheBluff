@@ -5,15 +5,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import Characters.Character;
+import Card.Card;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -42,12 +41,19 @@ public class GameBoard {
 
     private Button up = new Button("Go Up");
     private Button down = new Button("Go Down");
+    private Button attack = new Button("Attack");
+    private Button weaponSelect = new Button("Select Weapon");
+    private Text selectedWeapon = new Text();
+    private Button endTurn = new Button("End Turn");
+
+    private Stage weapons = new Stage();
 
     private VBox stats = new VBox();
     private VBox items = new VBox();
     private VBox omens = new VBox();
 
     private int sCount = 0;
+    private int moves = 0;
 
     private Tile[][][] boardTiles = new Tile[3][100][100];
     private ScrollPane scrollPane = new ScrollPane();
@@ -58,6 +64,8 @@ public class GameBoard {
 
 
     public void run(Scene scene, BorderPane pane, Character character) {
+
+        moves = character.getSpeed();
 
         scrollPane.setContent(pane.getCenter());
         pane.setCenter(scrollPane);
@@ -140,7 +148,10 @@ public class GameBoard {
         // add the up and down buttons for the right side of the pane.
         rightPane.getChildren().add(up);
         rightPane.getChildren().add(down);
+        rightPane.getChildren().add(attack);
+        rightPane.getChildren().add(endTurn);
         Text logTitle = new Text("===== EVENT LOG =====");
+        logTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         rightPane.getChildren().add(logTitle);
         right.setContent(rightPane);
         pane.setRight(right);
@@ -149,6 +160,9 @@ public class GameBoard {
         Text statsTitle = new Text("======= STATS =======");
         statsTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         stats.getChildren().add(statsTitle);
+        Text movesLeft = new Text("MOVES LEFT: " + moves);
+        movesLeft.setFill(Color.DARKBLUE);
+        stats.getChildren().add(movesLeft);
         Text statistics = new Text(character.getStats());
         stats.getChildren().add(statistics);
         leftPane.getChildren().add(stats);
@@ -156,7 +170,7 @@ public class GameBoard {
         itemsTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         items.getChildren().add(itemsTitle);
         leftPane.getChildren().add(items);
-        Text omen = new Text("======= OMEN =======");
+        Text omen = new Text("======= OMENS =======");
         omen.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         Text spookCount = new Text("SPOOK COUNT: " + sCount);
         spookCount.setFill(Color.CRIMSON);
@@ -323,6 +337,7 @@ public class GameBoard {
                             rightPane.getChildren().remove(card);
                             if(allTiles[choice].card.getType().equals("Item Card")){
                                 items.getChildren().add(card);
+                                character.addItem(allTiles[choice].card);
                             }
                             else if(allTiles[choice].card.getType().equals("Omen")){
                                 omens.getChildren().add(card);
@@ -368,7 +383,45 @@ public class GameBoard {
 
         });
 
+        // end turn button
+        endTurn.setOnMouseClicked(e ->{
+            Text end = new Text(character.getName() + " has ended \ntheir turn...\n");
+            end.setFill(Color.DARKGREEN);
+            rightPane.getChildren().add(end);
+            // where information will be sent over for server
+        });
 
+        // attack button
+        attack.setOnMouseClicked(e ->{
+            weapons.setTitle("Weapon Select");
+            BorderPane wPane = new BorderPane();
+            FlowPane cards = new FlowPane();
+            cards.setMaxWidth(400);
+            VBox select = new VBox();
+            for(Card c : character.getCards()){
+                Text t = new Text(c.toString());
+                cards.getChildren().add(t);
+                Button b = new Button(c.getCardName());
+                b.setOnMouseClicked(o ->{
+                    weapons.setTitle("Weapon Select - " + b.getText().toUpperCase() + " SELECTED");
+                    selectedWeapon.setText(character.getName() + " used\n" + b.getText() + "\n");
+                });
+                select.getChildren().add(b);
+            }
+            select.getChildren().add(new Text("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"));
+            select.getChildren().add(weaponSelect);
+            wPane.setLeft(select);
+            wPane.setCenter(new Text("             "));
+            wPane.setRight(cards);
+            weaponSelect.setOnMouseClicked(v ->{
+                weapons.close();
+                selectedWeapon.setFill(Color.MAROON);
+                rightPane.getChildren().add(selectedWeapon);
+            });
+            Scene scene1 = new Scene(wPane, 500, 350);
+            weapons.setScene(scene1);
+            weapons.show();
+        });
 
         // this sets the up button so when pressed the character goes "up" the stairs.
         up.setOnMouseClicked(e -> {
