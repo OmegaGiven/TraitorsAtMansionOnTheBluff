@@ -100,21 +100,25 @@ public class Character {
 
     public int changeSpeed(int amt){
         speed = speed + amt;
+        if(speedIncr[speed] == 0) isAlive = false;
         return speedIncr[speed];
     }
 
     public int changeMight(int amt){
         might = might + amt;
+        if(mightIncr[might] == 0) isAlive = false;
         return mightIncr[might];
     }
 
     public int changeSanity(int amt){
         sanity = sanity + amt;
+        if(sanityIncr[sanity] == 0) isAlive = false;
         return sanityIncr[sanity];
     }
 
     public int changeKnowledge(int amt){
         knowledge = knowledge + amt;
+        if(knowledgeIncr[knowledge] == 0) isAlive = false;
         return knowledgeIncr[knowledge];
     }
 

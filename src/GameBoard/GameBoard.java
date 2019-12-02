@@ -1,4 +1,5 @@
 package GameBoard;
+import javafx.beans.property.BooleanProperty;
 import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,6 +10,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import Characters.Character;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
@@ -42,6 +46,8 @@ public class GameBoard {
     private VBox stats = new VBox();
     private VBox items = new VBox();
     private VBox omens = new VBox();
+
+    private int sCount = 0;
 
     private Tile[][][] boardTiles = new Tile[3][100][100];
     private ScrollPane scrollPane = new ScrollPane();
@@ -140,14 +146,22 @@ public class GameBoard {
         pane.setRight(right);
 
         // add stats and item boxes to left side of pane
-        stats.getChildren().add(new Text("======= STATS ======="));
+        Text statsTitle = new Text("======= STATS =======");
+        statsTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        stats.getChildren().add(statsTitle);
         Text statistics = new Text(character.getStats());
         stats.getChildren().add(statistics);
         leftPane.getChildren().add(stats);
-        items.getChildren().add(new Text("======= ITEMS ======="));
+        Text itemsTitle = new Text("======= ITEMS =======");
+        itemsTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        items.getChildren().add(itemsTitle);
         leftPane.getChildren().add(items);
         Text omen = new Text("======= OMEN =======");
+        omen.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        Text spookCount = new Text("SPOOK COUNT: " + sCount);
+        spookCount.setFill(Color.CRIMSON);
         leftPane.getChildren().add(omen);
+        leftPane.getChildren().add(spookCount);
         leftPane.getChildren().add(omens);
         left.setContent(leftPane);
         pane.setLeft(left);
@@ -306,14 +320,37 @@ public class GameBoard {
                             center.add(allTiles[choice].image(), character.getX(), character.getY());
                             boardTiles[onPane][character.getX()][character.getY()] = allTiles[choice];
                             card.setText(allTiles[choice].card.toString());
-                            if(rightPane.getChildren().contains(card))
-                                rightPane.getChildren().remove(card);
-                            rightPane.getChildren().add(card);
+                            rightPane.getChildren().remove(card);
                             if(allTiles[choice].card.getType().equals("Item Card")){
                                 items.getChildren().add(card);
                             }
                             else if(allTiles[choice].card.getType().equals("Omen")){
                                 omens.getChildren().add(card);
+                                sCount++;
+                                spookCount.setText("SPOOK COUNT: " + sCount);
+                            }
+                            else{
+                                rightPane.getChildren().add(card);
+                                //int damage = allTiles[choice].card.getDamage();
+                                int damage = -1;
+                                switch(allTiles[choice].card.getCategory()) {
+                                    case "speed":
+                                        character.changeSpeed(damage);
+                                        break;
+                                    case "might":
+                                        character.changeMight(damage);
+                                        break;
+                                    case "sanity":
+                                        character.changeSanity(damage);
+                                        break;
+                                    case "knowledge":
+                                        character.changeKnowledge(damage);
+                                        break;
+                                }
+                                stats.getChildren().remove(statistics);
+                                statistics.setText(character.getStats());
+                                stats.getChildren().add(statistics);
+
                             }
                     }
 
@@ -330,6 +367,8 @@ public class GameBoard {
             }
 
         });
+
+
 
         // this sets the up button so when pressed the character goes "up" the stairs.
         up.setOnMouseClicked(e -> {
