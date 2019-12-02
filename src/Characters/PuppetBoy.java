@@ -21,9 +21,6 @@ public class PuppetBoy extends Character {
         "slept.";
         this.age = 12;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 5; // index speed is at
         this.speedIncr = new int[]{8, 7, 6, 5, 4, 4, 4, 3, 0};
         this.might = 4;

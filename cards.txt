@@ -1,2 +1,0 @@
-Cat Card,https://images.app.goo.gl/4BnCZz7PRDQKcR8v9,Item,It's a cat
-Oddly Sharp Hammer,nope,Item,This is definitely not an axe. +2 to attack

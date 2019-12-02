@@ -19,9 +19,6 @@ public class TheDollKid extends Character{
         this.bio = "The Doll Kid has a lot of dolls. The dolls are \nusually nice.";
         this.age = 8;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{8, 8, 6, 5, 4, 4, 4, 4, 0};
         this.might = 4;

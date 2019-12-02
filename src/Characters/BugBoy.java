@@ -22,9 +22,6 @@ public class BugBoy extends Character {
         " Now he takes out \nhis anger on the ants.";
         this.age = 13;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 4; // index speed is at
         this.speedIncr = new int[]{7, 7, 6, 6, 4, 3, 3, 3, 0};
         this.might = 5;

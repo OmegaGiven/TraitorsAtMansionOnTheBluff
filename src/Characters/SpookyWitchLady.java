@@ -21,9 +21,6 @@ public class SpookyWitchLady extends Character{
         "\nlook into her own future.";
         this.age = 37;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 5; // index speed is at
         this.speedIncr = new int[]{7, 6, 6, 5, 5, 3, 3, 2, 0};
         this.might = 4;

@@ -20,9 +20,6 @@ public class SpeedySir extends Character {
         "himself. Or the Unpleasant \nSomething that's chasing him.";
         this.age = 20;
 
-        this.x = 2;
-        this.y = 5;
-
         this.speed = 3; // index speed is at
         this.speedIncr = new int[]{8, 7, 7, 6, 5, 4, 4, 4, 0};
         this.might = 5;

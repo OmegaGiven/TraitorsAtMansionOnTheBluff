@@ -53,7 +53,7 @@ public class GameBoard {
     private int sCount = 0;
     private int moves = 0;
 
-    private Tile[][][] boardTiles = new Tile[3][100][100];
+    private Tile[][][] boardTiles = new Tile[3][1000][1000];
     private ScrollPane scrollPane = new ScrollPane();
 
     // this variable just keeps track of what pane the player is on right now.
@@ -61,6 +61,8 @@ public class GameBoard {
     private boolean move = true;
 
     private boolean spook = false;
+    private int stairX = 500;
+    private int stairY = 500;
 
 
     public void run(Scene scene, BorderPane pane, Character character) {
@@ -97,9 +99,9 @@ public class GameBoard {
             Tile stair =  new Tile(new ImageView(images[j]), false, true, true, true, true);
             stair.image().setFitWidth(200);
             stair.image().setFitHeight(200);
-            boardTiles[j][0][5] = stair;
+            boardTiles[j][stairX][stairY] = stair;
             stairs[j] = stair;
-            gridPanes[j].add(stairs[j].image(), 0, 5);
+            gridPanes[j].add(stairs[j].image(), stairX, stairY);
 
             // This sets the gridPanes to have the groundHall and the Entrance tiles
             if(j == 1) {
@@ -108,21 +110,21 @@ public class GameBoard {
                 stair.image().setFitWidth(200);
                 stair.image().setFitHeight(200);
                 stairs[j] = stair;
-                boardTiles[j][0][5] = stair;
+                boardTiles[j][stairX][stairY] = stair;
 
                 // this sets up the middle tile of the ground floor
                 Tile tile = new Tile(new ImageView("GameBoard/tiles_images/HALLWAY.png"), false);
                 tile.image().setFitWidth(200);
                 tile.image().setFitHeight(200);
-                boardTiles[j][1][5] = tile;
-                gridPanes[j].add(tile.image(), 1, 5);
+                boardTiles[j][stairX + 1][stairY] = tile;
+                gridPanes[j].add(tile.image(), stairX + 1, stairY);
 
                 // this sets up the far right tile of the ground floor
                 tile = new Tile(new ImageView("GameBoard/tiles_images/ENTRANCE_HALL.png"), false);
                 tile.image().setFitWidth(200);
                 tile.image().setFitHeight(200);
-                boardTiles[j][2][5] = tile;
-                gridPanes[j].add(tile.image(), 2, 5);
+                boardTiles[j][stairX + 2][stairY] = tile;
+                gridPanes[j].add(tile.image(), stairX + 2, stairY);
             }
 
             // adds all the buttons to change between floors
@@ -451,7 +453,7 @@ public class GameBoard {
 
         // this sets the up button so when pressed the character goes "up" the stairs.
         up.setOnMouseClicked(e -> {
-            if (character.getY() == 5 && character.getX() == 0) {
+            if (character.getY() == stairY && character.getX() == stairX) {
                 for (int i = 0; i < gridPanes.length; i++) {
                     if (/*pane.getCenter()*/scrollPane.getContent() == gridPanes[i]) {
                         if(setStairs(true, character, i)){
@@ -466,7 +468,7 @@ public class GameBoard {
 
         // this set the down button so when pressed the character goes "down" the stairs.
         down.setOnMouseClicked(el -> {
-            if (character.getY() == 5 && character.getX() == 0) {
+            if (character.getY() == stairY && character.getX() == stairX) {
                 for (int i = 0; i < gridPanes.length; i++) {
                     if (scrollPane.getContent()/*pane.getCenter()*/ == gridPanes[i]) {
                         if(setStairs(false, character, i)) {
@@ -508,7 +510,7 @@ public class GameBoard {
             }
 
             // this adds the character image to the pane
-            gridPanes[index].add(character.getImage(), 0, 5);
+            gridPanes[index].add(character.getImage(), character.getX(), character.getY());
             // this makes the character image in the center of the tile
             gridPanes[1].setHalignment(character.getImage(), HPos.CENTER);
             scrollPane.setContent(gridPanes[index]);

@@ -22,10 +22,6 @@ public class PapaKooky extends Character {
         " pain and death.";
         this.age = 62;
 
-        this.x = 2;
-        this.y = 5;
-
-
 
         this.speed = 5; // index speed is at
         this.speedIncr = new int[]{7, 7, 6, 5, 4, 3, 3, 2, 0};
