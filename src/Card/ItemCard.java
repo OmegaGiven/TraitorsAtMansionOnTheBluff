@@ -6,7 +6,7 @@ public class ItemCard extends Card {
 
 
     public ItemCard() {
-        String slimeBall = "An oozing, green pocket-sized ball of slime. " +
+        String slimeBall = "An oozing, green \npocket-sized ball of slime. " +
                 "\nDEALS -1 SPEED"; // speed
         String sharpHammer = "A very pointy hammer. " +
                 "\nDEALS -1 MIGHT"; // might
@@ -22,7 +22,7 @@ public class ItemCard extends Card {
         ImageView doll = new ImageView("Card/item_images/SingingDoll.png");
         ImageView stick = new ImageView("Card/item_images/LargeStick.png");
 
-        int which = (int) (Math.random() * (4 - 1) + 1) + 1;
+        int which = (int) (Math.random() * ((4 - 1) + 1)) + 1;
         if (which == 1) {
             this.setCardName("SLIME BALL");
             this.setCardDescription(slimeBall);

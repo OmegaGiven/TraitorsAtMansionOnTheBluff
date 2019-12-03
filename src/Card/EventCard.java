@@ -16,7 +16,7 @@ public class EventCard extends Card {
                 "tosses something at you. \n" +
                 "Putrid smoke fills the room.\nKNOWLEDGE - 1";
 
-        int which = (int)(Math.random() * (4 - 1) + 1) + 1;
+        int which = (int)(Math.random() * ((4 - 1) + 1)) + 1;
         if(which == 1){
             this.setCardName("FROG ATTACK");
             this.setCardDescription(frogAttack);
