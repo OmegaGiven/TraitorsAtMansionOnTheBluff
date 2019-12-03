@@ -338,6 +338,10 @@ public class GameBoard {
                             card.setText(allTiles[choice].card.toString());
                             rightPane.getChildren().remove(card);
                             if(allTiles[choice].card.getType().equals("Item")){
+                                ImageView im = allTiles[choice].card.getImage();
+                                im.setFitWidth(90);
+                                im.setFitHeight(90);
+                                items.getChildren().add(im);
                                 items.getChildren().add(card);
                                 character.addItem(allTiles[choice].card);
                             }
