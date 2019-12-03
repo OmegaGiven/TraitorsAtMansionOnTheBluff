@@ -11,7 +11,7 @@ public class Omen extends Card {
         ImageView antler = new ImageView("Card/item_images/DeerAntler.png");
         ImageView skull = new ImageView("Card/item_images/RatSkull.png");
 
-        String ravenClaw = "A gnarled, shriveled raven's claw. " +
+        String ravenClaw = "A gnarled, shriveled \nraven's claw. " +
                 "\nSpook count +1";
         String batWing = "A leathery black wing. " +
                 "\nSpook count +1";

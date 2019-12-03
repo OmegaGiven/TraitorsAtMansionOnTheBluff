@@ -159,7 +159,7 @@ public class GameBoard {
         pane.setRight(right);
 
         // add stats and item boxes to left side of pane
-        Text statsTitle = new Text("======= STATS =======");
+        Text statsTitle = new Text("====== STATS ======");
         statsTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         stats.getChildren().add(statsTitle);
         Text movesLeft = new Text("MOVES LEFT        :    " + moves);
@@ -168,11 +168,11 @@ public class GameBoard {
         Text statistics = new Text(character.getStats());
         stats.getChildren().add(statistics);
         leftPane.getChildren().add(stats);
-        Text itemsTitle = new Text("======= ITEMS =======");
+        Text itemsTitle = new Text("====== ITEMS ======");
         itemsTitle.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         items.getChildren().add(itemsTitle);
         leftPane.getChildren().add(items);
-        Text omen = new Text("======= OMENS =======");
+        Text omen = new Text("====== OMENS ======");
         omen.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         Text spookCount = new Text("SPOOK COUNT: " + sCount);
         spookCount.setFill(Color.CRIMSON);
@@ -343,6 +343,10 @@ public class GameBoard {
                             }
                             else if(allTiles[choice].card.getType().equals("Omen")){
                                 if(!spook){
+                                    ImageView im = allTiles[choice].card.getImage();
+                                    im.setFitWidth(90);
+                                    im.setFitHeight(90);
+                                    omens.getChildren().add(im);
                                     omens.getChildren().add(card);
                                     sCount++;
                                     spookCount.setText("SPOOK COUNT: " + sCount);
