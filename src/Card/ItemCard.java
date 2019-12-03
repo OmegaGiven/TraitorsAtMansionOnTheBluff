@@ -26,28 +26,28 @@ public class ItemCard extends Card {
         if (which == 1) {
             this.setCardName("SLIME BALL");
             this.setCardDescription(slimeBall);
-            this.setType("Item Card");
+            this.setType("Item");
             this.setDamage(1);
             this.setCategory("speed");
             this.setImage(slime);
         } else if (which == 2) {
             this.setCardName("SHARP HAMMER");
             this.setCardDescription(sharpHammer);
-            this.setType("Item Card");
+            this.setType("Item");
             this.setDamage(1);
             this.setCategory("might");
             this.setImage(hammer);
         } else if (which == 3) {
             this.setCardName("SINGING DOLL");
             this.setCardDescription(singingDoll);
-            this.setType("Item Card");
+            this.setType("Item");
             this.setDamage(1);
             this.setCategory("sanity");
             this.setImage(doll);
         } else {
             this.setCardName("LARGE STICK");
             this.setCardDescription(largeStick);
-            this.setType("Item Card");
+            this.setType("Item");
             this.setDamage(1);
             this.setCategory("knowledge");
             this.setImage(stick);

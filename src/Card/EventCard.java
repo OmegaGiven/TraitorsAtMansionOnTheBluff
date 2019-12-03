@@ -20,28 +20,28 @@ public class EventCard extends Card {
         if(which == 1){
             this.setCardName("FROG ATTACK");
             this.setCardDescription(frogAttack);
-            this.setType("Event Card");
+            this.setType("Event");
             this.setDamage(1);
             this.setCategory("speed");
         }
         else if(which == 2){
             this.setCardName("FLAME DEMON");
             this.setCardDescription(flameDemon);
-            this.setType("Event Card");
+            this.setType("Event");
             this.setDamage(1);
             this.setCategory("might");
         }
         else if(which == 3){
             this.setCardName("GHOST SWOOP");
             this.setCardDescription(ghostSwoop);
-            this.setType("Event Card");
+            this.setType("Event");
             this.setDamage(1);
             this.setCategory("sanity");
         }
         else{
             this.setCardName("STINK BOMB");
             this.setCardDescription(stinkBomb);
-            this.setType("Event Card");
+            this.setType("Event");
             this.setCategory("knowledge");
         }
     }
