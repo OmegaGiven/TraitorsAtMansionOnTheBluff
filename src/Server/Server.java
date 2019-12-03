@@ -10,11 +10,29 @@ public class Server {
     Socket socketClient = null;
     BufferedReader reader = null;
     BufferedWriter writer = null;
+    ServerSocket srvr = null;
 
-    private void connect() throws Exception {
+    public Server() throws Exception{
+        int x = 0;
+    }
+
+    public void connect() throws Exception {
         try {
             ServerSocket srvr = new ServerSocket(5558);
             socketClient = srvr.accept();
+            System.out.println("Server: " + "Connection Established");
+        } catch (Exception ex) {
+            System.err.println(ex + "Client couldn't connect");
+        }
+
+        reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
+
+        writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
+    }
+
+    public void clientConnect() throws Exception {
+        try {
+            socketClient = new Socket("localhost",5558);
             System.out.println("Server: " + "Connection Established");
         } catch (Exception ex) {
             System.err.println(ex + "Client couldn't connect");

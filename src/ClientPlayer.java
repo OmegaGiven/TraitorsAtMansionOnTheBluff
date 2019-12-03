@@ -16,14 +16,12 @@ import Characters.Character;
 import Characters.*;
 import Server.Server;
 
-
-public class Main extends Application {
+public class ClientPlayer extends Application {
 
     Stage st = new Stage();
 
     Character user = new Character();
 //    boolean selection = false;
-
 
     public Pane CharacterSelect(BorderPane game) throws Exception{
         Server server = new Server();
@@ -95,7 +93,7 @@ public class Main extends Application {
             });
             characterGroup.getChildren().add(button);
         }
-        server.connect();
+        server.clientConnect();
         return backdrop;
     }
 

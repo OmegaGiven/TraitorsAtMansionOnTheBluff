@@ -9,7 +9,11 @@ public class Client {
     BufferedReader reader = null;
     BufferedWriter writer = null;
 
-    private void connect() throws Exception {
+    public Client() throws Exception {
+        int x = 0;
+    }
+
+    public void clientConnect() throws Exception {
         try {
             socketClient = new Socket("localhost",5558);
             System.out.println("Server: " + "Connection Established");
