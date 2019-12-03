@@ -23,6 +23,18 @@ public class Card {
         this.category = category;
         this.image = image;
     }
+    public Card(String name, String type, String desc, int damage, String category){
+        this.name = name;
+        this.type = type;
+        this.description = desc;
+        this.damage = damage;
+        this.category = category;
+    }
+    public Card(String name, String type, String desc){
+        this.name = name;
+        this.type = type;
+        this.description = desc;
+    }
 
 
 
@@ -108,10 +120,21 @@ public class Card {
             ArrayList<Card> returnCard = new ArrayList<Card>();
             while(line != null){
                 tempLine = line.split(",");
-                int damage =  Integer.parseInt(tempLine[3]);
-                ImageView picture = new ImageView(tempLine[5]);
-                returnCard.add(new Card(tempLine[0], tempLine[1], tempLine[2], damage, tempLine[4], picture));
-                line = file.readLine();
+                if(tempLine[1].equals("Omen")){
+                    returnCard.add(new Card(tempLine[0], tempLine[1], tempLine[2]));
+                    line = file.readLine();
+                }
+                else if(tempLine[1].equals("Event")){
+                    int damage =  Integer.parseInt(tempLine[3]);
+                    returnCard.add(new Card(tempLine[0], tempLine[1], tempLine[2],damage,tempLine[4]));
+                    line = file.readLine();
+                }
+                else{
+                    int damage =  Integer.parseInt(tempLine[3]);
+                    ImageView picture = new ImageView(tempLine[5]);
+                    returnCard.add(new Card(tempLine[0], tempLine[1], tempLine[2], damage, tempLine[4], picture));
+                    line = file.readLine();
+                }
             }
             return returnCard;
         }

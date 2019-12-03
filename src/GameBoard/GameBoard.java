@@ -337,7 +337,7 @@ public class GameBoard {
                             boardTiles[onPane][character.getX()][character.getY()] = allTiles[choice];
                             card.setText(allTiles[choice].card.toString());
                             rightPane.getChildren().remove(card);
-                            if(allTiles[choice].card.getType().equals("Item Card")){
+                            if(allTiles[choice].card.getType().equals("Item")){
                                 items.getChildren().add(card);
                                 character.addItem(allTiles[choice].card);
                             }

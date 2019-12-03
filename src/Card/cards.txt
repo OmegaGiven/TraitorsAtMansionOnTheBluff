@@ -1,1 +1,12 @@
-Oddly Sharp Hammer,Item,This is definitely not an axe. +1 to might,1,might,Card/item_images/SharpHammer.png
+Oddly Sharp Hammer,Item,This is definitely not an axe. Deals -1 to might,1,might,Card/item_images/SharpHammer.png
+Slime Ball,Item,An oozing, green pocket-sized ball of slime.\nDeals -1 to Speed,1,speed,Card/item_images/SlimeBall.png
+Singing Doll,Item,A dirty little porcelain doll \nthat sings when you squeeze its throat.,1,sanity,Card/item_images/SingingDoll.png
+Large Stick,Item,This stick looks primed and ready\n for some head banging.,1,knowledge,Card/item_images/LargeStick.png
+Raven Claw,Omen,A gnarled, shriveled raven's claw. \nSpook count +1
+Bat Wing,Omen,A leathery black wing.\nSpook Count + 1
+Deer Antler,A cracked, greying antler \n with dark brown splotches \nat its base.
+Rat Skull,Omen,A tiny, delicate rat skull \n with bits of rotting flesh\n behind its eye sockets.\nSpook count + 1
+Rat Attack,Event,Hundreds of rats start emerging from every crack in the room and start nibbling onto anything they can sink their teeth into, including you.\nSpeed - 1,1,speed
+Ghost Swoop,Event,You hear the chilling moan of a spectre as it swoops down from across the room right through you. You feel a chill fly through your body as you wonder what it might have done to you.\nSanity - 1,1,sanity
+Stink Bomb,Event,Some sort of small creature comes out of the corner and tosses some sort of glass that shatters and some sort of putrid smoke fills the room.\nKnowledge - 1,1,knowledge
+Fireplace,Event,You walk into the room only to find yourself completely covered in flames that appeared out of nowhere. You are barely able to put out the flames before they overtake you.\nMight - 1,1,might
