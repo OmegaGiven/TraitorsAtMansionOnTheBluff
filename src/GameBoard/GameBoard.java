@@ -90,6 +90,19 @@ public class GameBoard {
         writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
     }
 
+    public void clientConnect() throws Exception {
+        try {
+            socketClient = new Socket("localhost",5558);
+            System.out.println("Server: " + "Connection Established");
+        } catch (Exception ex) {
+            System.err.println(ex + "Client couldn't connect");
+        }
+
+        reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
+
+        writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
+    }
+
     public void receiveCharacter() throws Exception {
         opponent.setX(Integer.parseInt(reader.readLine().trim()));
         opponent.setY(Integer.parseInt(reader.readLine().trim()));

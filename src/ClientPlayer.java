@@ -1,4 +1,4 @@
-import GameBoard.ClientGameBoard;
+import GameBoard.GameBoard;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -78,7 +78,7 @@ public class ClientPlayer extends Application {
                     user = current;
                     backdrop.getChildren().clear();
                     //game.setRight(updateDescription());
-                    ClientGameBoard board = new ClientGameBoard();
+                    GameBoard board = new GameBoard();
                     Stage stage = new Stage();
                     BorderPane pane = new BorderPane();
                     Scene scene = new Scene(pane);
@@ -87,7 +87,7 @@ public class ClientPlayer extends Application {
                     stage.setTitle("Traitors At Mansion On The Bluff - Client");
                     try {
                         board.clientConnect();
-                        board.run(scene, pane, user);
+                        board.run(scene, pane, user, false);
 
 
                     } catch (Exception ex){
