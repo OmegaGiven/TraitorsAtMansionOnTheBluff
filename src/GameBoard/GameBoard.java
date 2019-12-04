@@ -613,6 +613,9 @@ public class GameBoard {
 
         scrollPane.setContent(gridPanes[1]);
 
+        if (servr) {
+            testReceiveFirst();
+        }
 
     }
 
