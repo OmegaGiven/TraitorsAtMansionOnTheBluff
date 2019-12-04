@@ -90,13 +90,16 @@ public class Main extends Application {
                     stage.setScene(scene);
                     stage.setTitle("Traitors At Mansion On The Bluff - Server");
                     try {
-                        //server.connect();
+                        board.connect();
                         board.run(scene, pane, user, true);
                     } catch (Exception ex){
                         System.err.println(ex);
                     }
                     stage.show();
                     st.close();
+
+
+
                 });
 
             });

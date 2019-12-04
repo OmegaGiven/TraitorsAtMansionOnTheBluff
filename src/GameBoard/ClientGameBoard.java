@@ -19,12 +19,11 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
 
-public class GameBoard {
+public class ClientGameBoard {
 
     private String[] titles = {"Upper Floor", "Ground Floor", "Basement"};
     Character opponent = new Character();
@@ -76,10 +75,9 @@ public class GameBoard {
     private int stairX = 500;
     private int stairY = 500;
 
-    public void connect() throws Exception {
+    public void clientConnect() throws Exception {
         try {
-            ServerSocket srvr = new ServerSocket(5558);
-            socketClient = srvr.accept();
+            socketClient = new Socket("localhost",5558);
             System.out.println("Server: " + "Connection Established");
         } catch (Exception ex) {
             System.err.println(ex + "Client couldn't connect");
@@ -131,24 +129,25 @@ public class GameBoard {
         writer.flush();
     }
 
+
+    public void testSendReceive() throws Exception {
+        writer.write("Server Made a move\r\n");
+        writer.flush();
+
+        String response = reader.readLine();
+        System.out.println(response);
+    }
+
     public void testReceiveFirst() throws Exception {
 
         String response = reader.readLine().trim();
         System.out.println("Message: " + response);
     }
 
-    public void testSendReceive() throws Exception {
-        writer.write("Server Made a move\r\n");
-        writer.flush();
 
-        String response = reader.readLine().trim();
-        System.out.println("Message: " + response);
-    }
+    public void run(Scene scene, BorderPane pane, Character character) throws Exception {
 
 
-
-
-    public void run(Scene scene, BorderPane pane, Character character, Boolean servr) throws Exception {
         moves = character.getSpeed();
 
 
@@ -231,19 +230,6 @@ public class GameBoard {
         gridPanes[1].setHalignment(character.getImage(), HPos.CENTER);
 
 
-        /*
-        if(servr){
-            receiveCharacter();
-            sendCharacter(character);
-        }
-        else {
-            sendCharacter(character);
-            receiveCharacter();
-        }
-        gridPanes[1].add(opponent.getImage(), opponent.getX() - 1, opponent.getY());
-        gridPanes[1].setHalignment(opponent.getImage(), HPos.CENTER);
-
-         */
 
         // add the up and down buttons for the right side of the pane.
         rightPane.getChildren().add(up);
@@ -427,67 +413,67 @@ public class GameBoard {
                     // this is the part where it adds a new tile.
                     if(boardTiles[onPane][character.getX()][character.getY()] == null && move) {
 
-                            // this is the part where it adds new tiles when moving.
-                            added.add(choice);
-                            allTiles[choice].image().setFitHeight(200);
-                            allTiles[choice].image().setFitWidth(200);
-                            center.add(allTiles[choice].image(), character.getX(), character.getY());
-                            boardTiles[onPane][character.getX()][character.getY()] = allTiles[choice];
-                            card.setText(allTiles[choice].card.toString());
-                            rightPane.getChildren().remove(card);
-                            if(allTiles[choice].card.getType().equals("Item")){
+                        // this is the part where it adds new tiles when moving.
+                        added.add(choice);
+                        allTiles[choice].image().setFitHeight(200);
+                        allTiles[choice].image().setFitWidth(200);
+                        center.add(allTiles[choice].image(), character.getX(), character.getY());
+                        boardTiles[onPane][character.getX()][character.getY()] = allTiles[choice];
+                        card.setText(allTiles[choice].card.toString());
+                        rightPane.getChildren().remove(card);
+                        if(allTiles[choice].card.getType().equals("Item")){
+                            ImageView im = allTiles[choice].card.getImage();
+                            im.setFitWidth(90);
+                            im.setFitHeight(90);
+                            items.getChildren().add(im);
+                            items.getChildren().add(card);
+                            character.addItem(allTiles[choice].card);
+                        }
+                        else if(allTiles[choice].card.getType().equals("Omen")){
+                            if(!spook){
                                 ImageView im = allTiles[choice].card.getImage();
                                 im.setFitWidth(90);
                                 im.setFitHeight(90);
-                                items.getChildren().add(im);
-                                items.getChildren().add(card);
-                                character.addItem(allTiles[choice].card);
-                            }
-                            else if(allTiles[choice].card.getType().equals("Omen")){
-                                if(!spook){
-                                    ImageView im = allTiles[choice].card.getImage();
-                                    im.setFitWidth(90);
-                                    im.setFitHeight(90);
-                                    omens.getChildren().add(im);
-                                    omens.getChildren().add(card);
-                                    sCount++;
-                                    spookCount.setText("SPOOK COUNT: " + sCount);
-                                    if(sCount == 4){
-                                        spook = true;
-                                        character.setTraitor(true);
-                                        Text spookLog = new Text("SPOOK TRIGGERED");
-                                        spookLog.setFill(Color.RED);
-                                        spookLog.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
-                                        rightPane.getChildren().add(spookLog);
-                                        Text spookText = new Text("Your new objective:\nKILL THE OTHER PLAYER\n");
-                                        spookText.setFill(Color.RED);
-                                        rightPane.getChildren().add(spookText);
-                                    }
+                                omens.getChildren().add(im);
+                                omens.getChildren().add(card);
+                                sCount++;
+                                spookCount.setText("SPOOK COUNT: " + sCount);
+                                if(sCount == 4){
+                                    spook = true;
+                                    character.setTraitor(true);
+                                    Text spookLog = new Text("SPOOK TRIGGERED");
+                                    spookLog.setFill(Color.RED);
+                                    spookLog.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
+                                    rightPane.getChildren().add(spookLog);
+                                    Text spookText = new Text("Your new objective:\nKILL THE OTHER PLAYER\n");
+                                    spookText.setFill(Color.RED);
+                                    rightPane.getChildren().add(spookText);
                                 }
                             }
-                            else{
-                                rightPane.getChildren().add(card);
-                                //int damage = allTiles[choice].card.getDamage();
-                                int damage = -1;
-                                switch(allTiles[choice].card.getCategory()) {
-                                    case "speed":
-                                        character.changeSpeed(damage);
-                                        break;
-                                    case "might":
-                                        character.changeMight(damage);
-                                        break;
-                                    case "sanity":
-                                        character.changeSanity(damage);
-                                        break;
-                                    case "knowledge":
-                                        character.changeKnowledge(damage);
-                                        break;
-                                }
-                                stats.getChildren().remove(statistics);
-                                statistics.setText(character.getStats());
-                                stats.getChildren().add(statistics);
+                        }
+                        else{
+                            rightPane.getChildren().add(card);
+                            //int damage = allTiles[choice].card.getDamage();
+                            int damage = -1;
+                            switch(allTiles[choice].card.getCategory()) {
+                                case "speed":
+                                    character.changeSpeed(damage);
+                                    break;
+                                case "might":
+                                    character.changeMight(damage);
+                                    break;
+                                case "sanity":
+                                    character.changeSanity(damage);
+                                    break;
+                                case "knowledge":
+                                    character.changeKnowledge(damage);
+                                    break;
+                            }
+                            stats.getChildren().remove(statistics);
+                            statistics.setText(character.getStats());
+                            stats.getChildren().add(statistics);
 
-                            }
+                        }
                     }
 
                     if (move) {
@@ -507,7 +493,7 @@ public class GameBoard {
         });
 
 
-        // END TURN BUTTON
+        // end turn button
         endTurn.setOnMouseClicked(e ->{
             Text end = new Text(character.getName() + " has ended \ntheir turn...\n");
             end.setFill(Color.DARKGREEN);
@@ -637,3 +623,4 @@ public class GameBoard {
     }
 
 }
+
