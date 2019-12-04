@@ -54,12 +54,12 @@ public class Tile {
     private static Card generateCard(){
         int which = (int)(Math.random() * ((3 - 1) + 1)) + 1;
         if(which == 1){
-            return deck.drawCard(deck.eventCards);
+            return new EventCard();
         }
         else if (which == 2){
-            return deck.drawCard(deck.itemCards);
+            return new ItemCard();
         }
-        else return deck.drawCard(deck.omenCards);
+        else return new Omen();
     }
 //    public static void main(String[] args){
 //        for(int i = 0; i < 10; i++){
