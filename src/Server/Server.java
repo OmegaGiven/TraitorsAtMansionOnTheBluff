@@ -4,6 +4,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import Characters.Character;
 import Characters.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
 
 public class Server {
@@ -43,8 +45,10 @@ public class Server {
         writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
     }
 
-    private void receiveFirstMove(Character character) throws Exception {
+    public void receiveFirstMove(Character character) throws Exception {
         /* This Function is only run once to get the server logic running at the beginning of the game */
+        character.setName(reader.readLine().trim());
+        character.setName(reader.readLine().trim());
         character.setX(Integer.parseInt(reader.readLine().trim()));
         character.setY(Integer.parseInt(reader.readLine().trim()));
         character.setSpeed(Integer.parseInt(reader.readLine().trim()));
@@ -52,9 +56,10 @@ public class Server {
         character.setSanity(Integer.parseInt(reader.readLine().trim()));
         character.setKnowledge(Integer.parseInt(reader.readLine().trim()));
         character.setTraitor(Boolean.parseBoolean(reader.readLine().trim()));
+
     }
 
-    private void sendMove(Character character) throws IOException {
+    public void sendMove(Character character) throws IOException {
         int x = character.getX();
         int y = character.getY();
         int speed = character.getSpeed();
@@ -73,7 +78,7 @@ public class Server {
 
     }
 
-    private void receiveMove(Character character) throws IOException {
+    private void receiveMove(Character character, GridPane pane) throws IOException {
         character.setX(Integer.parseInt(reader.readLine().trim()));
         character.setY(Integer.parseInt(reader.readLine().trim()));
         character.setSpeed(Integer.parseInt(reader.readLine().trim()));

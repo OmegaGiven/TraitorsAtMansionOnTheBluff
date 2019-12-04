@@ -17,7 +17,11 @@ public class Runner extends Application {
         TheFrogSlayer character = new TheFrogSlayer();
 
         stage.setScene(scene);
-        board.run(scene, pane, character);
+        try {
+            board.run(scene, pane, character, true);
+        } catch (Exception ex){
+            System.err.println(ex);
+        }
         stage.show();
     }
 

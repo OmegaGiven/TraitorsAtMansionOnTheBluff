@@ -22,11 +22,13 @@ public class Main extends Application {
     Stage st = new Stage();
 
     Character user = new Character();
+    Character opponent = new Character();
 //    boolean selection = false;
 
 
     public Pane CharacterSelect(BorderPane game) throws Exception{
         Server server = new Server();
+
         Character[] characters = {
                 new BugBoy(),
                 new BougieBrain(),
@@ -86,8 +88,13 @@ public class Main extends Application {
                     Scene scene = new Scene(pane);
                     stage.setMaximized(true);
                     stage.setScene(scene);
-                    stage.setTitle("Traitors At Mansion On The Bluff");
-                    board.run(scene, pane, user);
+                    stage.setTitle("Traitors At Mansion On The Bluff - Server");
+                    try {
+                        //server.connect();
+                        board.run(scene, pane, user, true);
+                    } catch (Exception ex){
+                        System.err.println(ex);
+                    }
                     stage.show();
                     st.close();
                 });
@@ -95,7 +102,8 @@ public class Main extends Application {
             });
             characterGroup.getChildren().add(button);
         }
-        server.connect();
+
+
         return backdrop;
     }
 
@@ -116,7 +124,7 @@ public class Main extends Application {
         BorderPane game = new BorderPane();
         game.setCenter(CharacterSelect(game));
         Scene scene = new Scene(game, 500, 350);
-        st.setTitle("Character Select");
+        st.setTitle("Character Select - Server");
         st.setScene(scene);
         //st.setMaximized(true);
         st.show();

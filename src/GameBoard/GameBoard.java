@@ -12,13 +12,20 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import Server.Server;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.util.ArrayList;
 
 
 public class GameBoard {
 
     private String[] titles = {"Upper Floor", "Ground Floor", "Basement"};
+    private Server server;
+    Character opponent = new Character();
+    BufferedReader reader = null;
+    BufferedWriter writer = null;
 
     private GridPane[] gridPanes = {
             /*upper floor*/ new GridPane(),
@@ -64,10 +71,58 @@ public class GameBoard {
     private int stairX = 500;
     private int stairY = 500;
 
+    public void receiveCharacter() throws Exception {
+        opponent.setX(Integer.parseInt(reader.readLine().trim()));
+        opponent.setY(Integer.parseInt(reader.readLine().trim()));
+        opponent.setName(reader.readLine().trim());
+        opponent.setBio(reader.readLine().trim());
+        opponent.setAge(Integer.parseInt(reader.readLine().trim()));
+        opponent.setMoveCount(Integer.parseInt(reader.readLine().trim()));
+        opponent.setSpeed(Integer.parseInt(reader.readLine().trim()));
+        opponent.setMight(Integer.parseInt(reader.readLine().trim()));
+        opponent.setSanity(Integer.parseInt(reader.readLine().trim()));
+        opponent.setKnowledge(Integer.parseInt(reader.readLine().trim()));
 
-    public void run(Scene scene, BorderPane pane, Character character) {
+    }
 
+    public void sendCharacter(Character player) throws Exception {
+        ImageView image = player.getImage();
+        String name = player.getName();
+        String bio = player.getBio();
+        int age = player.getAge();
+        int x = player.getX();
+        int y = player.getY();
+        int moveCount = player.getMoveCount();
+        int speed = player.getSpeed();
+        int might = player.getMight();
+        int sanity = player.getSanity();
+        int knowledge = player.getKnowledge();
+
+        writer.write(x+"\r\n");
+        writer.write(y+"\r\n");
+        //writer.write(image+"\r\n");
+        writer.write(name+"\r\n");
+        writer.write(bio+"\r\n");
+        writer.write(age+"\r\n");
+        writer.write(moveCount+"\r\n");
+        writer.write(speed+"\r\n");
+        writer.write(might+"\r\n");
+        writer.write(sanity+"\r\n");
+        writer.write(knowledge+"\r\n");
+        writer.flush();
+    }
+
+
+    public void run(Scene scene, BorderPane pane, Character character, Boolean servr) throws Exception {
+        server = new Server();
+        if(servr){
+            server.connect();
+        }
+        else {
+            server.clientConnect();
+        }
         moves = character.getSpeed();
+
 
         scrollPane.setContent(pane.getCenter());
         pane.setCenter(scrollPane);
@@ -146,6 +201,20 @@ public class GameBoard {
         gridPanes[1].add(character.getImage(), character.getX(), character.getY());
         // this makes the character image in the center of the tile
         gridPanes[1].setHalignment(character.getImage(), HPos.CENTER);
+
+        /*
+        if(servr){
+            receiveCharacter();
+            sendCharacter(character);
+        }
+        else {
+            sendCharacter(character);
+            receiveCharacter();
+        }
+        gridPanes[1].add(opponent.getImage(), opponent.getX() - 1, opponent.getY());
+        gridPanes[1].setHalignment(opponent.getImage(), HPos.CENTER);
+
+         */
 
         // add the up and down buttons for the right side of the pane.
         rightPane.getChildren().add(up);
@@ -408,6 +477,7 @@ public class GameBoard {
 
         });
 
+
         // end turn button
         endTurn.setOnMouseClicked(e ->{
             Text end = new Text(character.getName() + " has ended \ntheir turn...\n");
@@ -416,6 +486,12 @@ public class GameBoard {
             moves = character.getSpeed();
             movesLeft.setText("MOVES LEFT        :    " + moves);
             // where information will be sent over for server
+
+            try {
+                server.sendMove(character);
+            } catch (Exception ex) {
+                System.err.println(ex);
+            }
         });
 
         // attack button
@@ -492,6 +568,7 @@ public class GameBoard {
         });
 
         onPane = 1;
+
         scrollPane.setContent(gridPanes[1]);
 
     }

@@ -84,8 +84,14 @@ public class ClientPlayer extends Application {
                     Scene scene = new Scene(pane);
                     stage.setMaximized(true);
                     stage.setScene(scene);
-                    stage.setTitle("Traitors At Mansion On The Bluff");
-                    board.run(scene, pane, user);
+                    stage.setTitle("Traitors At Mansion On The Bluff - Client");
+                    try {
+                        //server.clientConnect();
+                        board.run(scene, pane, user, false);
+
+                    } catch (Exception ex){
+                        System.err.println(ex);
+                    }
                     stage.show();
                     st.close();
                 });
@@ -93,7 +99,7 @@ public class ClientPlayer extends Application {
             });
             characterGroup.getChildren().add(button);
         }
-        server.clientConnect();
+
         return backdrop;
     }
 
@@ -114,7 +120,7 @@ public class ClientPlayer extends Application {
         BorderPane game = new BorderPane();
         game.setCenter(CharacterSelect(game));
         Scene scene = new Scene(game, 500, 350);
-        st.setTitle("Character Select");
+        st.setTitle("Character Select - Client");
         st.setScene(scene);
         //st.setMaximized(true);
         st.show();
