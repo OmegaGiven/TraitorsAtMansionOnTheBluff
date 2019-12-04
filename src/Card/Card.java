@@ -112,7 +112,7 @@ public class Card {
 //        }
 //    }
 
-    public ArrayList<Card> readCards(String filename){
+    public static ArrayList<Card> readCards(String filename){
         try {
             BufferedReader file = new BufferedReader(new FileReader(filename));
             String line = file.readLine();
@@ -146,13 +146,5 @@ public class Card {
         }
         return null;
     }
-//    public Card drawCard(String cardType){
-//        switch(cardType){
-//            case "Item":
-//
-//            case "Card.Omen":
-//
-//        }
-//        return null;
-//    }
+
 }

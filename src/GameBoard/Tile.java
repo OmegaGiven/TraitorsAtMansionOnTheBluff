@@ -2,7 +2,6 @@ package GameBoard;
 import javafx.scene.image.ImageView;
 import Card.*;
 
-
 public class Tile {
 
     private ImageView image;
@@ -12,7 +11,7 @@ public class Tile {
      boolean wDr;
      boolean eDr;
      Card card;
-
+     static Decks deck;
 
     Tile() {
         image = new ImageView();
@@ -55,12 +54,12 @@ public class Tile {
     private static Card generateCard(){
         int which = (int)(Math.random() * ((3 - 1) + 1)) + 1;
         if(which == 1){
-            return new EventCard();
+            return deck.drawCard(deck.eventCards);
         }
         else if (which == 2){
-            return new ItemCard();
+            return deck.drawCard(deck.itemCards);
         }
-        else return new Omen();
+        else return deck.drawCard(deck.omenCards);
     }
 //    public static void main(String[] args){
 //        for(int i = 0; i < 10; i++){
