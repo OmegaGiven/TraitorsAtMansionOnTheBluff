@@ -15,10 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import Server.Server;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -31,6 +28,9 @@ public class GameBoard {
     Socket socketClient = null;
     BufferedReader reader = null;
     BufferedWriter writer = null;
+    ObjectOutputStream oos = null;
+    ObjectInputStream ois = null;
+
 
     private GridPane[] gridPanes = {
             /*upper floor*/ new GridPane(),
@@ -81,12 +81,15 @@ public class GameBoard {
             ServerSocket srvr = new ServerSocket(5558);
             socketClient = srvr.accept();
             System.out.println("Server: " + "Connection Established");
+
         } catch (Exception ex) {
             System.err.println(ex + "Client couldn't connect");
         }
 
-        reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
+        oos = new ObjectOutputStream(socketClient.getOutputStream());
+        ois = new ObjectInputStream(socketClient.getInputStream());
 
+        reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
         writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
     }
 
@@ -97,10 +100,18 @@ public class GameBoard {
         } catch (Exception ex) {
             System.err.println(ex + "Client couldn't connect");
         }
+        oos = new ObjectOutputStream(socketClient.getOutputStream());
+        ois = new ObjectInputStream(socketClient.getInputStream());
 
         reader = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
-
         writer = new BufferedWriter(new OutputStreamWriter(socketClient.getOutputStream()));
+    }
+
+    public void sendObject(Character player) throws IOException, ClassNotFoundException {
+        oos.writeObject(player);
+        oos.flush();
+
+        opponent = (Character)ois.readObject();
     }
 
     public void receiveCharacter() throws Exception {
@@ -531,6 +542,7 @@ public class GameBoard {
 
             try {
                 testSendReceive();
+                //sendObject(character);
             } catch (Exception ex) {
                 System.err.println(ex);
             }
