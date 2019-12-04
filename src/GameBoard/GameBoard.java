@@ -1,4 +1,5 @@
 package GameBoard;
+import Characters.BugBoy;
 import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -112,6 +113,10 @@ public class GameBoard {
         writer.flush();
     }
 
+    public void testReceiveFirst() throws Exception {
+
+    }
+
 
     public void run(Scene scene, BorderPane pane, Character character, Boolean servr) throws Exception {
         server = new Server();
@@ -201,6 +206,7 @@ public class GameBoard {
         gridPanes[1].add(character.getImage(), character.getX(), character.getY());
         // this makes the character image in the center of the tile
         gridPanes[1].setHalignment(character.getImage(), HPos.CENTER);
+
 
         /*
         if(servr){
@@ -488,7 +494,7 @@ public class GameBoard {
             // where information will be sent over for server
 
             try {
-                server.sendMove(character);
+                sendCharacter(character);
             } catch (Exception ex) {
                 System.err.println(ex);
             }
@@ -570,6 +576,9 @@ public class GameBoard {
         onPane = 1;
 
         scrollPane.setContent(gridPanes[1]);
+
+
+
 
     }
 
