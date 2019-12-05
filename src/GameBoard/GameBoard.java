@@ -305,6 +305,9 @@ public class GameBoard {
         pane.setLeft(left);
 
         ArrayList[] added = new ArrayList[3];
+        for (int a = 0; a < added.length; a++) {
+            added[a] = new ArrayList();
+        }
         scene.setOnKeyPressed(event -> {
             Text card = new Text();
             // this is for choosing a random tile.
