@@ -304,14 +304,13 @@ public class GameBoard {
         left.setContent(leftPane);
         pane.setLeft(left);
 
-
-        ArrayList<Integer> added = new ArrayList<>();
+        ArrayList[] added = new ArrayList[3];
         scene.setOnKeyPressed(event -> {
             Text card = new Text();
             // this is for choosing a random tile.
             int choice = (int)(Math.random() * allTiles.length);
             // this just makes sure that there are no duplicates.
-            while (added.contains(choice) && added.size() != allTiles.length) {
+            while (added[onPane].contains(choice) && added[onPane].size() != allTiles.length) {
                 choice = (int)(Math.random() * allTiles.length);
             }
 
@@ -327,7 +326,7 @@ public class GameBoard {
                             if(move) {
                                 character.setY(character.getY() - 1);
                                 if(boardTiles[onPane][character.getX()][character.getY()] == null
-                                        && added.size() != allTiles.length) {
+                                        && added[onPane].size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
                                     if (allTiles[choice].sDr) {
@@ -344,7 +343,7 @@ public class GameBoard {
                                     }
                                 }
                                 else if(boardTiles[onPane][character.getX()][character.getY()] == null
-                                        && added.size() == allTiles.length) {
+                                        && added[onPane].size() == allTiles.length) {
 
                                     character.setY(character.getY() + 1);
                                     move = false;
@@ -358,7 +357,7 @@ public class GameBoard {
                             if(move) {
                                 character.setY(character.getY() + 1);
                                 if(boardTiles[onPane][character.getX()][character.getY()] == null
-                                        && added.size() != allTiles.length) {
+                                        && added[onPane].size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
                                     if (allTiles[choice].nDr) {
@@ -375,7 +374,7 @@ public class GameBoard {
                                     }
                                 }
                                 else if(boardTiles[onPane][character.getX()][character.getY()] == null
-                                        && added.size() == allTiles.length) {
+                                        && added[onPane].size() == allTiles.length) {
 
                                     character.setY(character.getY() - 1);
                                     move = false;
@@ -389,7 +388,7 @@ public class GameBoard {
                             if(move) {
                                 character.setX(character.getX() - 1);
                                 if(boardTiles[onPane][character.getX()][character.getY()] == null
-                                        && added.size() != allTiles.length) {
+                                        && added[onPane].size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
                                     if (allTiles[choice].eDr) {
@@ -406,7 +405,7 @@ public class GameBoard {
                                     }
                                 }
                                 else if(boardTiles[onPane][character.getX()][character.getY()] == null
-                                        && added.size() == allTiles.length) {
+                                        && added[onPane].size() == allTiles.length) {
 
                                     character.setX(character.getX() + 1);
                                     move = false;
@@ -420,7 +419,7 @@ public class GameBoard {
                             if(move) {
                                 character.setX(character.getX() + 1);
                                 if(boardTiles[onPane][character.getX()][character.getY()] == null
-                                        && added.size() != allTiles.length) {
+                                        && added[onPane].size() != allTiles.length) {
 
                                     //This part is where the tiles get rotated when discovered.
                                     if (allTiles[choice].wDr) {
@@ -437,7 +436,7 @@ public class GameBoard {
                                     }
                                 }
                                 else if(boardTiles[onPane][character.getX()][character.getY()] == null
-                                        && added.size() == allTiles.length) {
+                                        && added[onPane].size() == allTiles.length) {
                                     character.setX(character.getX() - 1);
                                     move = false;
                                 }
@@ -452,7 +451,7 @@ public class GameBoard {
                     if(boardTiles[onPane][character.getX()][character.getY()] == null && move) {
 
                             // this is the part where it adds new tiles when moving.
-                            added.add(choice);
+                            added[onPane].add(choice);
                             allTiles[choice].image().setFitHeight(200);
                             allTiles[choice].image().setFitWidth(200);
                             center.add(allTiles[choice].image(), character.getX(), character.getY());
