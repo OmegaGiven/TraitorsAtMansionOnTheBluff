@@ -1,5 +1,7 @@
 package GameBoard;
 import Characters.BugBoy;
+import javafx.animation.Animation;
+import javafx.animation.PathTransition;
 import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,11 +11,14 @@ import javafx.scene.layout.*;
 import Characters.Character;
 import Card.Card;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import Server.Server;
+import javafx.util.Duration;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -241,7 +246,21 @@ public class GameBoard {
 
         }
 
+        // ANIMATION SCRATCH WORK
+        Text spookT = new Text("!!!    SPOOK   SPOOK   SPOOK   SPOOK   SPOOK    !!!");
+        spookT.setFill(Color.RED);
+        Line spookPath = new Line(200,0,600,0);
+        PathTransition path = new PathTransition();
 
+        path.setNode(spookT);
+        path.setPath(spookPath);
+        path.setDuration(Duration.millis(5000));
+        path.setAutoReverse(true);
+        path.setCycleCount(Animation.INDEFINITE);
+        path.play();
+
+
+        // ANIMATION SCRATCH WORK
 
         // This is the HBox that keeps track of the buttons
         for (Button i : buttons) {
@@ -481,6 +500,7 @@ public class GameBoard {
                                     if(sCount == 4){
                                         spook = true;
                                         character.setTraitor(true);
+                                        buttonPane.getChildren().add(spookT);
                                         Text spookLog = new Text("SPOOK TRIGGERED");
                                         spookLog.setFill(Color.RED);
                                         spookLog.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
